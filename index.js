@@ -2,7 +2,6 @@
 
 var  colors = require('colors'),
      fs = require('fs'),
-     adler32 = require('adler32'),
      glob = require("glob"),
      execFile = require('child_process').execFile, 
      exec = require('child_process').exec,
@@ -44,8 +43,7 @@ var  colors = require('colors'),
 //для включение дебагера -  set DEBUG=*,-not_this
 //var  debug = require('debug')("glob");
 //debug('[File] ');
-
-        var  debug_updater = require('debug')("./lib/updater");
+//var  debug_updater = require('debug')("./lib/updater");
 
 
 
@@ -1348,7 +1346,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
               return true;
           }
       }   
-      return false;;   
+      return false; 
     }
 
 
@@ -1362,7 +1360,6 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         length_files = length_files - 1;
 
         if(length_files == 0){
-            //console.log('Проверяем обновление');
             updater(fs, colors, execFile, option.autoupdate);
         }    
     }

@@ -1,6 +1,6 @@
 {
   "name": "compress-images",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Minify size your images. Image compression with extension: jpg/jpeg, svg, png, gif.",
   "keywords": [
     "minify",
@@ -47,13 +47,13 @@
     "png compress", 
     "gif compress"                                              
   ],
-  "homepage": "",
-  "bugs": "",
+  "homepage": "https://github.com/semiromid/compress-images/",
+  "bugs": "https://github.com/semiromid/compress-images/issues",
   "license": "MIT",
   "author": {
     "name": "TAMARA SEMINA",
     "email": "startpascal1@mail.ru",
-    "url": ""
+    "url": "https://github.com/semiromid/compress-images/"
   },
   "files": [
     "LICENSE",
@@ -64,7 +64,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/semiromid/compress-image.git"
+    "url": "https://github.com/semiromid/compress-images.git"
   },
   "dependencies": {
     "colors": "1.1.2",
