@@ -1,0 +1,8 @@
+#*
+!.gitignore
+
+/vendor/
+
+
+.npmignore
+git-com.txt

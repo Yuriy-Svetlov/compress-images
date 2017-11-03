@@ -1,0 +1,200 @@
+WEBPMUX(1)                                                          WEBPMUX(1)
+
+
+
+NAME
+       webpmux    create  animated  WebP files from nonanimated WebP images,
+       extract frames from animated WebP images, and manage XMP/EXIF  metadata
+       and ICC profile.
+
+SYNOPSIS
+       webpmuxget GET_OPTIONS INPUTo OUTPUT
+       webpmuxset SET_OPTIONS INPUTo OUTPUT
+       webpmuxstrip STRIP_OPTIONS INPUTo OUTPUT
+       webpmuxframe FRAME_OPTIONS [frame ... ] [loop LOOP_COUNT ]
+               [bgcolor BACKGROUND_COLOR ]o OUTPUT
+       webpmuxduration DURATION OPTIONS [duration ... ] INPUTo OUTPUT
+       webpmuxinfo INPUT
+       webpmux hhelp]
+       webpmuxversion
+
+DESCRIPTION
+       This manual page documents the webpmux command.
+
+       webpmux can be used to create/extract from animated WebP files, as well
+       as to add/extract/strip XMP/EXIF metadata and ICC profile.
+
+OPTIONS
+   GET_OPTIONS get):
+       icc    Get ICC profile.
+
+       exif   Get EXIF metadata.
+
+       xmp    Get XMP metadata.
+
+       frame n
+              Get nth frame from an animated image. (n = 0 has a special mean
+              ing: last frame).
+
+
+   SET_OPTIONS set)
+       icc file.icc
+              Set ICC profile.
+
+       Where: file.icc contains the ICC profile to be set.
+
+       exif file.exif
+              Set EXIF metadata.
+
+       Where: file.exif contains the EXIF metadata to be set.
+
+       xmp file.xmp
+              Set XMP metadata.
+
+       Where: file.xmp contains the XMP metadata to be set.
+
+
+   STRIP_OPTIONS strip)
+       icc    Strip ICC profile.
+
+       exif   Strip EXIF metadata.
+
+       xmp    Strip XMP metadata.
+
+
+   DURATION_OPTIONS duration)
+       Amend  the  duration  of  a specific interval of frames. This option is
+       only effective on animated WebP and has no  effect  on  a  singleframe
+       file.
+
+       duration[,start[,end]]
+              Where:
+              duration  is  the  duration  for  the  interval  in milliseconds
+              (mandatory).  Must be nonnegative.
+              start is the starting frame index of the interval (optional).
+              end is the  ending  frame  index  (inclusive)  of  the  interval
+              (optional).
+
+       The three typical usages of this option are:
+             duration d
+                   set the duration to d for the whole animation.
+             duration d,f
+                   set the duration of frame f to d.
+             duration d,start,end
+                   set the duration to d for the whole [start,end] interval.
+
+
+              Note that the frames outside of the [start, end]  interval  will
+              remain untouched.
+              The end value 0 has the special meaning last frame  of  the
+              animation.
+
+       Reminder:
+              frame indexing starts at 1.
+
+
+   FRAME_OPTIONS frame)
+       Create  an animated WebP file from multiple (nonanimated) WebP images.
+
+       file_i +di[+xi+yi[+mi[bi]]]
+              Where: file_i is the ith frame (WebP format), xi,yi spec
+              ify  the image offset for this frame, di is the pause duration
+              before next frame, mi is the dispose method for this frame  (0
+              for  NONE  or  1 for BACKGROUND) and bi is the blending method
+              for this frame (+b for BLEND or b for NO_BLEND).  Argument bi
+              can  be  omitted and will default to +b (BLEND).  Also, mi can
+              be omitted if bi is omitted and  will  default  to  0  (NONE).
+              Finally,  if mi and bi are omitted then xi and yi can be
+              omitted and will default to +0+0.
+
+      loop n
+              Loop the frames n number of times. 0 indicates the frames should
+              loop  forever.   Valid  range  is  0 to 65535 [Default: 0 (infi
+              nite)].
+
+      bgcolor A,R,G,B
+              Background color of the canvas.
+              where: A, R, G and B are integers in the range 0 to  255
+              specifying  the  Alpha,  Red,  Green  and  Blue component values
+              respectively [Default: 255,255,255,255].
+
+
+   INPUT
+       Input file in WebP format.
+
+
+   OUTPUT o)
+       Output file in WebP format.
+
+
+   Note:
+       The nature of EXIF, XMP and ICC data is not checked and is  assumed  to
+       be valid.
+
+
+BUGS
+       Please    report     all     bugs     to     the     issue     tracker:
+       https://bugs.chromium.org/p/webp
+       Patches  welcome!  See  this  page  to get started: http://www.webmpro
+       ject.org/code/contribute/submittingpatches/
+
+
+EXAMPLES
+       Add ICC profile:
+       webpmux set icc image_profile.icc in.webp o icc_container.webp
+
+       Extract ICC profile:
+       webpmux get icc icc_container.webp o image_profile.icc
+
+       Strip ICC profile:
+       webpmux strip icc icc_container.webp o without_icc.webp
+
+       Add XMP metadata:
+       webpmux set xmp image_metadata.xmp in.webp o xmp_container.webp
+
+       Extract XMP metadata:
+       webpmux get xmp xmp_container.webp o image_metadata.xmp
+
+       Strip XMP metadata:
+       webpmux strip xmp xmp_container.webp o without_xmp.webp
+
+       Add EXIF metadata:
+       webpmux set exif image_metadata.exif in.webp o exif_container.webp
+
+       Extract EXIF metadata:
+       webpmux get exif exif_container.webp o image_metadata.exif
+
+       Strip EXIF metadata:
+       webpmux strip exif exif_container.webp o without_exif.webp
+
+       Create an animated WebP file from 3 (nonanimated) WebP images:
+       webpmux frame 1.webp +100 frame 2.webp +100+50+50
+               frame 3.webp +100+50+50+1+b loop 10 bgcolor 255,255,255,255
+               o anim_container.webp
+
+       Get the 2nd frame from an animated WebP file:
+       webpmux get frame 2 anim_container.webp o frame_2.webp
+
+       Using get/set/strip with input file name starting with :
+       webpmux set icc image_profile.icc o icc_container.webp  in.webp
+       webpmux get icc o image_profile.icc  icc_container.webp
+       webpmux strip icc o without_icc.webp  icc_container.webp
+
+
+AUTHORS
+       webpmux is a part of libwebp and was written by the WebP team.
+       The  latest  source  tree  is  available  at   https://chromium.google
+       source.com/webm/libwebp
+
+       This  manual  page was written by Vikas Arora <vikaas.arora@gmail.com>,
+       for the Debian project (and may be used by others).
+
+
+SEE ALSO
+       cwebp(1), dwebp(1), gif2webp(1)
+       Please refer to http://developers.google.com/speed/webp/ for additional
+       information.
+
+
+
+                               November 10, 2016                    WEBPMUX(1)
