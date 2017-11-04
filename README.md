@@ -4,29 +4,41 @@
 
 **Minify** size your images. **Image compression** with extension: **`jpg/jpeg`**, **`svg`**, **`png`**, **`gif`**. 
 
+![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/1.jpg)
+
 ### Distinctive features
-#### Detect path for save image
-You can specify the path to source images folder and all images in the folder will be compression and moved to another folder.
 
-As examples:
-
-***a)*** You specify path to source image `[src/img/1/test.jpg]` and path to compressed image `[build/img/]`. Then image will be taken from path `[src/img/1/test.jpg]` and saved to `[build/img/1/test.jpg]`;
-
-***b)***  You specify path to all source image**s** `[src/img/**/*.jpg]` and path to compressed image**s** `[build/img/]`. Then as examples, image will be taken from path `[src/img/1/house/test.jpg]` and saved to `[build/img/1/house/test.jpg]`
 
 #### You can use different engines and methods for compress images with many options quality.
-a) Normal Compression
+
+##### Normal Compression
 
 * For **JPG**: `jpegtran`, `mozjpeg`, `webp`, `guetzli`, `jpegRecompress`, `jpegoptim`, `tinify`;
 * For **PNG**: `pngquant`, `optipng`, `pngout`, `webp`, `pngcrush`, `tinify`;
 * For **SVG**: `svgo`;
 * For **GIF**: `gifsicle`, `giflossy`, `gif2webp`;
 
-b) Combined compression
+##### Combined compression
 
-You even can minify images on first step `mozjpeg` and on last step on `jpegoptim`. Image will be compressed with use `mozjpeg`+`jpegoptim`
+> You even can minify images on first step `mozjpeg` and on last step on `jpegoptim`. Image will be compressed with use `mozjpeg`+`jpegoptim`
 
-![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/1.jpg)
+
+##### Detect path for save image
+You can specify the path to source images folder and all images in the folder will be compression and moved to another folder.
+
+**As examples**:
+
+You specify path to source image `[src/img/1/test.jpg]` and path to compressed image `[build/img/]`. Then image will be taken from path `[src/img/1/test.jpg]` and saved to `[build/img/1/test.jpg]`;
+
+            INPUT `[src/img/1/test.jpg]` 
+            OUTPUT `[build/img/1/test.jpg]`
+
+You specify path to all source image**s** `[src/img/**/*.jpg]` and path to compressed image**s** `[build/img/]`. Then as examples, image will be taken from path `[src/img/1/house/test.jpg]` and saved to `[build/img/1/house/test.jpg]`
+
+            INPUT `[src/img/**/*.jpg]` 
+            OUTPUT `[build/img/1/house/test.jpg]`
+
+
 
 ## Install
 ```shell
@@ -132,8 +144,8 @@ gulp.task('compress_images', function() {
     
 
             Example: 
-            1)`{svg: {engine: 'svgo', command: '--multipass'}`;
-            2)`{svg: {engine: 'svgo', command: false}}`;
+            1) `{svg: {engine: 'svgo', command: '--multipass'}`;
+            2) `{svg: {engine: 'svgo', command: false}}`;
 
 
 +  **enginegif** (type:plainObject): Engine for compress **gif** and options compress. Key to be `gif`;
@@ -153,8 +165,11 @@ _______________________
 Help me please if possible and support the project.
 
  **PayPal** | [https://www.paypal.com/myaccount/transfer/send](https://www.paypal.com/myaccount/transfer/send) **`startpascal1@mail.ru`**
+ 
  **Visa Card** | **`4731 1856 1426 6432`** First name and Last name: `SEMINA TAMARA` or `SEMINA TAMARA PETROVNA`
+ 
  **Payeer** | [payeer.com](payeer.com) No.[**`P77135727`**]
+ 
  **PaYoneer** | [https://www.payoneer.com](https://www.payoneer.com) **`startpascal1@mail.ru`**
  
 _______________________
@@ -188,6 +203,7 @@ pngquant-bin [https://github.com/imagemin/pngquant-bin](https://github.com/image
 tinypng [https://tinypng.com/developers/reference/nodejs](https://tinypng.com/developers/reference/nodejs) author is Voormedia;
 
 tinyjpg [https://tinyjpg.com/](https://tinyjpg.com/) author is Voormedia;
+
 jpegoptim [https://github.com/tjko/jpegoptim](https://github.com/tjko/jpegoptim) author is Tjko;
 
 jpegoptim-bin [https://github.com/imagemin/jpegoptim-bin](https://github.com/imagemin/jpegoptim-bin) author is 1000ch;
