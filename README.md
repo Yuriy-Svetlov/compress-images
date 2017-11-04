@@ -29,9 +29,9 @@ You can specify the path to source images folder and all images in the folder wi
 You specify path to all source image**s** `[src/img/**/*.jpg]` and path to compressed image**s** `[build/img/]`.
 
         INPUT [src/img/**/*.jpg]
-        OUTPUT [build/img/1/house/test.jpg]
-        OUTPUT [build/img/2/house2/test2.jpg]
-        OUTPUT [build/img/5/house5/test.jpg]
+        Will be saved image [build/img/1/house/test.jpg]
+        Will be saved image [build/img/2/house2/test2.jpg]
+        Will be saved image [build/img/5/house5/test.jpg]
 
 
 
@@ -77,10 +77,10 @@ gulp.task('compress_images', function() {
 **`compress_images`**(*`input`*, *`output`*, *`option`*, *`globoption`*, *`enginejpg`*, *`enginepng`*, *`enginesvg`*, *`enginegif`*)
 + **input** (type:string): Path to source image or images;
         Example: 
-            1) `'src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}'`__;
-            2) `'src/img/**/*.jpg'`;
-            3) `'src/img/*.jpg'`; 
-            4) `'src/img/myimagename.jpg'`;
+            1) `'src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}'` __;
+            2) `'src/img/**/*.jpg'`_;
+            3) `'src/img/*.jpg'`_; 
+            4) `'src/img/myimagename.jpg'`_;
 
 + **output** (type:string): Path to compress images; 
 
