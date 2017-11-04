@@ -77,10 +77,10 @@ gulp.task('compress_images', function() {
 **`compress_images`**(*`input`*, *`output`*, *`option`*, *`globoption`*, *`enginejpg`*, *`enginepng`*, *`enginesvg`*, *`enginegif`*)
 + **input** (type:string): Path to source image or images;
         Example: 
-            1) `'src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}'` __;
-            2) `'src/img/**/*.jpg'`_;
-            3) `'src/img/*.jpg'`_; 
-            4) `'src/img/myimagename.jpg'`_;
+            1.) `'src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}'`;
+            2.) `'src/img/**/*.jpg'`;
+            3.) `'src/img/*.jpg'`; 
+            4.) `'src/img/myimagename.jpg'`;
 
 + **output** (type:string): Path to compress images; 
 
