@@ -134,9 +134,9 @@ gulp.task('compress_images', function() {
 *`svgo`*;    
     + **command** (type:string): Options compress. Can be `false` or commands type string.
         + For **svgo** - `'--multipass'` in details [svgo](https://www.npmjs.com/package/svgo/);  <br />
-            Example:  <br /> 
-            1. `{svg: {engine: 'svgo', command: '--multipass'}`;  <br />
-            2. `{svg: {engine: 'svgo', command: false}}`;
+                Example:  <br />
+                1. `{svg: {engine: 'svgo', command: '--multipass'}`;  <br />
+                2. `{svg: {engine: 'svgo', command: false}}`;
 
 
 +  **enginegif** (type:plainObject): Engine for compress **gif** and options compress. Key to be `gif`;
@@ -146,10 +146,10 @@ gulp.task('compress_images', function() {
         + For **gifsicle** - In details [gifsicle](http://www.lcdf.org/gifsicle/);
         + For **giflossy** - In details [giflossy](http://www.lcdf.org/gifsicle/);
         + For **gif2webp** - `['-f', '80', '-mixed', '-q', '30', '-m', '2']` in details [gif2webp](https://developers.google.com/speed/webp/docs/gif2webp);    <br />
-            Example:  <br /> 
-            1. `{gif: {engine: 'gifsicle', command: false}}`;  <br />
-            2. `{gif: {engine: 'giflossy', command: false}}`;  <br />
-            3. `{gif: {engine: 'gif2webp', command: ['-f', '80', '-mixed', '-q', '30', '-m', '2']}}`;
+                Example:  <br />
+                1. `{gif: {engine: 'gifsicle', command: false}}`;  <br />
+                2. `{gif: {engine: 'giflossy', command: false}}`;  <br />
+                3. `{gif: {engine: 'gif2webp', command: ['-f', '80', '-mixed', '-q', '30', '-m', '2']}}`;
 
 
 _______________________
