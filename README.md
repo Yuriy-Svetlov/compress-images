@@ -9,9 +9,7 @@
 ### Distinctive features
 
 
-#### You can use different engines and methods for compress images with many options quality.
-
-##### Normal Compression
+You can use different engines and methods for compress images with many options quality.
 
 * For **JPG**: `jpegtran`, `mozjpeg`, `webp`, `guetzli`, `jpegRecompress`, `jpegoptim`, `tinify`;
 * For **PNG**: `pngquant`, `optipng`, `pngout`, `webp`, `pngcrush`, `tinify`;
@@ -28,15 +26,12 @@ You can specify the path to source images folder and all images in the folder wi
 
 **As examples**:
 
-You specify path to source image `[src/img/1/test.jpg]` and path to compressed image `[build/img/]`. Then image will be taken from path `[src/img/1/test.jpg]` and saved to `[build/img/1/test.jpg]`;
+You specify path to all source image**s** `[src/img/**/*.jpg]` and path to compressed image**s** `[build/img/]`.
 
-            INPUT `[src/img/1/test.jpg]` 
-            OUTPUT `[build/img/1/test.jpg]`
-
-You specify path to all source image**s** `[src/img/**/*.jpg]` and path to compressed image**s** `[build/img/]`. Then as examples, image will be taken from path `[src/img/1/house/test.jpg]` and saved to `[build/img/1/house/test.jpg]`
-
-            INPUT `[src/img/**/*.jpg]` 
-            OUTPUT `[build/img/1/house/test.jpg]`
+        INPUT [src/img/**/*.jpg]
+        OUTPUT [build/img/1/house/test.jpg]
+        OUTPUT [build/img/2/house2/test2.jpg]
+        OUTPUT [build/img/5/house5/test.jpg]
 
 
 
@@ -46,6 +41,15 @@ npm install compress-images --save-dev
 ```
 
 ## Examples how use
+
+```javascript
+   compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}', 'build/img/', {compress_force: false, statistic: true, autoupdate: true}, false,
+                                                {jpg: {engine: 'mozjpeg', command: ['-quality', '60']}},
+                                                {png: {engine: 'pngquant', command: ['--quality=0-20']}},
+                                                {svg: {engine: 'svgo', command: '--multipass'}},
+                                                {gif: {engine: 'gifsicle', command: false}});
+```
+
 ```javascript
 var gulp = require('gulp');
 var compress_images = require('compress-images');
@@ -65,22 +69,15 @@ gulp.task('compress_images', function() {
 });
 ```
 
-```javascript
-   compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}', 'build/img/', {compress_force: false, statistic: true, autoupdate: true}, false,
-                                                {jpg: {engine: 'mozjpeg', command: ['-quality', '60']}},
-                                                {png: {engine: 'pngquant', command: ['--quality=0-20']}},
-                                                {svg: {engine: 'svgo', command: '--multipass'}},
-                                                {gif: {engine: 'gifsicle', command: false}});
-```
+
 
 
 ## API
 
 **`compress_images`**(*`input`*, *`output`*, *`option`*, *`globoption`*, *`enginejpg`*, *`enginepng`*, *`enginesvg`*, *`enginegif`*)
-+ **input** (type:string): Path to source image or images; 
-     
-            Example: 
-            1) `'src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}'`;
++ **input** (type:string): Path to source image or images;
+        Example: 
+            1) `'src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}'`__;
             2) `'src/img/**/*.jpg'`;
             3) `'src/img/*.jpg'`; 
             4) `'src/img/myimagename.jpg'`;
