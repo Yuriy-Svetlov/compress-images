@@ -101,10 +101,10 @@ gulp.task('compress_images', function() {
         + For **tinify** - `['copyright', 'creation', 'location']` In details [tinify](https://tinypng.com/developers/reference/nodejs/);
     + **key** (type:string): Key which using for engine **tinify**.  In details; [tinify](https://tinypng.com/developers/reference/nodejs/);
 
-    Example: 
-    1)`{jpg: {engine: 'mozjpeg', command: ['-quality', '60']}`;
-    2)`{jpg: {engine: 'tinify', key: "sefdfdcv335fxgfe3qw", command: ['copyright', 'creation', 'location']}}`;
-    3)`{jpg: {engine: 'tinify', key: "sefdfdcv335fxgfe3qw", command: false}}`;    
+            Example: 
+            1)`{jpg: {engine: 'mozjpeg', command: ['-quality', '60']}`;
+            2)`{jpg: {engine: 'tinify', key: "sefdfdcv335fxgfe3qw", command: ['copyright', 'creation', 'location']}}`;
+            3)`{jpg: {engine: 'tinify', key: "sefdfdcv335fxgfe3qw", command: false}}`;    
     
 +  **enginepng** (type:plainObject): Engine for compress **png** and options compress. Key to be `png`;
     + **engine** (type:string): Engine for compress png. Possible values:
@@ -118,10 +118,10 @@ gulp.task('compress_images', function() {
         + For **tinify** - `['copyright', 'creation', 'location']` in details [tinify](https://tinypng.com/developers/reference/nodejs/);
     + **key** (type:string): Key which using for engine **tinify**.  In details; [tinify](https://tinypng.com/developers/reference/nodejs/);
 
-    Example: 
-    1)`{png: {engine: 'webp', command: ['-q', '100']}`;
-    2)`{png: {engine: 'tinify', key: "sefdfdcv335fxgfe3qw", command: ['copyright', 'creation', 'location']}}`;
-    3)`{png: {engine: 'optipng', command: false}}`;
+            Example: 
+            1)`{png: {engine: 'webp', command: ['-q', '100']}`;
+            2)`{png: {engine: 'tinify', key: "sefdfdcv335fxgfe3qw", command: ['copyright', 'creation', 'location']}}`;
+            3)`{png: {engine: 'optipng', command: false}}`;
 
 
 +  **enginesvg** (type:plainObject): Engine for compress **svg** and options compress. Key to be `svg`;
@@ -130,9 +130,10 @@ gulp.task('compress_images', function() {
     + **command** (type:string): Options compress. Can be `false` or commands type string.
         + For **svgo** - `'--multipass'` in details [svgo](https://www.npmjs.com/package/svgo/);
     
-    Example: 
-    1)`{svg: {engine: 'svgo', command: '--multipass'}`;
-    2)`{svg: {engine: 'svgo', command: false}}`;
+
+            Example: 
+            1)`{svg: {engine: 'svgo', command: '--multipass'}`;
+            2)`{svg: {engine: 'svgo', command: false}}`;
 
 
 +  **enginegif** (type:plainObject): Engine for compress **gif** and options compress. Key to be `gif`;
@@ -144,12 +145,11 @@ gulp.task('compress_images', function() {
         + For **gif2webp** - `['-f', '80', '-mixed', '-q', '30', '-m', '2']` in details [gif2webp](https://developers.google.com/speed/webp/docs/gif2webp);
 
 
+
 _______________________
 
 ### Donate
-![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/balloon.png)
-
-
+![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/health-care.png)
 Help me please if possible and support the project.
 
  **PayPal** | [https://www.paypal.com/myaccount/transfer/send](https://www.paypal.com/myaccount/transfer/send) **`startpascal1@mail.ru`**
@@ -176,22 +176,39 @@ pngcrush [https://pmt.sourceforge.io/pngcrush/](https://pmt.sourceforge.io/pngcr
 pngcrush-bin [https://github.com/imagemin/pngcrush-bin](https://github.com/imagemin/pngcrush-bin) author is Kevva;
 
 webp [https://developers.google.com/speed/webp/](https://developers.google.com/speed/webp/) author is Google;
+
 pngout [http://advsys.net/ken/util/pngout.htm](http://advsys.net/ken/util/pngout.htm) author is Kerry Watson, with updates by Ken Silverman and Matthew Fearnley;
+
 pngout-bin [https://github.com/imagemin/pngout-bin](https://github.com/imagemin/pngout-bin) author is 1000ch;
+
 pngquant [https://pngquant.org/](https://pngquant.org/) author is  Kornel Lesiński and contributors. It's based on code by Greg Roelofs and Jef Poskanzer;
+
 pngquant-bin [https://github.com/imagemin/pngquant-bin](https://github.com/imagemin/pngquant-bin) author is Kevva;
+
 tinypng [https://tinypng.com/developers/reference/nodejs](https://tinypng.com/developers/reference/nodejs) author is Voormedia;
+
 tinyjpg [https://tinyjpg.com/](https://tinyjpg.com/) author is Voormedia;
 jpegoptim [https://github.com/tjko/jpegoptim](https://github.com/tjko/jpegoptim) author is Tjko;
+
 jpegoptim-bin [https://github.com/imagemin/jpegoptim-bin](https://github.com/imagemin/jpegoptim-bin) author is 1000ch;
+
 jpeg-archive [https://github.com/danielgtaylor/jpeg-archive](https://github.com/danielgtaylor/jpeg-archive) author is Danielgtaylor;
+
 jpeg-recompress-bin [https://github.com/imagemin/jpeg-recompress-bin](https://github.com/imagemin/jpeg-recompress-bin) author is 1000ch;
+
 guetzli [https://github.com/google/guetzli](https://github.com/google/guetzli) author is Google;
+
 guetzli-bin [https://github.com/imagemin/guetzli-bin](https://github.com/imagemin/guetzli-bin) author is 1000ch;
+
 mozjpeg-bin [https://github.com/imagemin/mozjpeg-bin](https://github.com/imagemin/mozjpeg-bin) author is 1000ch;
+
 mozjpeg [https://github.com/mozilla/mozjpeg](https://github.com/mozilla/mozjpeg) author is Pornel;
+
 jpegtran-bin [https://github.com/imagemin/jpegtran-bin](https://github.com/imagemin/jpegtran-bin) author is 1000ch;
+
 libjpeg-turbo [https://libjpeg-turbo.org/](https://libjpeg-turbo.org/) author is Dcommander;
+
+Vectors [https://www.flaticon.com/authors/vectors-market](https://www.flaticon.com/authors/vectors-market) author is Vectors Market;
 
 
 ## Bugs
