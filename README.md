@@ -75,25 +75,23 @@ gulp.task('compress_images', function() {
 ## API
 
 **`compress_images`**(*`input`*, *`output`*, *`option`*, *`globoption`*, *`enginejpg`*, *`enginepng`*, *`enginesvg`*, *`enginegif`*)
-+ **input** (type:string): Path to source image or images;
++ **input** (type:string): Path to source image or images;  <br />
         Example:    <br />
-        1. `'src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}'`;  
-        2. `'src/img/**/*.jpg'`;  
+        1. `'src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}'`;  <br />
+        2. `'src/img/**/*.jpg'`;  <br />
         3. `'src/img/*.jpg'`;  <br />
         4. `'src/img/myimagename.jpg'`;  
 
-+ **output** (type:string): Path to compress images; 
-
-            Example: 
-            1) `'build/img/'`;
++ **output** (type:string): Path to compress images;  <br />
+            Example:   <br />
+            1. `'build/img/'`;  <br />
 
 + **option** (type:plainObject): Options module\`s «compress-images»; 
     + **compress_force** (type:boolean): Force compress images already compressed images *`true`* or *`false`*;
     + **statistic** (type:boolean): show image compression statistics *`true`* or *`false`*;
-    + **autoupdate** (type:boolean): Auto-update module «compress_images» to the latest version *`true`* or *`false`*;
-
-            Example: 
-            1)`{compress_force: false, statistic: true, autoupdate: true}`;
+    + **autoupdate** (type:boolean): Auto-update module «compress_images» to the latest version *`true`* or *`false`*;  <br />
+            Example:   <br />
+            1. `{compress_force: false, statistic: true, autoupdate: true}`;  
 
 +  **globoption** (type:boolean|other): Options  module\`s [glob](https://www.npmjs.com/package/glob). Also you can set `false`;
 
@@ -108,12 +106,11 @@ gulp.task('compress_images', function() {
         + For **jpegRecompress** - `['--quality', 'high', '--min', '60']` in details [jpegRecompress](https://github.com/danielgtaylor/jpeg-archive/);
         + For **jpegoptim** - `['--all-progressive', '-d']` **Caution!** if do not specify `'-d'` all images will be compressed on source folder and  will be replace.  In details [jpegoptim](https://github.com/tjko/jpegoptim/);
         + For **tinify** - `['copyright', 'creation', 'location']` In details [tinify](https://tinypng.com/developers/reference/nodejs/);
-    + **key** (type:string): Key which using for engine **tinify**.  In details; [tinify](https://tinypng.com/developers/reference/nodejs/);
-
-            Example: 
-            1)`{jpg: {engine: 'mozjpeg', command: ['-quality', '60']}`;
-            2)`{jpg: {engine: 'tinify', key: "sefdfdcv335fxgfe3qw", command: ['copyright', 'creation', 'location']}}`;
-            3)`{jpg: {engine: 'tinify', key: "sefdfdcv335fxgfe3qw", command: false}}`;    
+    + **key** (type:string): Key which using for engine **tinify**.  In details; [tinify](https://tinypng.com/developers/reference/nodejs/);  <br />
+            Example:  <br /> 
+            1. `{jpg: {engine: 'mozjpeg', command: ['-quality', '60']}`;  <br />
+            2. `{jpg: {engine: 'tinify', key: "sefdfdcv335fxgfe3qw", command: ['copyright', 'creation', 'location']}}`;  <br />
+            3. `{jpg: {engine: 'tinify', key: "sefdfdcv335fxgfe3qw", command: false}}`;    
     
 +  **enginepng** (type:plainObject): Engine for compress **png** and options compress. Key to be `png`;
     + **engine** (type:string): Engine for compress png. Possible values:
@@ -125,24 +122,21 @@ gulp.task('compress_images', function() {
         + For **webp** - `['-q', '60']` in details [webp](https://developers.google.com/speed/webp/);
         + For **pngcrush** - `['-reduce', '-brute']` in details [pngcrush](https://pmt.sourceforge.io/pngcrush/);
         + For **tinify** - `['copyright', 'creation', 'location']` in details [tinify](https://tinypng.com/developers/reference/nodejs/);
-    + **key** (type:string): Key which using for engine **tinify**.  In details; [tinify](https://tinypng.com/developers/reference/nodejs/);
-
-            Example: 
-            1)`{png: {engine: 'webp', command: ['-q', '100']}`;
-            2)`{png: {engine: 'tinify', key: "sefdfdcv335fxgfe3qw", command: ['copyright', 'creation', 'location']}}`;
-            3)`{png: {engine: 'optipng', command: false}}`;
+    + **key** (type:string): Key which using for engine **tinify**.  In details; [tinify](https://tinypng.com/developers/reference/nodejs/);  <br />
+            Example:  <br /> 
+            1. `{png: {engine: 'webp', command: ['-q', '100']}`;  <br />
+            2. `{png: {engine: 'tinify', key: "sefdfdcv335fxgfe3qw", command: ['copyright', 'creation', 'location']}}`;  <br />
+            3. `{png: {engine: 'optipng', command: false}}`;
 
 
 +  **enginesvg** (type:plainObject): Engine for compress **svg** and options compress. Key to be `svg`;
     + **engine** (type:string): Engine for compress svg. Possible values:
 *`svgo`*;    
     + **command** (type:string): Options compress. Can be `false` or commands type string.
-        + For **svgo** - `'--multipass'` in details [svgo](https://www.npmjs.com/package/svgo/);
-    
-
-            Example: 
-            1) `{svg: {engine: 'svgo', command: '--multipass'}`;
-            2) `{svg: {engine: 'svgo', command: false}}`;
+        + For **svgo** - `'--multipass'` in details [svgo](https://www.npmjs.com/package/svgo/);  <br />
+            Example:  <br /> 
+            1. `{svg: {engine: 'svgo', command: '--multipass'}`;  <br />
+            2. `{svg: {engine: 'svgo', command: false}}`;
 
 
 +  **enginegif** (type:plainObject): Engine for compress **gif** and options compress. Key to be `gif`;
