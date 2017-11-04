@@ -1,6 +1,6 @@
 {
   "name": "compress-images",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Minify size your images. Image compression with extension: jpg/jpeg, svg, png, gif.",
   "keywords": [
     "minify",
@@ -84,6 +84,7 @@
     "giflossy": "3.0.41",
     "mkdirp": "0.5.1",
     "bytes": "3.0.0",
+    "svgo": "1.0.2",    
     "mocha": "4.0.1"
   },
   "scripts": {
