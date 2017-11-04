@@ -4,22 +4,26 @@
 
 **Minify** size your images. **Image compression** with extension: **`jpg/jpeg`**, **`svg`**, **`png`**, **`gif`**. 
 
-##### Distinctive features
-###### Detect path for save image
+### Distinctive features
+#### Detect path for save image
 You can specify the path to source images folder and all images in the folder will be compression and moved to another folder.
 
 As examples:
+
 ***a)*** You specify path to source image `[src/img/1/test.jpg]` and path to compressed image `[build/img/]`. Then image will be taken from path `[src/img/1/test.jpg]` and saved to `[build/img/1/test.jpg]`;
+
 ***b)***  You specify path to all source image**s** `[src/img/**/*.jpg]` and path to compressed image**s** `[build/img/]`. Then as examples, image will be taken from path `[src/img/1/house/test.jpg]` and saved to `[build/img/1/house/test.jpg]`
 
-###### You can use different engines and methods for compress images with many options quality.
+#### You can use different engines and methods for compress images with many options quality.
 a) Normal Compression
+
 * For **JPG**: `jpegtran`, `mozjpeg`, `webp`, `guetzli`, `jpegRecompress`, `jpegoptim`, `tinify`;
 * For **PNG**: `pngquant`, `optipng`, `pngout`, `webp`, `pngcrush`, `tinify`;
 * For **SVG**: `svgo`;
 * For **GIF**: `gifsicle`, `giflossy`, `gif2webp`;
 
 b) Combined compression
+
 You even can minify images on first step `mozjpeg` and on last step on `jpegoptim`. Image will be compressed with use `mozjpeg`+`jpegoptim`
 
 ![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/1.jpg)
@@ -62,23 +66,25 @@ gulp.task('compress_images', function() {
 
 **`compress_images`**(*`input`*, *`output`*, *`option`*, *`globoption`*, *`enginejpg`*, *`enginepng`*, *`enginesvg`*, *`enginegif`*)
 + **input** (type:string): Path to source image or images; 
-     Example: 
+     
+            Example: 
             1) `'src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}'`;
             2) `'src/img/**/*.jpg'`;
             3) `'src/img/*.jpg'`; 
             4) `'src/img/myimagename.jpg'`;
 
 + **output** (type:string): Path to compress images; 
-     Example: 
+
+            Example: 
             1) `'build/img/'`;
 
 + **option** (type:plainObject): Options module\`s «compress-images»; 
     + **compress_force** (type:boolean): Force compress images already compressed images *`true`* or *`false`*;
     + **statistic** (type:boolean): show image compression statistics *`true`* or *`false`*;
     + **autoupdate** (type:boolean): Auto-update module «compress_images» to the latest version *`true`* or *`false`*;
-    
-    Example: 
-    1)`{compress_force: false, statistic: true, autoupdate: true}`;
+
+            Example: 
+            1)`{compress_force: false, statistic: true, autoupdate: true}`;
 
 +  **globoption** (type:boolean|other): Options  module\`s [glob](https://www.npmjs.com/package/glob). Also you can set `false`;
 
@@ -141,6 +147,8 @@ gulp.task('compress_images', function() {
 _______________________
 
 ### Donate
+![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/balloon.png)
+
 
 Help me please if possible and support the project.
 
@@ -154,12 +162,19 @@ _______________________
 
 ## Related
 gif2webp [https://developers.google.com/speed/webp/docs/gif2webp](https://developers.google.com/speed/webp/docs/gif2webp) author is Google;
+
 Node package giflossy [https://www.npmjs.com/package/giflossy](https://www.npmjs.com/package/giflossy) Author is Jihchi;
+
 gifsicle and giflossy [http://www.lcdf.org/gifsicle/](http://www.lcdf.org/gifsicle/) author is Eddie Kohler;
+
 gifsicle-bin [https://github.com/imagemin/gifsicle-bin](https://github.com/imagemin/gifsicle-bin) author is Kevva;
+
 svgo [https://www.npmjs.com/package/svgo](https://www.npmjs.com/package/svgo) author is Greli;
+
 pngcrush [https://pmt.sourceforge.io/pngcrush/](https://pmt.sourceforge.io/pngcrush/) author is Glenn Randers-Pehrson;
+
 pngcrush-bin [https://github.com/imagemin/pngcrush-bin](https://github.com/imagemin/pngcrush-bin) author is Kevva;
+
 webp [https://developers.google.com/speed/webp/](https://developers.google.com/speed/webp/) author is Google;
 pngout [http://advsys.net/ken/util/pngout.htm](http://advsys.net/ken/util/pngout.htm) author is Kerry Watson, with updates by Ken Silverman and Matthew Fearnley;
 pngout-bin [https://github.com/imagemin/pngout-bin](https://github.com/imagemin/pngout-bin) author is 1000ch;
