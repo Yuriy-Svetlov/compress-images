@@ -3,5 +3,3 @@ node_js:
 - "6"
 os: 
 - windows
-dist: trusty
-sudo: false
