@@ -3,6 +3,7 @@
 var compress_images = require('compress-images'),
 	assert = require('assert'),
 	rimraf = require('rimraf'),
+	mkdirp = require('mkdirp'),
 	fs = require('fs');
 
 /*
@@ -23,12 +24,37 @@ describe('Delete all folder output and all images inside!', function () {
 
 
 describe('Test [JPG]    engine [jpegtran]    [options=false]', function () {
-   	compress_images('test/img/input/**/*.jpg', 'test/img/output/', {compress_force: false, statistic: true, autoupdate: true}, false,
-                                                {jpg: {engine: 'jpegtran', command: false}},
-                                                {png: {engine: false, command: false}},
-                                                {svg: {engine: false, command: false}},
-                                                {gif: {engine: false, command: false}});
+
+    it('should will be done!', function (done) {
+                mkdirp('test/img/output/jpg/', function(err, made) {
+                    if(err){
+                        console.log(colors.red('-----------------------------------'));
+                        console.log(colors.red('Was error!'));
+                        console.error(err)
+                        console.log(colors.red('-----------------------------------'));
+                    }else{
+                        if(null != made){
+                            //Выводим лог о том что была создана новая директория
+                            //log_create_wasdir(output); 
+                            console.log('Была создана новая директория - test/img/output/jpg/'); 
+                            done();                 
+                        }                 
+                    }
+                });
+    });
+
+
+   	//compress_images('test/img/input/**/*.jpg', 'test/img/output/', {compress_force: false, statistic: true, autoupdate: true}, false,
+    //                                            {jpg: {engine: 'jpegtran', command: false}},
+    //                                            {png: {engine: false, command: false}},
+    //                                            {svg: {engine: false, command: false}},
+    //                                            {gif: {engine: false, command: false}});
 });
+
+
+
+
+
 
 /*
 npm test

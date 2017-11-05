@@ -1,8 +1,6 @@
-sudo: false
 language: node_js
 node_js:
-  - '6'
-  - '4'
-addons:
-  apt:
-    packages: nasm
+- "6"
+os: 
+- windows
+- linux
