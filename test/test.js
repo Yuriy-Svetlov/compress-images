@@ -5,7 +5,7 @@ var compress_images = require('compress-images'),
 	rimraf = require('rimraf'),
 	fs = require('fs');
 
-
+/*
 describe('Delete all folder output and all images inside!', function () {
     it('Will be should  delete directory with all images!', function (done) {
 		//---------------------------------------------------
@@ -19,6 +19,7 @@ describe('Delete all folder output and all images inside!', function () {
 		//---------------------------------------------------
 	});   	
 });
+*/
 
 
 describe('Test [JPG]    engine [jpegtran]    [options=false]', function () {
