@@ -42,14 +42,16 @@ describe('Test [JPG]    engine [jpegtran]    [options=false]', function () {
 
 						        execFile(jpegtran, ['-outfile', 'test/img/output/jpg/web.jpg', 'test/img/input/jpg/web.jpg'], function (err) {
 
-
-						              //Block statistic
-						              //- - - - - - - - - - - - -  - - - - - - - - - - -
-						              //Узнаем размер файла после сжатия
-						              var size_output = fs.statSync('test/img/output/jpg/web.jpg');
-						              console.log(size_output); 
-						              done();  
-						              //- - - - - - - - - - - - -  - - - - - - - - - - -
+						        	//this.timeout(3000);
+						            //Block statistic
+						            //- - - - - - - - - - - - -  - - - - - - - - - - -
+						                setTimeout(function () {
+							                //Узнаем размер файла после сжатия
+							                var size_output = fs.statSync('test/img/output/jpg/web.jpg');
+							                console.log(size_output); 
+							                done();
+										}, 4000);  
+						            //- - - - - - - - - - - - -  - - - - - - - - - - -
 						        });               
                         }                 
                     }
