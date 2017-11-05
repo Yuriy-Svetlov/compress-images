@@ -24,7 +24,7 @@ describe('Delete all folder output and all images inside!', function () {
 
 describe('Test [JPG]    engine [jpegtran]    [options=false]', function () {
    	compress_images('test/img/input/**/*.jpg', 'test/img/output/', {compress_force: false, statistic: true, autoupdate: true}, false,
-                                                {jpg: {engine: 'mozjpeg', command: false}},
+                                                {jpg: {engine: 'jpegtran', command: false}},
                                                 {png: {engine: false, command: false}},
                                                 {svg: {engine: false, command: false}},
                                                 {gif: {engine: false, command: false}});
