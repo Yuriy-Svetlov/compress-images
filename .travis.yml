@@ -4,4 +4,4 @@ node_js:
 os: 
 - windows
 dist: trusty
-sudo: required
+sudo: false
