@@ -220,6 +220,16 @@ libjpeg-turbo [https://libjpeg-turbo.org/](https://libjpeg-turbo.org/) author is
 
 Vectors [https://www.flaticon.com/authors/vectors-market](https://www.flaticon.com/authors/vectors-market) author is Vectors Market;
 
+colors [https://www.npmjs.com/package/colors](https://www.npmjs.com/package/colors) author is Marak;
+
+glob [https://www.npmjs.com/package/glob](https://www.npmjs.com/package/glob) author is Isaacs;
+
+
+mkdirp [https://www.npmjs.com/package/mkdirp](https://www.npmjs.com/package/mkdirp) author is Substack;
+
+
+bytes [https://www.npmjs.com/package/bytes](https://www.npmjs.com/package/bytes) author is Dougwilson;
+
 
 ## Bugs
   * github - [https://github.com/semiromid/compress-images/issues](https://github.com/semiromid/compress-images/issues) 
