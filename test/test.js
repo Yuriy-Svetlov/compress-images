@@ -4,6 +4,8 @@ var compress_images = require('compress-images'),
 	assert = require('assert'),
 	rimraf = require('rimraf'),
 	mkdirp = require('mkdirp'),
+	execFile = require('child_process').execFile, 
+	jpegtran = require('jpegtran-bin'),
 	fs = require('fs');
 
 /*
@@ -37,7 +39,18 @@ describe('Test [JPG]    engine [jpegtran]    [options=false]', function () {
                             //Выводим лог о том что была создана новая директория
                             //log_create_wasdir(output); 
                             console.log('Была создана новая директория - test/img/output/jpg/'); 
-                            done();                 
+
+						        execFile(jpegtran, ['-outfile', 'test/img/output/jpg/web.jpg', 'test/img/input/jpg/web.jpg'], function (err) {
+
+
+						              //Block statistic
+						              //- - - - - - - - - - - - -  - - - - - - - - - - -
+						              //Узнаем размер файла после сжатия
+						              var size_output = fs.statSync('test/img/output/jpg/web.jpg');
+						              console.log(size_output); 
+						              done();  
+						              //- - - - - - - - - - - - -  - - - - - - - - - - -
+						        });               
                         }                 
                     }
                 });
