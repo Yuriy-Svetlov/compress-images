@@ -1,6 +1,6 @@
 # Compress-image
 
-> [compress-image](https://github.com/semiromid/compress-images) Minify size your images. Image compression with extension: jpg/jpeg, svg, png, gif.
+> [compress-images](https://github.com/semiromid/compress-images) Minify size your images. Image compression with extension: jpg/jpeg, svg, png, gif.
 
 **Minify** size your images. **Image compression** with extension: **`jpg/jpeg`**, **`svg`**, **`png`**, **`gif`**. 
 
