@@ -1361,7 +1361,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
         if(length_files == 0){
             thanks();
-            updater(fs, colors, execFile, option.autoupdate);
+            updater(fs, colors, option.autoupdate);
         }    
     }
 
