@@ -1360,7 +1360,6 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         length_files = length_files - 1;
 
         if(length_files == 0){
-            thanks();
             updater(fs, colors, option.autoupdate);
         }    
     }
@@ -1370,29 +1369,10 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
 
 
-  function thanks(){
-    console.log(colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ')); 
-    console.log(colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     '));
-    console.log(colors.bgCyan('     ') + colors.magenta(' ... ... ... ... ... ... ... ... ... ... ... ... ... ... ...')); 
-    console.log(colors.bgCyan('     ') + colors.magenta(' :')); 
-    console.log(colors.bgYellow('     ') + colors.magenta(' :') + ' Thank you so much for that you use this module npm «compress-images». '+colors.red('♥'));
-    console.log(colors.bgYellow('     ') + colors.magenta(' :') + ' Help me please and support the project:');
-    console.log(colors.bgCyan('     ') + colors.magenta(' :') + ' * ' + colors.cyan('PayPal') + ' - [https://www.paypal.com/myaccount/transfer/send]'); 
-    console.log(colors.bgCyan('     ') + colors.magenta(' :') + '   Email - [startpascal1@mail.ru]');   
-    console.log(colors.bgYellow('     ') + colors.magenta(' :') + ' * ' + colors.yellow('Visa Card') + ' - [4731 1856 1426 6432]'); 
-    console.log(colors.bgYellow('     ') + colors.magenta(' :') + '   First name and Last name: [SEMINA TAMARA] or [SEMINA TAMARA PETROVNA]');  
-    console.log(colors.bgCyan('     ') + colors.magenta(' :') + ' * ' + colors.yellow('Payeer') + ' - [payeer.com]  No.[P77135727]'); 
-    console.log(colors.bgCyan('     ') + colors.magenta(' :') + ' * ' + colors.yellow('PaYoneer') + ' - [https://www.payoneer.com]'); 
-    console.log(colors.bgYellow('     ') + colors.magenta(' :') + '   Email - [startpascal1@mail.ru]'); 
-    console.log(colors.bgYellow('     ') + colors.magenta(' :.. ... ... ... ... ... ... ... ... ... ... ... ... ... ...'));
-    console.log(colors.bgCyan('     ') + colors.magenta(' : .. ... ... ... ... ... ... ... ... ... ... ... ... ... ...'));
-    console.log(colors.bgCyan('     ') + colors.magenta(' :') + ' If the module was you useful, put a star on ['+ colors.yellow('GitHub') + '] - https://github.com/semiromid/compress-images');  
-    console.log(colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     '));
-    console.log(colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     ') + colors.bgYellow('     ') + colors.bgCyan('     '));
-  }
 
 
-//https://github.com/semiromid/compress-images
+
+
 
 }
 module.exports = index;
