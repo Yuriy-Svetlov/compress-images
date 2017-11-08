@@ -144,7 +144,7 @@ gulp.task('compress_images', function() {
 *`gifsicle`*, *`giflossy`*, *`gif2webp`*;  
     + **command** (type:boolean|array): Options compress. Can be `false` or commands type array.
         + For **gifsicle** - `['--colors', '64', '--use-col=web']` or `['--optimize']` In details [gifsicle](http://www.lcdf.org/gifsicle/);
-        + For **giflossy** - (For Linux x64 и Mac OS X) `['--lossy=80']` In details [giflossy](http://www.lcdf.org/gifsicle/);
+        + For **giflossy** - (For Linux x64 and Mac OS X) `['--lossy=80']` In details [giflossy](http://www.lcdf.org/gifsicle/);
         + For **gif2webp** - `['-f', '80', '-mixed', '-q', '30', '-m', '2']` in details [gif2webp](https://developers.google.com/speed/webp/docs/gif2webp);    <br />
                 Example:  <br />
                 1. `{gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web', '--scale', ' 0.8']}}`;  <br />
