@@ -1,6 +1,6 @@
 {
   "name": "compress-images",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Minify size your images. Image compression with extension: jpg/jpeg, svg, png, gif.",
   "keywords": [
     "compress images",    
@@ -50,7 +50,24 @@
     "jpg compress", 
     "svg compress", 
     "png compress", 
-    "gif compress"                                              
+    "gif compress",
+    "jpegtran", 
+    "mozjpeg", 
+    "webp", 
+    "guetzli", 
+    "jpegRecompress",
+    "jpegoptim", 
+    "tinify", 
+    "pngquant", 
+    "optipng", 
+    "pngout",
+    "webp", 
+    "pngcrush", 
+    "svgo", 
+    "gifsicle", 
+    "giflossy",
+    "gif2webp", 
+    "image min"      
   ],
   "homepage": "https://github.com/semiromid/compress-images/",
   "bugs": "https://github.com/semiromid/compress-images/issues",
