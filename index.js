@@ -195,7 +195,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         ///////////////////////////////////////////////////////////////////////
         //Проводим поиск всех файлов
         ///////////////////////////////////////////////////////////////////////
-        var path_out_new; //полный путь вывода файла
+        var path_out_new, ext; //полный путь вывода файла
         glob(input, findfileop, function (er, files) {
           if(files != null || er == null){
 
@@ -203,11 +203,22 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                 length_files = files.length;
                 for (var i = 0; files.length > i; i++) {
                     path_out_new = files[i].replace(new RegExp(path_in_part, "g"), output);
-
-                    if(enginejpg.jpg.engine == 'webp' || enginegif.gif.engine == 'gif2webp'){
-                      //Заменяем расширение на - webp
-                      path_out_new = path_out_new.replace(/\.[a-zA-Z]+$/g, '.webp');
+                    //--------------------------------------------
+                    ext = getExtensionFile(path_out_new);
+                    if(enginepng.png.engine == 'webp'){
+                        if(ext == 'png'){
+                            //Заменяем расширение на - webp
+                            path_out_new = path_out_new.replace(/\.[a-zA-Z]+$/g, '.webp');
+                        }
                     }
+
+                    if(enginejpg.jpg.engine == 'webp'){
+                        if(ext == 'jpg' || ext == 'jpeg' || ext == 'JPG' ||  ext == 'JPEG'){
+                            //Заменяем расширение на - webp
+                            path_out_new = path_out_new.replace(/\.[a-zA-Z]+$/g, '.webp');
+                        }
+                    }
+                    //--------------------------------------------
                     //Вызываем метод процесса сжатия
                     CompressorProcess(files[i], path_out_new);    
                 }
