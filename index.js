@@ -218,6 +218,13 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             path_out_new = path_out_new.replace(/\.[a-zA-Z]+$/g, '.webp');
                         }
                     }
+
+                    if(enginegif.gif.engine == 'gif2webp'){
+                        if(ext == 'gif'){
+                            //Заменяем расширение на - webp
+                            path_out_new = path_out_new.replace(/\.[a-zA-Z]+$/g, '.webp');
+                        }
+                    }              
                     //--------------------------------------------
                     //Вызываем метод процесса сжатия
                     CompressorProcess(files[i], path_out_new);    
