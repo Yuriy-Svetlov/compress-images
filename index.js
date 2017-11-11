@@ -47,7 +47,7 @@ var  colors = require('colors'),
 
 
 
-var index = function (input, output, option, findfileop, enginejpg, enginepng, enginesvg, enginegif) {
+var index = function (input, output, option, findfileop, enginejpg, enginepng, enginesvg, enginegif, callback) {
     
 
     //Updater
