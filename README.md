@@ -108,7 +108,7 @@ gulp.task('compress_images', function() {
 
 ## API
 
-**`compress_images`**(*`input`*, *`output`*, *`option`*, *`globoption`*, *`enginejpg`*, *`enginepng`*, *`enginesvg`*, *`enginegif`*)
+**`compress_images`**(*`input`*, *`output`*, *`option`*, *`globoption`*, *`enginejpg`*, *`enginepng`*, *`enginesvg`*, *`enginegif`*, *`callback`*)
 + **input** (type:string): Path to source image or images;  <br />
         Example:    <br />
         1. `'src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}'`;  <br />
