@@ -47,14 +47,14 @@ npm install compress-images --save-dev
                                                 {jpg: {engine: 'mozjpeg', command: ['-quality', '60']}},
                                                 {png: {engine: 'pngquant', command: ['--quality=0-20']}},
                                                 {svg: {engine: 'svgo', command: '--multipass'}},
-                                                {gif: {engine: 'gifsicle', command: false}});
+                                                {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}});
 ```
 
 ```javascript
 var gulp = require('gulp');
 var compress_images = require('compress-images');
 
-// We will be compress images [jpg] with two algorithms, with [webp] and [jpg];
+// We will be compress images [jpg] with two algorithms, [webp] and [jpg];
 // gulp compress_images
 gulp.task('compress_images', function() {
      //[jpg] ---to---> [webp]
@@ -81,7 +81,7 @@ gulp.task('compress_images', function() {
 var gulp = require('gulp');
 var compress_images = require('compress-images');
 
-// Combination compressing images [jpg] with two different algorithms, with [jpegtran] and [mozjpeg];
+// Combination compressing images [jpg] with two different algorithms, [jpegtran] and [mozjpeg];
 // gulp compress_images
 gulp.task('compress_images', function() {
      //[jpg] ---to---> [jpg(jpegtran)]
