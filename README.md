@@ -133,7 +133,7 @@ gulp.task('compress_images', function() {
     + **engine** (type:string): Engine for compress jpeg. Possible values:
 *`jpegtran`*,*`mozjpeg`*, *`webp`*, *`guetzli`*, *`jpegRecompress`*, *`jpegoptim`*, *`tinify`*;
     + **command** (type:boolean|array): Options compress. Can be `false` or commands array.
-        + For **jpegtran** - `['-progressive', '-copy', 'none', '-optimize']` in details; [jpegtran](https://libjpeg-turbo.org/);
+        + For **jpegtran** - `['-trim', '-progressive', '-copy', 'none', '-optimize']` in details; [jpegtran](https://libjpeg-turbo.org/);
         + For **mozjpeg** - `['-quality', '10']` in details [mozjpeg](https://github.com/mozilla/mozjpeg/);
         + For **webp** - `['-q', '60']` in details [webp](https://developers.google.com/speed/webp/);
         + For **guetzli** - `['--quality', '84']` in details [guetzli](https://github.com/google/guetzli/);
