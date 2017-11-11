@@ -66,8 +66,8 @@ gulp.task('compress_images', function() {
                                                 {gif: {engine: false, command: false}}, function(){       
     });
 
-        //[jpg] ---to---> [jpg(jpegtran)]
-        compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
+    //[jpg] ---to---> [jpg(jpegtran)]
+    compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                     {jpg: {engine: 'jpegtran', command: false}},
                                                     {png: {engine: false, command: false}},
                                                     {svg: {engine: false, command: false}},
