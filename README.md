@@ -57,20 +57,22 @@ var compress_images = require('compress-images');
 // We will be compress images [jpg] with two algorithms, [webp] and [jpg];
 // gulp compress_images
 gulp.task('compress_images', function() {
-     //[jpg] ---to---> [webp]
-     compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: true}, false,
+
+    //[jpg] ---to---> [webp]
+    compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: true}, false,
                                                 {jpg: {engine: 'webp', command: false}},
                                                 {png: {engine: false, command: ['--quality=0-60']}},
                                                 {svg: {engine: false, command: false}},
-                                                {gif: {engine: false, command: false}}, function(){
-         //[jpg] ---to---> [jpg(jpegtran)]
-         compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
+                                                {gif: {engine: false, command: false}}, function(){       
+    });
+
+    //[jpg] ---to---> [jpg(jpegtran)]
+        compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                     {jpg: {engine: 'jpegtran', command: false}},
                                                     {png: {engine: false, command: false}},
                                                     {svg: {engine: false, command: false}},
                                                     {gif: {engine: false, command: false}}, function(){
-        });        
-    });
+    }); 
 });
 ```
 
@@ -84,8 +86,9 @@ var compress_images = require('compress-images');
 // Combination compressing images [jpg] with two different algorithms, [jpegtran] and [mozjpeg];
 // gulp compress_images
 gulp.task('compress_images', function() {
-     //[jpg] ---to---> [jpg(jpegtran)]
-     compress_images('src/img/source/**/*.{jpg,JPG,jpeg,JPEG}', 'src/img/combination/jpg/jpegtran/', {compress_force: false, statistic: true, autoupdate: true}, false,
+    
+    //[jpg] ---to---> [jpg(jpegtran)]
+    compress_images('src/img/source/**/*.{jpg,JPG,jpeg,JPEG}', 'src/img/combination/jpg/jpegtran/', {compress_force: false, statistic: true, autoupdate: true}, false,
                                                 {jpg: {engine: 'jpegtran', command: ['-trim', '-progressive', '-copy', 'none', '-optimize']}},
                                                 {png: {engine: false, command: false}},
                                                 {svg: {engine: false, command: false}},
