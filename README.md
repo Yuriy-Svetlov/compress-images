@@ -54,21 +54,52 @@ npm install compress-images --save-dev
 var gulp = require('gulp');
 var compress_images = require('compress-images');
 
-//console command a) - gulp watch
-gulp.task('watch', function () {
-  gulp.watch('src/img/**/*.jpg', ['compress_images']);
-});
-
-//or console command b) - gulp compress_images
+// We will be compress images [jpg] with two algorithms, with [webp] and [jpg];
+// gulp compress_images
 gulp.task('compress_images', function() {
-   compress_images('src/img/**/*.jpg', 'build/img/', {compress_force: false, statistic: true, autoupdate: true}, false,
-                                                {jpg: {engine: 'mozjpeg', command: false}},
-                                                {png: {engine: false, command: false}},
+     //[jpg] ---to---> [webp]
+     compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: true}, false,
+                                                {jpg: {engine: 'webp', command: false}},
+                                                {png: {engine: false, command: ['--quality=0-60']}},
                                                 {svg: {engine: false, command: false}},
-                                                {gif: {engine: false, command: false}});
+                                                {gif: {engine: false, command: false}}, function(){
+         //[jpg] ---to---> [jpg(jpegtran)]
+         compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
+                                                    {jpg: {engine: 'jpegtran', command: false}},
+                                                    {png: {engine: false, command: false}},
+                                                    {svg: {engine: false, command: false}},
+                                                    {gif: {engine: false, command: false}}, function(){
+        });        
+    });
 });
 ```
 
+
+
+
+```javascript
+var gulp = require('gulp');
+var compress_images = require('compress-images');
+
+// Combination compressing images [jpg] with two different algorithms, with [jpegtran] and [mozjpeg];
+// gulp compress_images
+gulp.task('compress_images', function() {
+     //[jpg] ---to---> [jpg(jpegtran)]
+     compress_images('src/img/source/**/*.{jpg,JPG,jpeg,JPEG}', 'src/img/combination/jpg/jpegtran/', {compress_force: false, statistic: true, autoupdate: true}, false,
+                                                {jpg: {engine: 'jpegtran', command: ['-trim', '-progressive', '-copy', 'none', '-optimize']}},
+                                                {png: {engine: false, command: false}},
+                                                {svg: {engine: false, command: false}},
+                                                {gif: {engine: false, command: false}}, function(){
+         //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)]
+         compress_images('src/img/combination/jpg/jpegtran/**/*.{jpg,JPG,jpeg,JPEG}', 'build/combination/', {compress_force: false, statistic: true, autoupdate: false}, false,
+                                                    {jpg: {engine: 'mozjpeg', command: ['-quality', '75']}},
+                                                    {png: {engine: false, command: false}},
+                                                    {svg: {engine: false, command: false}},
+                                                    {gif: {engine: false, command: false}}, function(){
+        });        
+    });
+});
+```
 
 
 
