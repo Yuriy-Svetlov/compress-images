@@ -1379,6 +1379,8 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
         if(length_files == 0){
             updater(fs, colors, option.autoupdate);
+
+            callback();
         }    
     }
 
