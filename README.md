@@ -16,7 +16,7 @@ You can use different engines and methods for compress images with many options 
 * For **SVG**: `svgo`;
 * For **GIF**: `gifsicle`, `giflossy`, `gif2webp`;
 
-##### Combined compression
+##### Combine compression 
 
 > You even can minify images on first step `mozjpeg` and on last step on `jpegoptim`. Image will be compressed with use `mozjpeg`+`jpegoptim`
 
@@ -66,7 +66,7 @@ gulp.task('compress_images', function() {
                                                 {gif: {engine: false, command: false}}, function(){       
     });
 
-    //[jpg] ---to---> [jpg(jpegtran)]
+        //[jpg] ---to---> [jpg(jpegtran)]
         compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                     {jpg: {engine: 'jpegtran', command: false}},
                                                     {png: {engine: false, command: false}},
@@ -83,7 +83,7 @@ gulp.task('compress_images', function() {
 var gulp = require('gulp');
 var compress_images = require('compress-images');
 
-// Combination compressing images [jpg] with two different algorithms, [jpegtran] and [mozjpeg];
+// Combine compressing images [jpg] with two different algorithms, [jpegtran] and [mozjpeg];
 // gulp compress_images
 gulp.task('compress_images', function() {
     
@@ -93,8 +93,8 @@ gulp.task('compress_images', function() {
                                                 {png: {engine: false, command: false}},
                                                 {svg: {engine: false, command: false}},
                                                 {gif: {engine: false, command: false}}, function(){
-         //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)]
-         compress_images('src/img/combination/jpg/jpegtran/**/*.{jpg,JPG,jpeg,JPEG}', 'build/combination/', {compress_force: false, statistic: true, autoupdate: false}, false,
+        //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)]
+        compress_images('src/img/combination/jpg/jpegtran/**/*.{jpg,JPG,jpeg,JPEG}', 'build/combination/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                     {jpg: {engine: 'mozjpeg', command: ['-quality', '75']}},
                                                     {png: {engine: false, command: false}},
                                                     {svg: {engine: false, command: false}},
