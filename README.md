@@ -88,13 +88,13 @@ var compress_images = require('compress-images');
 gulp.task('compress_images', function() {
     
     //[jpg] ---to---> [jpg(jpegtran)]
-    compress_images('src/img/source/**/*.{jpg,JPG,jpeg,JPEG}', 'src/img/combination/jpg/jpegtran/', {compress_force: false, statistic: true, autoupdate: true}, false,
+    compress_images('src/img/source/**/*.{jpg,JPG,jpeg,JPEG}', 'src/img/combination/', {compress_force: false, statistic: true, autoupdate: true}, false,
                                                 {jpg: {engine: 'jpegtran', command: ['-trim', '-progressive', '-copy', 'none', '-optimize']}},
                                                 {png: {engine: false, command: false}},
                                                 {svg: {engine: false, command: false}},
                                                 {gif: {engine: false, command: false}}, function(){
         //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)]
-        compress_images('src/img/combination/jpg/jpegtran/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
+        compress_images('src/img/combination/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                     {jpg: {engine: 'mozjpeg', command: ['-quality', '75']}},
                                                     {png: {engine: false, command: false}},
                                                     {svg: {engine: false, command: false}},
@@ -122,13 +122,13 @@ gulp.task('compress_images', function() {
                                                 {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(){
           //-------------------------------------------------                                    
           //[jpg] ---to---> [jpg(jpegtran)]
-          compress_images('src/img/source/**/*.{jpg,JPG,jpeg,JPEG}', 'src/img/combine/jpg/jpegtran/', {compress_force: false, statistic: true, autoupdate: false}, false,
+          compress_images('src/img/source/**/*.{jpg,JPG,jpeg,JPEG}', 'src/img/combine/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                           {jpg: {engine: 'jpegtran', command: ['-trim', '-progressive', '-copy', 'none', '-optimize']}},
                                                           {png: {engine: false, command: false}},
                                                           {svg: {engine: false, command: false}},
                                                           {gif: {engine: false, command: false}}, function(){
                 //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)]
-                compress_images('src/img/combine/jpg/jpegtran/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
+                compress_images('src/img/combine/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                                 {jpg: {engine: 'mozjpeg', command: ['-quality', '75']}},
                                                                 {png: {engine: false, command: false}},
                                                                 {svg: {engine: false, command: false}},
