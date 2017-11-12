@@ -63,16 +63,16 @@ gulp.task('compress_images', function() {
                                                 {jpg: {engine: 'webp', command: false}},
                                                 {png: {engine: false, command: ['--quality=0-60']}},
                                                 {svg: {engine: false, command: false}},
-                                                {gif: {engine: false, command: false}}, function(){       
-    });
+                                                {gif: {engine: false, command: false}}, function(){  
+            //[jpg] ---to---> [jpg(jpegtran)]
+            compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
+                                                            {jpg: {engine: 'jpegtran', command: false}},
+                                                            {png: {engine: false, command: false}},
+                                                            {svg: {engine: false, command: false}},
+                                                            {gif: {engine: false, command: false}}, function(){
+            }); 
 
-    //[jpg] ---to---> [jpg(jpegtran)]
-    compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
-                                                    {jpg: {engine: 'jpegtran', command: false}},
-                                                    {png: {engine: false, command: false}},
-                                                    {svg: {engine: false, command: false}},
-                                                    {gif: {engine: false, command: false}}, function(){
-    }); 
+    });
 });
 ```
 
@@ -105,6 +105,55 @@ gulp.task('compress_images', function() {
 ```
 
 
+
+
+```javascript
+var gulp = require('gulp');
+var compress_images = require('compress-images');
+
+//gulp compress_images
+gulp.task('compress_images', function() {
+
+    //[jpg] ---to---> [webp]
+    compress_images('src/img/source/**/*.{jpg,JPG,jpeg,JPEG,gif,png,svg}', 'build/img/', {compress_force: false, statistic: true, autoupdate: true}, false,
+                                                {jpg: {engine: 'webp', command: false}},
+                                                {png: {engine: 'webp', command: false}},
+                                                {svg: {engine: 'svgo', command: false}},
+                                                {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(){
+          //-------------------------------------------------                                    
+          //[jpg] ---to---> [jpg(jpegtran)]
+          compress_images('src/img/source/**/*.{jpg,JPG,jpeg,JPEG}', 'src/img/combine/jpg/jpegtran/', {compress_force: false, statistic: true, autoupdate: false}, false,
+                                                          {jpg: {engine: 'jpegtran', command: ['-trim', '-progressive', '-copy', 'none', '-optimize']}},
+                                                          {png: {engine: false, command: false}},
+                                                          {svg: {engine: false, command: false}},
+                                                          {gif: {engine: false, command: false}}, function(){
+                //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)]
+                compress_images('src/img/combine/jpg/jpegtran/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
+                                                                {jpg: {engine: 'mozjpeg', command: ['-quality', '75']}},
+                                                                {png: {engine: false, command: false}},
+                                                                {svg: {engine: false, command: false}},
+                                                                {gif: {engine: false, command: false}}, function(){
+                      //[png] ---to---> [png(pngquant)]                                  
+                      compress_images('src/img/source/**/*.png', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
+                                                                      {jpg: {engine: false, command: false}},
+                                                                      {png: {engine: 'pngquant', command: ['--quality=30-60']}},
+                                                                      {svg: {engine: false, command: false}},
+                                                                      {gif: {engine: false, command: false}}, function(){                                                      
+                      }); 
+                });                                      
+          });
+          //-------------------------------------------------
+    });
+});
+```
+
+
+```html
+    <picture>
+        <source type="image/webp" srcset="//hostname/build/img/art/1/chat.webp">
+        <img width="700" height="922" alt="test" src="//hostname/build/img/art/1/chat.jpg">
+    </picture>
+```
 
 ## API
 
