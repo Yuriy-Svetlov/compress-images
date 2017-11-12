@@ -94,7 +94,7 @@ gulp.task('compress_images', function() {
                                                 {svg: {engine: false, command: false}},
                                                 {gif: {engine: false, command: false}}, function(){
         //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)]
-        compress_images('src/img/combination/jpg/jpegtran/**/*.{jpg,JPG,jpeg,JPEG}', 'build/combination/', {compress_force: false, statistic: true, autoupdate: false}, false,
+        compress_images('src/img/combination/jpg/jpegtran/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                     {jpg: {engine: 'mozjpeg', command: ['-quality', '75']}},
                                                     {png: {engine: false, command: false}},
                                                     {svg: {engine: false, command: false}},
