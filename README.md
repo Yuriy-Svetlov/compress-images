@@ -18,7 +18,7 @@ You can use different engines and methods for compress images with many options 
 
 ##### Combine compression 
 
-> You even can minify images on first step `mozjpeg` and on last step on `jpegoptim`. Image will be compressed with use `mozjpeg`+`jpegoptim`
+> You even can minify images with use combine algorithms compress images. As example - `mozjpeg` + `jpegoptim` or `jpegtran` + `mozjpeg` or any other.
 
 
 ##### Detect path for save image
@@ -32,6 +32,7 @@ You specify path to all source image**s** `[src/img/**/*.jpg]` and path to compr
         Will be saved image [build/img/1/house/test.jpg]
         Will be saved image [build/img/2/house2/test2.jpg]
         Will be saved image [build/img/5/house5/test.jpg]
+
 
 
 
