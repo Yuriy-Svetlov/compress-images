@@ -11,10 +11,10 @@
 
 You can use different engines and methods for compress images with many options quality.
 
-* For **JPG**: `jpegtran`, `mozjpeg`, `webp`, `guetzli`, `jpegRecompress`, `jpegoptim`, `tinify`;
-* For **PNG**: `pngquant`, `optipng`, `pngout`, `webp`, `pngcrush`, `tinify`;
-* For **SVG**: `svgo`;
-* For **GIF**: `gifsicle`, `giflossy`, `gif2webp`;
+* For **JPG**: `jpegtran`, `mozjpeg`, `webp`, `guetzli`, `jpegRecompress`, `jpegoptim`, `tinify`, `imagemagick`;
+* For **PNG**: `pngquant`, `optipng`, `pngout`, `webp`, `pngcrush`, `tinify`, `imagemagick`;
+* For **SVG**: `svgo`, `imagemagick`;
+* For **GIF**: `gifsicle`, `giflossy`, `gif2webp`, `imagemagick`;
 
 ##### Combine compression 
 
