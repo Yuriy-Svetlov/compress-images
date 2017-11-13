@@ -48,7 +48,8 @@ npm install compress-images --save-dev
                                                 {jpg: {engine: 'mozjpeg', command: ['-quality', '60']}},
                                                 {png: {engine: 'pngquant', command: ['--quality=0-20']}},
                                                 {svg: {engine: 'svgo', command: '--multipass'}},
-                                                {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}});
+                                                {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(){
+            });
 ```
 
 ```javascript
