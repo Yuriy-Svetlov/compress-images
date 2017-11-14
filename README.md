@@ -18,7 +18,7 @@ You can use different engines and methods for compress images with many options 
 
 ##### Combine compression 
 
-> You even can minify images with use combine algorithms compress images. As example - `mozjpeg` + `jpegoptim` or `jpegtran` + `mozjpeg` + `imagemagick` or any other.
+> You even can minify images with use combine algorithms compress images. As example - `mozjpeg` + `jpegoptim` or `jpegtran` + `mozjpeg` + `imagemagick` or any other algorithm.
 
 
 ##### Detect path for save image
