@@ -241,7 +241,7 @@ _______________________
 
 ### Donate
 ![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/health-care.png)
-Help me please if possible and support the project.
+If for you is useful thing, support the project.
 
  **PayPal** | [https://www.paypal.com/myaccount/transfer/send](https://www.paypal.com/myaccount/transfer/send) **`startpascal1@mail.ru`**
  
