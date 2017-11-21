@@ -9,7 +9,7 @@
 ### Distinctive features
 
 
-You can use different engines and methods for compress images with many options quality.
+You can use different algorithms and methods for compress images with many options.
 
 * For **JPG**: `jpegtran`, `mozjpeg`, `webp`, `guetzli`, `jpegRecompress`, `jpegoptim`, `tinify`, `imagemagick`;
 * For **PNG**: `pngquant`, `optipng`, `pngout`, `webp`, `pngcrush`, `tinify`, `imagemagick`;
@@ -44,6 +44,7 @@ npm install compress-images --save-dev
 ## Examples how use
 
 ```javascript
+
     var compress_images = require('compress-images');
     
     compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}', 'build/img/', {compress_force: false, statistic: true, autoupdate: true}, false,
