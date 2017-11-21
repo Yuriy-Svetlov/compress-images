@@ -173,9 +173,9 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
 
 
-    var filename, path_in_part;
+    var filename, path_in_part, test_com_img;
     /*
-      path_in_part - записывается путь типа - "src/img/", путь с звёздочками обрезается
+      path_in_part - путь типа - "src/img/", путь с звёздочками обрезается
     */
         
     //[Определяем, содержит ли путь **
