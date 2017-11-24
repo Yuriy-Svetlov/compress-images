@@ -238,6 +238,9 @@ gulp.task('compress_images', function() {
                 1. `{gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web', '--scale', ' 0.8']}}`;  <br />
                 2. `{gif: {engine: 'giflossy', command: false}}`;  <br />
                 3. `{gif: {engine: 'gif2webp', command: ['-f', '80', '-mixed', '-q', '30', '-m', '2']}}`;
+                
++ **callback** (type:boolean|null): returns `true` or `null` <br />
+
 
 
 _______________________
