@@ -1,5 +1,8 @@
 # Compress-images
 
+
+![Image](https://travis-ci.org/semiromid/compress-images.svg?branch=master)
+
 > [compress-images](https://github.com/semiromid/compress-images) Minify size your images. Image compression with extension: jpg/jpeg, svg, png, gif.
 
 **Minify** size your images. **Image compression** with extension: **`jpg/jpeg`**, **`svg`**, **`png`**, **`gif`**. 
