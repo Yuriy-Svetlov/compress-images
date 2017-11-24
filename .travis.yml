@@ -4,3 +4,5 @@ node_js:
 os: 
 - windows
 - linux
+
+before_script: chmod 0777 ./node_modules/.bin/mocha
