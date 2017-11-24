@@ -1,12 +1,15 @@
 'use strict';
 
-var compress_images = require('compress-images'),
+var compress_images = require("./../index.js"),
 	assert = require('assert'),
 	rimraf = require('rimraf'),
 	mkdirp = require('mkdirp'),
 	execFile = require('child_process').execFile, 
 	jpegtran = require('jpegtran-bin'),
 	fs = require('fs');
+
+
+    //console.log(path);
 
 /*
 describe('Delete all folder output and all images inside!', function () {
@@ -42,17 +45,24 @@ describe('Test [JPG]    engine [jpegtran]    [options=false]', function () {
 
 						        execFile(jpegtran, ['-outfile', 'test/img/output/jpg/web.jpg', 'test/img/input/jpg/web.jpg'], function (err) {
 
+                                    if(err){
+                                        done('Error !!!!!!!!!!!!!');
+                                    }else{
+                                        done();
+                                    }
 						        	//this.timeout(3000);
 						            //Block statistic
 						            //- - - - - - - - - - - - -  - - - - - - - - - - -
-						                setTimeout(function () {
+						                //setTimeout(function () {
 							                //Узнаем размер файла после сжатия
-							                var size_output = fs.statSync('test/img/output/jpg/web.jpg');
-							                console.log(size_output); 
-							                done();
-										}, 4000);  
+							                //var size_output = fs.statSync('test/img/output/jpg/web.jpg');
+							            //    console.log(size_output); 
+							            //    done();
+										//}, 4000);  
 						            //- - - - - - - - - - - - -  - - - - - - - - - - -
 						        });               
+                        }else{
+                            done();
                         }                 
                     }
                 });

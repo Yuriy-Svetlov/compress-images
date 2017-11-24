@@ -1,0 +1,268 @@
+<!-- Creator     : groff version 1.19.2 -->
+<!-- CreationDate: Mon Jan 30 12:44:58 2017 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p     { margin-top: 0; margin-bottom: 0; }
+       pre   { margin-top: 0; margin-bottom: 0; }
+       table { margin-top: 0; margin-bottom: 0; }
+</style>
+<title>VWEBP</title>
+
+</head>
+<body>
+
+<h1 align=center>VWEBP</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#KEYBOARD SHORTCUTS">KEYBOARD SHORTCUTS</a><br>
+<a href="#BUGS">BUGS</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#AUTHORS">AUTHORS</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<a name="NAME"></a>
+<h2>NAME</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">vwebp &minus;
+decompress a WebP file and display it in a window</p>
+
+<a name="SYNOPSIS"></a>
+<h2>SYNOPSIS</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>vwebp</b>
+[<i>options</i>] <i>input_file.webp</i></p>
+
+<a name="DESCRIPTION"></a>
+<h2>DESCRIPTION</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">This manual
+page documents the <b>vwebp</b> command.</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>vwebp</b>
+decompresses a WebP file and displays it in a window using
+OpenGL.</p>
+
+<a name="OPTIONS"></a>
+<h2>OPTIONS</h2>
+
+
+<table width="100%" border=0 rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;h</b></p> </td>
+<td width="8%"></td>
+<td width="30%">
+
+
+<p style="margin-top: 1em" valign="top">Print usage
+summary.</p> </td>
+<td width="48%">
+</td>
+</table>
+
+<p style="margin-left:11%;"><b>&minus;version</b></p>
+
+<p style="margin-left:22%;">Print version number and
+exit.</p>
+
+<table width="100%" border=0 rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;noicc</b></p> </td>
+<td width="2%"></td>
+<td width="56%">
+
+
+<p style="margin-top: 1em" valign="top">Don&rsquo;t use the
+ICC profile if present.</p></td>
+<td width="22%">
+</td>
+</table>
+
+<p style="margin-left:11%;"><b>&minus;nofancy</b></p>
+
+<p style="margin-left:22%;">Don&rsquo;t use the fancy
+YUV420 upscaler.</p>
+
+<p style="margin-left:11%;"><b>&minus;nofilter</b></p>
+
+<p style="margin-left:22%;">Disable in-loop filtering.</p>
+
+<p style="margin-left:11%;"><b>&minus;dither</b>
+<i>strength</i></p>
+
+<p style="margin-left:22%;">Specify a dithering
+<b>strength</b> between 0 and 100. Dithering is a
+post-processing effect applied to chroma components in lossy
+compression. It helps by smoothing gradients and avoiding
+banding artifacts. Default: 50.</p>
+
+
+<p style="margin-left:11%;"><b>&minus;noalphadither</b></p>
+
+<p style="margin-left:22%;">By default, quantized
+transparency planes are dithered during decompression, to
+smooth the gradients. This flag will prevent this
+dithering.</p>
+
+<table width="100%" border=0 rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="7%">
+
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;mt</b></p> </td>
+<td width="4%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em" valign="top">Use multi-threading
+for decoding, if possible.</p></td>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="7%">
+
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;info</b></p> </td>
+<td width="4%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em" valign="top">Display image
+information on top of the decoded image.</p></td>
+</table>
+
+<p style="margin-left:11%;"><b>&minus;&minus;</b>
+<i>string</i></p>
+
+<p style="margin-left:22%;">Explicitly specify the input
+file. This option is useful if the input file starts with an
+&rsquo;&minus;&rsquo; for instance. This option must appear
+<b>last</b>. Any other options afterward will be ignored. If
+the input file is &quot;&minus;&quot;, the data will be read
+from <i>stdin</i> instead of a file.</p>
+
+<a name="KEYBOARD SHORTCUTS"></a>
+<h2>KEYBOARD SHORTCUTS</h2>
+
+
+<table width="100%" border=0 rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+
+<p style="margin-top: 1em" valign="top"><b>&rsquo;c&rsquo;</b></p> </td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em" valign="top">Toggle use of color
+profile.</p> </td>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+
+<p style="margin-top: 1em" valign="top"><b>&rsquo;i&rsquo;</b></p> </td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em" valign="top">Overlay file
+information.</p> </td>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+
+<p style="margin-top: 1em" valign="top"><b>&rsquo;d&rsquo;</b></p> </td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em" valign="top">Disable blending
+and disposal process, for debugging purposes.</p></td>
+</table>
+
+<p style="margin-left:11%;"><b>&rsquo;q&rsquo; /
+&rsquo;Q&rsquo; / ESC</b></p>
+
+<p style="margin-left:22%;">Quit.</p>
+
+<a name="BUGS"></a>
+<h2>BUGS</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Please report
+all bugs to the issue tracker:
+https://bugs.chromium.org/p/webp <br>
+Patches welcome! See this page to get started:
+http://www.webmproject.org/code/contribute/submitting-patches/</p>
+
+<a name="EXAMPLES"></a>
+<h2>EXAMPLES</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">vwebp
+picture.webp <br>
+vwebp picture.webp -mt -dither 0 <br>
+vwebp &minus;&minus; &minus;&minus;&minus;picture.webp</p>
+
+<a name="AUTHORS"></a>
+<h2>AUTHORS</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>vwebp</b> is
+a part of libwebp and was written by the WebP team. <br>
+The latest source tree is available at
+https://chromium.googlesource.com/webm/libwebp</p>
+
+<p style="margin-left:11%; margin-top: 1em">This manual
+page was written for the Debian project (and may be used by
+others).</p>
+
+<a name="SEE ALSO"></a>
+<h2>SEE ALSO</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>dwebp</b>(1)
+<br>
+Please refer to http://developers.google.com/speed/webp/ for
+additional information.</p>
+<hr>
+</body>
+</html>
