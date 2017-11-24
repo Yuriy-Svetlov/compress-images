@@ -79,13 +79,14 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         if(/^.*(\.({|{[a-zA-Z,]*,)|\.)(jpg|jpeg)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
           console.log(colors.red(" You had not turned on [enginejpg] and you set to path extension 'jpg', delete extension it 'jpg' from path, or turn on [enginejpg: ['jpegtran'] or ['mozjpeg'] or ['webp'] or other].  OR you had set path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,png} or src/img/**/*.jpg or src/img/*.jpg ..."));
           console.log(colors.red(' Your path: ')+colors.magenta(input));
-          return false;
+          return callback(true);
         }
     }else{
         if(!/^.*(\.({|{[a-zA-Z,]*,)|\.)(jpg|jpeg)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
           console.log(colors.red(" You do not turned on [enginejpg] and you set to path extension 'jpg', delete extension it 'jpg' from path, or turn on [enginejpg: ['jpegtran'] or ['mozjpeg'] or ['webp'] or other].  OR you set path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,png} or src/img/**/*.jpg or src/img/*.jpg ..."));
           console.log(colors.red(' Your path: ')+colors.magenta(input));
-          return false;
+
+          return callback(true);
         }      
     }
 
@@ -94,13 +95,13 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         if(/^.*(\.({|{[a-zA-Z,]*,)|\.)(png)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
           console.log(colors.red(" You had not turned on [enginepng] and you set to path extension 'png', delete extension it 'png' from path, or turn on [enginepng: ['pngquant'] or ['optipng'] or ['webp'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,png} or src/img/**/*.png or src/img/*.png ..."));
           console.log(colors.red(' Your path: ')+colors.magenta(input));
-          return false;
+          return callback(true);
         }
     }else{
         if(!/^.*(\.({|{[a-zA-Z,]*,)|\.)(png)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
           console.log(colors.red(" You do not turned on [enginepng] and you set to path extension 'png', delete extension it 'png' from path, or turn on [enginepng: ['pngquant'] or ['optipng'] or ['webp'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,png} or src/img/**/*.png or src/img/*.png ..."));
           console.log(colors.red(' Your path: ')+colors.magenta(input));
-          return false;
+          return callback(true);
         }      
     }
 
@@ -110,13 +111,13 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         if(/^.*(\.({|{[a-zA-Z,]*,)|\.)(svg)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
           console.log(colors.red(" You had not turned on [enginesvg] and you set to path extension 'svg', delete extension it 'svg' from path, or turn on [enginesvg: ['svgo'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,svg} or src/img/**/*.svg or src/img/*.svg ..."));
           console.log(colors.red(' Your path: ')+colors.magenta(input));
-          return false;
+          return callback(true);
         }
     }else{
         if(!/^.*(\.({|{[a-zA-Z,]*,)|\.)(svg)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
           console.log(colors.red(" You do not turned on [enginesvg] and you set to path extension 'svg', delete extension it 'svg' from path, or turn on [enginesvg: ['svgo'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,svg} or src/img/**/*.svg or src/img/*.svg ..."));
           console.log(colors.red(' Your path: ')+colors.magenta(input));
-          return false;
+          return callback(true);
         }      
     }
     
@@ -126,13 +127,13 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         if(/^.*(\.({|{[a-zA-Z,]*,)|\.)(gif)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
           console.log(colors.red(" You had not turned on [enginegif] and you set to path extension 'gif', delete extension it 'gif' from path, or turn on [enginegif: ['gifsicle'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,gif} or src/img/**/*.gif or src/img/*.gif ..."));
           console.log(colors.red(' Your path: ')+colors.magenta(input));
-          return false;
+          return callback(true);
         }
     }else{
         if(!/^.*(\.({|{[a-zA-Z,]*,)|\.)(gif)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
           console.log(colors.red(" You do not turned on [enginegif] and you set to path extension 'gif', delete extension it 'gif' from path, or turn on [enginegif: ['gifsicle'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,gif} or src/img/**/*.gif or src/img/*.gif ..."));
           console.log(colors.red(' Your path: ')+colors.magenta(input));
-          return false;
+          return callback(true);
         }      
     }
 
@@ -148,12 +149,14 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         tinifyjpeg.key = enginejpg.jpg.key;
       }else{
         console.log(colors.red(" You had not set API KEY for [tinify] API. Example: {jpg: {engine: 'tinify', key: 'K_lYTUGjgbHJBGRFpXnhJBkbvLHKblhBhM', command: false}}"));
+        return callback(true);
       }
     }else if(enginepng.png.engine == 'tinify'){
       if(undefined != enginepng.png.key){
         tinifypng.key = enginepng.png.key;
       }else{
         console.log(colors.red(" You had not set API KEY for [tinify] API. Example: {jpg: {engine: 'tinify', key: 'K_lYTUGjgbHJBGRFpXnhJBkbvLHKblhBhM', command: false}}"));
+        return callback(true);
       }
     }
 
@@ -232,9 +235,11 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                 
               }else{
                 console.log(colors.red(" Directory don't not have files!: ")+colors.magenta(input));
+                return callback(true);
               }
             }else{
               console.error(er);
+              return callback(true);
             }
         });
     }else if(filename != undefined && filename != null){
@@ -282,6 +287,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                         console.log(colors.red('Was error!'));
                         console.error(err)
                         console.log(colors.red('-----------------------------------'));
+                        return callback(true);
                     }else{
                         if(null != made && option.statistic === true){
                             //Выводим лог о том что была создана новая директория
@@ -1380,7 +1386,8 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         if(length_files == 0){
             updater(fs, colors, option.autoupdate);
 
-            callback();
+
+            callback(null);
         }    
     }
 
