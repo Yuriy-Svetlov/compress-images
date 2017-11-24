@@ -235,7 +235,6 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                 
               }else{
                 console.log(colors.red(" Directory don't not have files!: ")+colors.magenta(input));
-                return callback(true);
               }
             }else{
               console.error(er);
