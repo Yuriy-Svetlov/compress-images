@@ -29,8 +29,6 @@ You can specify the path to source images folder and all images in the folder wi
 
 **As an example, one of many**:
 
-You specify path to all source image**s** `[src/img/**/*.jpg]` and path to compressed image**s** `[build/img/]`.
-
         INPUT ['src/img/source/**/*.{jpg,JPG,jpeg,JPEG,gif,png,svg}']
         OUTPUT ['build/img/']
 
