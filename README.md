@@ -37,6 +37,35 @@ You specify path to all source image**s** `[src/img/**/*.jpg]` and path to compr
         Will be saved image [build/img/5/house5/test.jpg]
 
 
+ root 
+  &emsp;| ———— build (You need create)
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;| —— img (You need create)
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;| —— your_folders_with_images_1 (will be created auto)
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;| —— your_folders_with_images_2 (will be created auto)
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;| —— your_folders_with_images_3 (will be created auto)  
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;| —— ...
+  &emsp;|
+  &emsp;|
+  &emsp;|
+  &emsp;| ———— src (You need create)
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;| —— img (You need create)
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;| —— source (You need create)
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— your_folders_with_images_1 (You need create)
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— your_folders_with_images_2 (You need create)
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— your_folders_with_images_3 (You need create)
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— ...
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;| —— combine (You need create if you want to do
+combine compressed)
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— jpg (You need create)
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;| —— jpegtran (You need create)
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— your_folders_with_images_1  (will be created auto)
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— your_folders_with_images_2 (will be created auto)
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— your_folders_with_images_3 (will be created auto)
+  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— ...
+  &emsp;|
+  &emsp;|
+  &emsp;|
+  &emsp;|
 
 
 ## Install
