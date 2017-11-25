@@ -25,47 +25,17 @@ You can use different algorithms and methods for compress images with many optio
 
 
 ##### Detect path for save image
-You can specify the path to source images folder and all images in the folder will be compression and moved to another folder.
+You can specify the path to source images folder and all images in the folder will be compression and moved to output folder.
 
-**As examples**:
+**As an example, one of many**:
 
 You specify path to all source image**s** `[src/img/**/*.jpg]` and path to compressed image**s** `[build/img/]`.
 
-        INPUT [src/img/**/*.jpg]
-        Will be saved image [build/img/1/house/test.jpg]
-        Will be saved image [build/img/2/house2/test2.jpg]
-        Will be saved image [build/img/5/house5/test.jpg]
+        INPUT ['src/img/source/**/*.{jpg,JPG,jpeg,JPEG,gif,png,svg}']
+        OUTPUT ['build/img/']
 
+![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/img_structure_forder.png)
 
- root 
-  &emsp;| ———— build (You need create)
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;| —— img (You need create)
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;| —— your_folders_with_images_1 (will be created auto)
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;| —— your_folders_with_images_2 (will be created auto)
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;| —— your_folders_with_images_3 (will be created auto)  
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;| —— ...
-  &emsp;|
-  &emsp;|
-  &emsp;|
-  &emsp;| ———— src (You need create)
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;| —— img (You need create)
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;| —— source (You need create)
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— your_folders_with_images_1 (You need create)
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— your_folders_with_images_2 (You need create)
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— your_folders_with_images_3 (You need create)
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— ...
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;| —— combine (You need create if you want to do
-combine compressed)
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— jpg (You need create)
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;| —— jpegtran (You need create)
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— your_folders_with_images_1  (will be created auto)
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— your_folders_with_images_2 (will be created auto)
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— your_folders_with_images_3 (will be created auto)
-  &emsp;|&emsp;&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;|&emsp;&emsp;&emsp;&emsp;| —— ...
-  &emsp;|
-  &emsp;|
-  &emsp;|
-  &emsp;|
 
 
 ## Install
