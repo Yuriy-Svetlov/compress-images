@@ -3,3 +3,4 @@ lib/webp/linux/* linguist-vendored
 lib/webp/mac/* linguist-vendored
 lib/webp/win/* linguist-vendored
 node_modules/* linguist-vendored
+source/* linguist-vendored
