@@ -299,7 +299,8 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             //JPG Сжимаем файл
                             CompressionFileJpg(input, path_out_new, function(size_in, size_output, percent){
                                 console.log('-----------------------------------');
-                                console.log(' Path to file: '+colors.magenta(path_out_new)+'');
+                                console.log(' File from: '+colors.magenta(input)+'');
+                                console.log(' File to: '+colors.magenta(path_out_new)+'');
                                 console.log(' Compress method: '+colors.green('['+enginejpg.jpg.engine+']'));              
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
@@ -316,7 +317,8 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             //PNG Сжимаем файл
                             CompressionFilePng(input, path_out_new, function(size_in, size_output, percent){
                                 console.log('-----------------------------------');
-                                console.log(' Path to file: '+colors.magenta(path_out_new)+'');
+                                console.log(' File from: '+colors.magenta(input)+'');
+                                console.log(' File to: '+colors.magenta(path_out_new)+'');
                                 console.log(' Compress method: '+colors.green('['+enginepng.png.engine+']'));              
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
@@ -333,7 +335,8 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             //SVG Сжимаем файл
                             CompressionFileSvg(input, path_out_new, function(size_in, size_output, percent){
                                 console.log('-----------------------------------');
-                                console.log(' Path to file: '+colors.magenta(path_out_new)+'');
+                                console.log(' File from: '+colors.magenta(input)+'');
+                                console.log(' File to: '+colors.magenta(path_out_new)+'');
                                 console.log(' Compress method: '+colors.green('['+enginesvg.svg.engine+']'));              
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
@@ -350,7 +353,8 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             //GIF Сжимаем файл
                             CompressionFileGif(input, path_out_new, function(size_in, size_output, percent){
                                 console.log('-----------------------------------');
-                                console.log(' Path to file: '+colors.magenta(path_out_new)+'');
+                                console.log(' File from: '+colors.magenta(input)+'');
+                                console.log(' File to: '+colors.magenta(path_out_new)+'');
                                 console.log(' Compress method: '+colors.green('['+enginegif.gif.engine+']'));              
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
@@ -391,7 +395,8 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             CompressionFileJpg(input, path_out_new, function(size_in, size_output, percent){
                                 console.log('-----------------------------------');
                                 console.log(colors.yellow(' File was compress force!'));
-                                console.log(' Path to file: '+colors.magenta(path_out_new)+'');
+                                console.log(' File from: '+colors.magenta(input)+'');
+                                console.log(' File to: '+colors.magenta(path_out_new)+'');
                                 console.log(' Compress method: '+colors.green('['+enginejpg.jpg.engine+']'));              
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
@@ -409,7 +414,8 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             CompressionFilePng(input, path_out_new, function(size_in, size_output, percent){
                                 console.log('-----------------------------------');
                                 console.log(colors.yellow(' File was compress force!'));
-                                console.log(' Path to file: '+colors.magenta(path_out_new)+'');
+                                console.log(' File from: '+colors.magenta(input)+'');
+                                console.log(' File to: '+colors.magenta(path_out_new)+'');
                                 console.log(' Compress method: '+colors.green('['+enginepng.png.engine+']'));              
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
@@ -427,7 +433,8 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             CompressionFileSvg(input, path_out_new, function(size_in, size_output, percent){
                                 console.log('-----------------------------------');
                                 console.log(colors.yellow(' File was compress force!'));
-                                console.log(' Path to file: '+colors.magenta(path_out_new)+'');
+                                console.log(' File from: '+colors.magenta(input)+'');
+                                console.log(' File to: '+colors.magenta(path_out_new)+'');
                                 console.log(' Compress method: '+colors.green('['+enginesvg.svg.engine+']'));              
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
@@ -445,7 +452,8 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             CompressionFileGif(input, path_out_new, function(size_in, size_output, percent){
                                 console.log('-----------------------------------');
                                 console.log(colors.yellow(' File was compress force!'));
-                                console.log(' Path to file: '+colors.magenta(path_out_new)+'');
+                                console.log(' File from: '+colors.magenta(input)+'');
+                                console.log(' File to: '+colors.magenta(path_out_new)+'');
                                 console.log(' Compress method: '+colors.green('['+enginegif.gif.engine+']'));              
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
