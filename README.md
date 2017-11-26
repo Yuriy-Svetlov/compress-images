@@ -9,7 +9,7 @@
 
 ![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/1.png)
 
-### Distinctive features
+### Features
 
 
 You can use different algorithms and methods for compress images with many options.
