@@ -7,7 +7,7 @@
 
 **Minify** size your images. **Image compression** with extension: **`jpg/jpeg`**, **`svg`**, **`png`**, **`gif`**. 
 
-![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/1.jpg)
+![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/1.png)
 
 ### Distinctive features
 

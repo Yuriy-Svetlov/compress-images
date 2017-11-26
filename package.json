@@ -1,6 +1,6 @@
 {
   "name": "compress-images",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Minify size your images. Image compression with extension: jpg/jpeg, svg, png, gif.",
   "keywords": [
     "image-compress",
