@@ -6,7 +6,7 @@
 > [compress-images](https://github.com/semiromid/compress-images) Minify size your images. Image compression with extension: jpg/jpeg, svg, png, gif.
 
 **Minify** size your images. **Image compression** with extension: **`jpg/jpeg`**, **`svg`**, **`png`**, **`gif`**. 
-
+a
 ![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/1.png)
 
 ### Features
@@ -71,7 +71,7 @@ gulp.task('compress_images', function() {
                                                 {png: {engine: false, command: ['--quality=0-60']}},
                                                 {svg: {engine: false, command: false}},
                                                 {gif: {engine: false, command: false}}, function(){  
-            //[jpg] ---to---> [jpg(jpegtran)]
+            //[jpg] ---to---> [jpg(jpegtran)] WARNING!!! autoupdate  - recommended turn off, he is not needed here - autoupdate: false
             compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                             {jpg: {engine: 'jpegtran', command: false}},
                                                             {png: {engine: false, command: false}},
@@ -100,7 +100,8 @@ gulp.task('compress_images', function() {
                                                 {png: {engine: false, command: false}},
                                                 {svg: {engine: false, command: false}},
                                                 {gif: {engine: false, command: false}}, function(){
-        //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)]
+        //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)] WARNING!!! autoupdate  - recommended turn off, he is not needed here - autoupdate: false
+        
         compress_images('src/img/combination/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                     {jpg: {engine: 'mozjpeg', command: ['-quality', '75']}},
                                                     {png: {engine: false, command: false}},
@@ -128,19 +129,19 @@ gulp.task('compress_images', function() {
                                                 {svg: {engine: 'svgo', command: false}},
                                                 {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(){
           //-------------------------------------------------                                    
-          //[jpg] ---to---> [jpg(jpegtran)]
+          //[jpg] ---to---> [jpg(jpegtran)] WARNING!!! autoupdate  - recommended turn off, he is not needed here - autoupdate: false
           compress_images('src/img/source/**/*.{jpg,JPG,jpeg,JPEG}', 'src/img/combine/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                           {jpg: {engine: 'jpegtran', command: ['-trim', '-progressive', '-copy', 'none', '-optimize']}},
                                                           {png: {engine: false, command: false}},
                                                           {svg: {engine: false, command: false}},
                                                           {gif: {engine: false, command: false}}, function(){
-                //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)]
+                //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)] WARNING!!! autoupdate  - recommended turn off, he is not needed here - autoupdate: false
                 compress_images('src/img/combine/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                                 {jpg: {engine: 'mozjpeg', command: ['-quality', '75']}},
                                                                 {png: {engine: false, command: false}},
                                                                 {svg: {engine: false, command: false}},
                                                                 {gif: {engine: false, command: false}}, function(){
-                      //[png] ---to---> [png(pngquant)]                                  
+                      //[png] ---to---> [png(pngquant)] WARNING!!! autoupdate  - recommended turn off, he is not needed here - autoupdate: false                                  
                       compress_images('src/img/source/**/*.png', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                                       {jpg: {engine: false, command: false}},
                                                                       {png: {engine: 'pngquant', command: ['--quality=30-60']}},
