@@ -301,7 +301,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                 console.log('-----------------------------------');
                                 console.log(' File from: '+colors.magenta(input)+'');
                                 console.log(' File to: '+colors.magenta(path_out_new)+'');
-                                console.log(' Compress method: '+colors.green('['+enginejpg.jpg.engine+']'));              
+                                console.log(' Compression algorithm: '+colors.green('['+enginejpg.jpg.engine+']'));              
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
                                 }else{
@@ -319,7 +319,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                 console.log('-----------------------------------');
                                 console.log(' File from: '+colors.magenta(input)+'');
                                 console.log(' File to: '+colors.magenta(path_out_new)+'');
-                                console.log(' Compress method: '+colors.green('['+enginepng.png.engine+']'));              
+                                console.log(' Compression algorithm: '+colors.green('['+enginepng.png.engine+']'));              
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
                                 }else{
@@ -337,7 +337,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                 console.log('-----------------------------------');
                                 console.log(' File from: '+colors.magenta(input)+'');
                                 console.log(' File to: '+colors.magenta(path_out_new)+'');
-                                console.log(' Compress method: '+colors.green('['+enginesvg.svg.engine+']'));              
+                                console.log(' Compression algorithm: '+colors.green('['+enginesvg.svg.engine+']'));              
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
                                 }else{
@@ -355,7 +355,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                 console.log('-----------------------------------');
                                 console.log(' File from: '+colors.magenta(input)+'');
                                 console.log(' File to: '+colors.magenta(path_out_new)+'');
-                                console.log(' Compress method: '+colors.green('['+enginegif.gif.engine+']'));              
+                                console.log(' Compression algorithm: '+colors.green('['+enginegif.gif.engine+']'));              
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
                                 }else{
@@ -397,7 +397,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                 console.log(colors.yellow(' File was compress force!'));
                                 console.log(' File from: '+colors.magenta(input)+'');
                                 console.log(' File to: '+colors.magenta(path_out_new)+'');
-                                console.log(' Compress method: '+colors.green('['+enginejpg.jpg.engine+']'));              
+                                console.log(' Compression algorithm: '+colors.green('['+enginejpg.jpg.engine+']'));              
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
                                 }else{
@@ -416,7 +416,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                 console.log(colors.yellow(' File was compress force!'));
                                 console.log(' File from: '+colors.magenta(input)+'');
                                 console.log(' File to: '+colors.magenta(path_out_new)+'');
-                                console.log(' Compress method: '+colors.green('['+enginepng.png.engine+']'));              
+                                console.log(' Compression algorithm: '+colors.green('['+enginepng.png.engine+']'));              
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
                                 }else{
@@ -435,7 +435,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                 console.log(colors.yellow(' File was compress force!'));
                                 console.log(' File from: '+colors.magenta(input)+'');
                                 console.log(' File to: '+colors.magenta(path_out_new)+'');
-                                console.log(' Compress method: '+colors.green('['+enginesvg.svg.engine+']'));              
+                                console.log(' Compression algorithm: '+colors.green('['+enginesvg.svg.engine+']'));              
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
                                 }else{
@@ -454,7 +454,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                 console.log(colors.yellow(' File was compress force!'));
                                 console.log(' File from: '+colors.magenta(input)+'');
                                 console.log(' File to: '+colors.magenta(path_out_new)+'');
-                                console.log(' Compress method: '+colors.green('['+enginegif.gif.engine+']'));              
+                                console.log(' Compression algorithm: '+colors.green('['+enginegif.gif.engine+']'));              
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
                                 }else{
