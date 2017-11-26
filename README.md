@@ -44,7 +44,7 @@ npm install compress-images --save-dev
 # Get started
 ## Examples how use
 
-#### Examples 1
+#### Example 1
 ```javascript
 
     var compress_images = require('compress-images');
@@ -56,7 +56,7 @@ npm install compress-images --save-dev
                                                 {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(){
     });
 ```
-#### Examples 2
+#### Example 2
 ```javascript
 var gulp = require('gulp');
 var compress_images = require('compress-images');
@@ -85,7 +85,7 @@ gulp.task('compress_images', function() {
 
 
 
-#### Examples 3
+#### Example 3
 ```javascript
 var gulp = require('gulp');
 var compress_images = require('compress-images');
@@ -113,7 +113,7 @@ gulp.task('compress_images', function() {
 
 
 
-#### Examples 4
+#### Example 4
 ```javascript
 var gulp = require('gulp');
 var compress_images = require('compress-images');
