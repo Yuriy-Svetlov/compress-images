@@ -23,7 +23,7 @@ var  colors = require('colors'),
      tinifypng = require("tinify"),
 
      //SVG
-     //Необходима установка - https://www.npmjs.com/package/svgo
+     //https://www.npmjs.com/package/svgo
 
      //GIF
      gifsicle = require('gifsicle'),
