@@ -47,9 +47,12 @@ npm install compress-images --save-dev
 #### Example 1
 ```javascript
 
-    var compress_images = require('compress-images');
+    var compress_images = require('compress-images'), INPUT_path_to_your_images, OUTPUT_path;
+
+    INPUT_path_to_your_images = 'src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}';
+    OUTPUT_path = 'build/img/';
     
-    compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}', 'build/img/', {compress_force: false, statistic: true, autoupdate: true}, false,
+    compress_images(INPUT_path_to_your_images, OUTPUT_path, {compress_force: false, statistic: true, autoupdate: true}, false,
                                                 {jpg: {engine: 'mozjpeg', command: ['-quality', '60']}},
                                                 {png: {engine: 'pngquant', command: ['--quality=0-20']}},
                                                 {svg: {engine: 'svgo', command: '--multipass'}},
@@ -84,7 +87,7 @@ gulp.task('compress_images', function() {
     //[jpg] ---to---> [webp]
     compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: true}, false,
                                                 {jpg: {engine: 'webp', command: false}},
-                                                {png: {engine: false, command: ['--quality=0-60']}},
+                                                {png: {engine: false, command: false}},
                                                 {svg: {engine: false, command: false}},
                                                 {gif: {engine: false, command: false}}, function(err){ 
             if(err == null){                                     
