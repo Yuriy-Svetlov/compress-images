@@ -35,13 +35,13 @@ You can specify the path to source images folder and all images in the folder wi
 ![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/img_structure_forder.png)
 
 
+# Get started
 
 ## Install
 ```shell
 npm install compress-images --save-dev
 ```
 
-# Get started
 ## Examples how use
 
 #### Example 1
@@ -56,7 +56,24 @@ npm install compress-images --save-dev
                                                 {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(){
     });
 ```
+
 #### Example 2
+```javascript
+
+    var compress_images = require('compress-images');
+    
+    function MyFun(){
+        compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}', 'build/img/', {compress_force: false, statistic: true, autoupdate: true}, false,
+                                                    {jpg: {engine: 'mozjpeg', command: ['-quality', '60']}},
+                                                    {png: {engine: 'pngquant', command: ['--quality=0-20']}},
+                                                    {svg: {engine: 'svgo', command: '--multipass'}},
+                                                    {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(){
+        });
+    }
+```
+
+
+#### Example 3
 ```javascript
 var gulp = require('gulp');
 var compress_images = require('compress-images');
@@ -85,7 +102,7 @@ gulp.task('compress_images', function() {
 
 
 
-#### Example 3
+#### Example 4
 ```javascript
 var gulp = require('gulp');
 var compress_images = require('compress-images');
@@ -114,7 +131,7 @@ gulp.task('compress_images', function() {
 
 
 
-#### Example 4
+#### Example 5
 ```javascript
 var gulp = require('gulp');
 var compress_images = require('compress-images');
