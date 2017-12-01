@@ -98,6 +98,8 @@ gulp.task('compress_images', function() {
                                                                 {svg: {engine: false, command: false}},
                                                                 {gif: {engine: false, command: false}}, function(){
                 }); 
+            }else{
+                console.error(err);
             }
     });
 });
