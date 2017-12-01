@@ -54,7 +54,7 @@ npm install compress-images --save-dev
     
     compress_images(INPUT_path_to_your_images, OUTPUT_path, {compress_force: false, statistic: true, autoupdate: true}, false,
                                                 {jpg: {engine: 'mozjpeg', command: ['-quality', '60']}},
-                                                {png: {engine: 'pngquant', command: ['--quality=0-20']}},
+                                                {png: {engine: 'pngquant', command: ['--quality=20-50']}},
                                                 {svg: {engine: 'svgo', command: '--multipass'}},
                                                 {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(){
     });
@@ -68,7 +68,7 @@ npm install compress-images --save-dev
     function MyFun(){
         compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}', 'build/img/', {compress_force: false, statistic: true, autoupdate: true}, false,
                                                     {jpg: {engine: 'mozjpeg', command: ['-quality', '60']}},
-                                                    {png: {engine: 'pngquant', command: ['--quality=0-20']}},
+                                                    {png: {engine: 'pngquant', command: ['--quality=20-50']}},
                                                     {svg: {engine: 'svgo', command: '--multipass'}},
                                                     {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(){
         });
@@ -227,7 +227,7 @@ gulp.task('compress_images', function() {
     + **engine** (type:string): Engine for compress png. Possible values:
 *`pngquant`*,*`optipng`*, *`pngout`*, *`webp`*, *`pngcrush`*, *`tinify`*;
     + **command** (type:boolean|array): Options compress. Can be `false` or commands array.
-        + For **pngquant** - `['--quality=0-20']` in details [pngquant](https://pngquant.org/);
+        + For **pngquant** - `['--quality=20-50']` in details [pngquant](https://pngquant.org/);
         + For **optipng** - in details [optipng](https://pngquant.org/);
         + For **pngout** - in details [pngout](http://advsys.net/ken/util/pngout.htm);
         + For **webp** - `['-q', '60']` in details [webp](https://developers.google.com/speed/webp/);
