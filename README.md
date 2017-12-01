@@ -227,7 +227,7 @@ gulp.task('compress_images', function() {
     + **engine** (type:string): Engine for compress png. Possible values:
 *`pngquant`*,*`optipng`*, *`pngout`*, *`webp`*, *`pngcrush`*, *`tinify`*;
     + **command** (type:boolean|array): Options compress. Can be `false` or commands array.
-        + For **pngquant** - `['--quality=20-50']` in details [pngquant](https://pngquant.org/);
+        + For **pngquant** - `['--quality=20-50']` - Quality should be in format min-max where min and max are numbers in range 0-100. In details [pngquant](https://pngquant.org/);
         + For **optipng** - in details [optipng](https://pngquant.org/);
         + For **pngout** - in details [pngout](http://advsys.net/ken/util/pngout.htm);
         + For **webp** - `['-q', '60']` in details [webp](https://developers.google.com/speed/webp/);
