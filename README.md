@@ -6,7 +6,7 @@
 > [compress-images](https://github.com/semiromid/compress-images) **Minify size your images**. Image compression with extension: jpg/jpeg, svg, png, gif.
 
 **Minify** size your images. **Image compression** with extension: **`jpg/jpeg`**, **`svg`**, **`png`**, **`gif`**. 
-a
+
 ![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/1.png)
 
 ### Features
