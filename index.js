@@ -1136,9 +1136,9 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         */
         var com;
         if(false != enginesvg.svg.command){
-          com = "svgo "+enginesvg.svg.command+" "+input+" "+output;  
+          com = "svgo "+enginesvg.svg.command+" -i "+input+" -o "+output;  
         }else{
-          com = "svgo "+input+" "+output;
+          com = "svgo -i "+input+" -o "+output;
         }
 
         exec(com, (error, stdout, stderr) => {
