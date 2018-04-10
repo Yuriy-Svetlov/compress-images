@@ -3,9 +3,9 @@
 var  colors = require('colors'),
      fs = require('fs'),
      glob = require("glob"),
-     execFile = require('child_process').execFile, 
+     execFile = require('child_process').execFile,
      exec = require('child_process').exec,
-     
+
      //JPG
      jpegtran = require('jpegtran-bin'),
      jpegRecompress = require('jpeg-recompress-bin'),
@@ -48,7 +48,7 @@ var  colors = require('colors'),
 
 
 var index = function (input, output, option, findfileop, enginejpg, enginepng, enginesvg, enginegif, callback) {
-    
+
 
     //Updater
     //debug_updater('[to]');
@@ -56,7 +56,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
     //debug_updater('[from]');
 
 
-    //--------------------------------------------------------------------------    
+    //--------------------------------------------------------------------------
     //Options
     //--------------------------------------------------------------------------
     if(undefined == option.statistic){
@@ -87,7 +87,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           console.log(colors.red(' Your path: ')+colors.magenta(input));
 
           return callback(true);
-        }      
+        }
     }
 
     //PNG
@@ -102,7 +102,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           console.log(colors.red(" You do not turned on [enginepng] and you set to path extension 'png', delete extension it 'png' from path, or turn on [enginepng: ['pngquant'] or ['optipng'] or ['webp'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,png} or src/img/**/*.png or src/img/*.png ..."));
           console.log(colors.red(' Your path: ')+colors.magenta(input));
           return callback(true);
-        }      
+        }
     }
 
 
@@ -118,9 +118,9 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           console.log(colors.red(" You do not turned on [enginesvg] and you set to path extension 'svg', delete extension it 'svg' from path, or turn on [enginesvg: ['svgo'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,svg} or src/img/**/*.svg or src/img/*.svg ..."));
           console.log(colors.red(' Your path: ')+colors.magenta(input));
           return callback(true);
-        }      
+        }
     }
-    
+
 
     //GIF
     if(false == enginegif.gif.engine){
@@ -134,7 +134,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           console.log(colors.red(" You do not turned on [enginegif] and you set to path extension 'gif', delete extension it 'gif' from path, or turn on [enginegif: ['gifsicle'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,gif} or src/img/**/*.gif or src/img/*.gif ..."));
           console.log(colors.red(' Your path: ')+colors.magenta(input));
           return callback(true);
-        }      
+        }
     }
 
 
@@ -143,7 +143,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
 
 
-    //Init 
+    //Init
     if(enginejpg.jpg.engine == 'tinify'){
       if(undefined != enginejpg.jpg.key){
         tinifyjpeg.key = enginejpg.jpg.key;
@@ -180,7 +180,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
     /*
       path_in_part - путь типа - "src/img/", путь с звёздочками обрезается
     */
-        
+
     //[Определяем, содержит ли путь **
     if(/\*/.test(input)){
         path_in_part = input.replace(/(\*\*.+|\*.+)/g, '');
@@ -188,13 +188,14 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         filename = input.split("/").pop();
     }
 
-    
 
-    
+
+
 
 
     //Если указан конкретный файл то не проводим поиск всех файлов в папке
     if(path_in_part != undefined && path_in_part != null){
+      console.log(path_in_part)
         ///////////////////////////////////////////////////////////////////////
         //Проводим поиск всех файлов
         ///////////////////////////////////////////////////////////////////////
@@ -227,12 +228,12 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             //Заменяем расширение на - webp
                             path_out_new = path_out_new.replace(/\.[a-zA-Z]+$/g, '.webp');
                         }
-                    }              
+                    }
                     //--------------------------------------------
                     //Вызываем метод процесса сжатия
-                    CompressorProcess(files[i], path_out_new);    
+                    CompressorProcess(files[i], path_out_new);
                 }
-                
+
               }else{
                 console.log(colors.red(" Directory don't not have files!: ")+colors.magenta(input));
               }
@@ -256,7 +257,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
 
 
-    
+
 
 
 
@@ -290,7 +291,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                     }else{
                         if(null != made && option.statistic === true){
                             //Выводим лог о том что была создана новая директория
-                            log_create_wasdir(output);                   
+                            log_create_wasdir(output);
                         }
 
                         //Узнаём расширение файла
@@ -301,7 +302,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                 console.log('-----------------------------------');
                                 console.log(' File from: '+colors.magenta(input)+'');
                                 console.log(' File to: '+colors.magenta(path_out_new)+'');
-                                console.log(' Compression algorithm: '+colors.green('['+enginejpg.jpg.engine+']'));              
+                                console.log(' Compression algorithm: '+colors.green('['+enginejpg.jpg.engine+']'));
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
                                 }else{
@@ -309,10 +310,10 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                   console.log(colors.red(' [Alert] Your file has become more size!!!'));
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('[')+colors.yellow('+')+colors.green(percent+'%]'));
                                 }
-                                console.log('-----------------------------------'); 
+                                console.log('-----------------------------------');
                                 //Провееряем обновление
                                 checkUpdate();
-                            });                   
+                            });
                         }else if(extension_f == 'png' || extension_f == 'PNG'){
                             //PNG Сжимаем файл
                             CompressionFilePng(input, path_out_new, function(size_in, size_output, percent, err){
@@ -320,7 +321,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                   console.log('-----------------------------------');
                                   console.log(' File from: '+colors.magenta(input)+'');
                                   console.log(' File to: '+colors.magenta(path_out_new)+'');
-                                  console.log(' Compression algorithm: '+colors.green('['+enginepng.png.engine+']'));              
+                                  console.log(' Compression algorithm: '+colors.green('['+enginepng.png.engine+']'));
                                   if(percent > 0){
                                     console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
                                   }else{
@@ -328,20 +329,20 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                     console.log(colors.red(' [Alert] Your file has become more size!!!'));
                                     console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('[')+colors.yellow('+')+colors.green(percent+'%]'));
                                   }
-                                  console.log('-----------------------------------'); 
+                                  console.log('-----------------------------------');
                                   //Провееряем обновление
-                                  checkUpdate(); 
+                                  checkUpdate();
                                 }else{
                                   return callback(err);
-                                }                 
-                            });                       
+                                }
+                            });
                         }else if(extension_f == 'svg'){
                             //SVG Сжимаем файл
                             CompressionFileSvg(input, path_out_new, function(size_in, size_output, percent){
                                 console.log('-----------------------------------');
                                 console.log(' File from: '+colors.magenta(input)+'');
                                 console.log(' File to: '+colors.magenta(path_out_new)+'');
-                                console.log(' Compression algorithm: '+colors.green('['+enginesvg.svg.engine+']'));              
+                                console.log(' Compression algorithm: '+colors.green('['+enginesvg.svg.engine+']'));
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
                                 }else{
@@ -349,34 +350,34 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                   console.log(colors.red(' [Alert] Your file has become more size!!!'));
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('[')+colors.yellow('+')+colors.green(percent+'%]'));
                                 }
-                                console.log('-----------------------------------'); 
+                                console.log('-----------------------------------');
                                 //Провееряем обновление
-                                checkUpdate();                  
-                            });                       
+                                checkUpdate();
+                            });
                         }else if(extension_f == 'gif'){
                             //GIF Сжимаем файл
                             CompressionFileGif(input, path_out_new, function(size_in, size_output, percent){
                                 console.log('-----------------------------------');
                                 console.log(' File from: '+colors.magenta(input)+'');
                                 console.log(' File to: '+colors.magenta(path_out_new)+'');
-                                console.log(' Compression algorithm: '+colors.green('['+enginegif.gif.engine+']'));              
+                                console.log(' Compression algorithm: '+colors.green('['+enginegif.gif.engine+']'));
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
                                 }else{
                                   percent = Math.abs(percent);
                                   console.log(colors.red(' [Alert] Your file has become more size!!!'));
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('[')+colors.yellow('+')+colors.green(percent+'%]'));
-                                }                                
-                                console.log('-----------------------------------');  
+                                }
+                                console.log('-----------------------------------');
                                 //Провееряем обновление
-                                checkUpdate();                 
-                            });                       
-                        }                  
+                                checkUpdate();
+                            });
+                        }
                     }
                 });
               }else{
                   //Провееряем обновление
-                  checkUpdate();  
+                  checkUpdate();
               }
           }else{
               //Убираем у новой директории имя файла
@@ -401,18 +402,18 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                 console.log(colors.yellow(' File was compress force!'));
                                 console.log(' File from: '+colors.magenta(input)+'');
                                 console.log(' File to: '+colors.magenta(path_out_new)+'');
-                                console.log(' Compression algorithm: '+colors.green('['+enginejpg.jpg.engine+']'));              
+                                console.log(' Compression algorithm: '+colors.green('['+enginejpg.jpg.engine+']'));
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
                                 }else{
                                   percent = Math.abs(percent);
                                   console.log(colors.red(' [Alert] Your file has become more size!!!'));
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('[')+colors.yellow('+')+colors.green(percent+'%]'));
-                                } 
-                                console.log('-----------------------------------'); 
+                                }
+                                console.log('-----------------------------------');
                                 //Провееряем обновление
-                                checkUpdate();                  
-                            });                   
+                                checkUpdate();
+                            });
                     }else if(extension_f == 'png' || extension_f == 'PNG'){
                             //PNG Сжимаем файл
                             CompressionFilePng(input, path_out_new, function(size_in, size_output, percent, err){
@@ -421,7 +422,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                   console.log(colors.yellow(' File was compress force!'));
                                   console.log(' File from: '+colors.magenta(input)+'');
                                   console.log(' File to: '+colors.magenta(path_out_new)+'');
-                                  console.log(' Compression algorithm: '+colors.green('['+enginepng.png.engine+']'));              
+                                  console.log(' Compression algorithm: '+colors.green('['+enginepng.png.engine+']'));
                                   if(percent > 0){
                                     console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
                                   }else{
@@ -429,13 +430,13 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                     console.log(colors.red(' [Alert] Your file has become more size!!!'));
                                     console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('[')+colors.yellow('+')+colors.green(percent+'%]'));
                                   }
-                                  console.log('-----------------------------------');  
+                                  console.log('-----------------------------------');
                                   //Провееряем обновление
-                                  checkUpdate(); 
+                                  checkUpdate();
                                 }else{
                                   return callback(err);
-                                }                
-                            });                       
+                                }
+                            });
                     }else if(extension_f == 'svg'){
                             //SVG Сжимаем файл
                             CompressionFileSvg(input, path_out_new, function(size_in, size_output, percent){
@@ -443,7 +444,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                 console.log(colors.yellow(' File was compress force!'));
                                 console.log(' File from: '+colors.magenta(input)+'');
                                 console.log(' File to: '+colors.magenta(path_out_new)+'');
-                                console.log(' Compression algorithm: '+colors.green('['+enginesvg.svg.engine+']'));              
+                                console.log(' Compression algorithm: '+colors.green('['+enginesvg.svg.engine+']'));
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
                                 }else{
@@ -451,10 +452,10 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                   console.log(colors.red(' [Alert] Your file has become more size!!!'));
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('[')+colors.yellow('+')+colors.green(percent+'%]'));
                                 }
-                                console.log('-----------------------------------'); 
+                                console.log('-----------------------------------');
                                 //Провееряем обновление
-                                checkUpdate();                  
-                            });                       
+                                checkUpdate();
+                            });
                     }else if(extension_f == 'gif'){
                             //GIF Сжимаем файл
                             CompressionFileGif(input, path_out_new, function(size_in, size_output, percent){
@@ -462,22 +463,22 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                                 console.log(colors.yellow(' File was compress force!'));
                                 console.log(' File from: '+colors.magenta(input)+'');
                                 console.log(' File to: '+colors.magenta(path_out_new)+'');
-                                console.log(' Compression algorithm: '+colors.green('['+enginegif.gif.engine+']'));              
+                                console.log(' Compression algorithm: '+colors.green('['+enginegif.gif.engine+']'));
                                 if(percent > 0){
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
                                 }else{
                                   percent = Math.abs(percent);
                                   console.log(colors.red(' [Alert] Your file has become more size!!!'));
                                   console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('[')+colors.yellow('+')+colors.green(percent+'%]'));
-                                }                              
-                                console.log('-----------------------------------');    
+                                }
+                                console.log('-----------------------------------');
                                 //Провееряем обновление
-                                checkUpdate();               
-                            });                       
-                    } 
+                                checkUpdate();
+                            });
+                    }
                 }
-              }); 
-          } 
+              });
+          }
       }
 
 
@@ -499,28 +500,28 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
     //Сжатие JPG файла
     function CompressionFileJpg(input, output, callback){
-      var size_in, size_output, percent; 
-      
+      var size_in, size_output, percent;
+
       if(option.statistic){
         //Block statistic
-        //- - - - - - - - - - - - -  - - - - - - - - - - -      
-        //Размер файла пред  сжатием       
+        //- - - - - - - - - - - - -  - - - - - - - - - - -
+        //Размер файла пред  сжатием
         size_in = getFilesizeInBytes(input);
-        //- - - - - - - - - - - - -  - - - - - - - - - - -   
+        //- - - - - - - - - - - - -  - - - - - - - - - - -
       }
 
       if(enginejpg.jpg.engine == 'jpegtran'){
         /*
         [-copy none] - убирает все метаданные из исходного файла
-        [-optimize] -  оптимизирует изображение 
+        [-optimize] -  оптимизирует изображение
         [-progressive] - Это такой тип JPG, который при загрузке страницы сначала показывает общие очертания, потом догружается и доводит качество картинки до максимального. Очень удобно для медленного мобильного интернета, и потому его необходимо использовать.
-        
-        Example: 
+
+        Example:
         '-progressive', '-copy', 'none', '-optimize' 'output', 'input'
         */
         var array;
         if(false != enginejpg.jpg.command){
-          array = enginejpg.jpg.command.concat(['-outfile', output, input]);  
+          array = enginejpg.jpg.command.concat(['-outfile', output, input]);
         }else{
           array = ['-outfile', output, input];
         }
@@ -532,17 +533,17 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
               //- - - - - - - - - - - - -  - - - - - - - - - - -
               //Узнаем размер файла после сжатия
               size_output = getFilesizeInBytes(output);
-              
+
               //Находим на сколько процентов удалось сжать файл
               percent = size_output / size_in;
               percent = percent * 100;
               percent = 100 - percent;
               percent = Math.round(percent * 100) / 100;
 
-              return callback(size_in, size_output, percent);  
+              return callback(size_in, size_output, percent);
               //- - - - - - - - - - - - -  - - - - - - - - - - -
             }
-        }); 
+        });
       }else if(enginejpg.jpg.engine == 'mozjpeg'){
         /*
         [-quality] - указывается качество (не обязательно)
@@ -555,7 +556,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
         var array;
         if(false != enginejpg.jpg.command){
-          array = enginejpg.jpg.command.concat(['-outfile', output, input]);  
+          array = enginejpg.jpg.command.concat(['-outfile', output, input]);
         }else{
           array = ['-outfile', output, input];
         }
@@ -567,17 +568,17 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
               //- - - - - - - - - - - - -  - - - - - - - - - - -
               //Узнаем размер файла после сжатия
               size_output = getFilesizeInBytes(output);
-              
+
               //Находим на сколько процентов удалось сжать файл
               percent = size_output / size_in;
               percent = percent * 100;
               percent = 100 - percent;
               percent = Math.round(percent * 100) / 100;
 
-              return callback(size_in, size_output, percent); 
+              return callback(size_in, size_output, percent);
               //- - - - - - - - - - - - -  - - - - - - - - - - -
             }
-        });   
+        });
       }else if(enginejpg.jpg.engine == 'webp'){
         /*
         Основная команда:
@@ -605,7 +606,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           array = enginejpg.jpg.command.concat(input, ['-o'], output);
         }else{
           array = [input, '-o', output];
-        }  
+        }
 
         execFile(cwebp, array, function (err) {
             if(option.statistic){
@@ -613,17 +614,17 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
               //- - - - - - - - - - - - -  - - - - - - - - - - -
               //Узнаем размер файла после сжатия
               size_output = getFilesizeInBytes(output);
-              
+
               //Находим на сколько процентов удалось сжать файл
               percent = size_output / size_in;
               percent = percent * 100;
               percent = 100 - percent;
               percent = Math.round(percent * 100) / 100;
 
-              return callback(size_in, size_output, percent); 
+              return callback(size_in, size_output, percent);
               //- - - - - - - - - - - - -  - - - - - - - - - - -
             }
-        });  
+        });
       }else if(enginejpg.jpg.engine == 'guetzli'){
         /*
         '--quality', '84'
@@ -639,24 +640,24 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         }else{
           array = [input].concat(output);
         }
-        
+
         execFile(guetzli, array, err => {
             if(option.statistic){
               //Block statistic
               //- - - - - - - - - - - - -  - - - - - - - - - - -
               //Узнаем размер файла после сжатия
               size_output = getFilesizeInBytes(output);
-              
+
               //Находим на сколько процентов удалось сжать файл
               percent = size_output / size_in;
               percent = percent * 100;
               percent = 100 - percent;
               percent = Math.round(percent * 100) / 100;
 
-              return callback(size_in, size_output, percent); 
+              return callback(size_in, size_output, percent);
               //- - - - - - - - - - - - -  - - - - - - - - - - -
             }
-        }); 
+        });
       }else if(enginejpg.jpg.engine == 'jpegRecompress'){
         /*
         https://github.com/danielgtaylor/jpeg-archive
@@ -677,17 +678,17 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
               //- - - - - - - - - - - - -  - - - - - - - - - - -
               //Узнаем размер файла после сжатия
               size_output = getFilesizeInBytes(output);
-              
+
               //Находим на сколько процентов удалось сжать файл
               percent = size_output / size_in;
               percent = percent * 100;
               percent = 100 - percent;
               percent = Math.round(percent * 100) / 100;
 
-              return callback(size_in, size_output, percent); 
+              return callback(size_in, size_output, percent);
               //- - - - - - - - - - - - -  - - - - - - - - - - -
             }
-        }); 
+        });
       }else if(enginejpg.jpg.engine == 'jpegoptim'){
         /*
         -o, --overwrite overwrite target file even if it exists
@@ -702,7 +703,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         //Примечание:
         //https://github.com/tjko/jpegoptim/issues/54
         //Наблюдается проблема, на Windows 8.1 x64 выводит файл изображение с изменённым именем и расширением .tmp
-        
+
 
         https://github.com/tjko/jpegoptim
         Example:
@@ -716,9 +717,9 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           if(cheopJpegoptim(enginejpg.jpg.command)){
             //обрезаем имя файла
             output = getPath(output).replace(/\/$/g, '')
-            array = enginejpg.jpg.command.concat(output, input);            
+            array = enginejpg.jpg.command.concat(output, input);
           }else{
-            array = enginejpg.jpg.command.concat(input);    
+            array = enginejpg.jpg.command.concat(input);
           }
         }else{
           array = [input];
@@ -731,18 +732,18 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
               //- - - - - - - - - - - - -  - - - - - - - - - - -
               //Узнаем размер файла после сжатия
               size_output = getFilesizeInBytes(output);
-              
+
               //Находим на сколько процентов удалось сжать файл
               percent = size_output / size_in;
               percent = percent * 100;
               percent = 100 - percent;
               percent = Math.round(percent * 100) / 100;
-              return callback(size_in, size_output, percent); 
-              return callback(0, 0, 0); 
+              return callback(size_in, size_output, percent);
+              return callback(0, 0, 0);
               */
               console.log(colors.red("With [jpegoptim] statistic don't working!"));
               //- - - - - - - - - - - - -  - - - - - - - - - - -
-            }          
+            }
         });
       }else if(enginejpg.jpg.engine == 'tinify'){
         /*
@@ -753,19 +754,19 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         {jpg: {engine: 'tinify', key: "api_key", command: false}}
 
         {jpg: {engine: 'tinify', key: "api_key", command: ['copyright', 'creation', 'location']}}
-        Можно запускать без опций, но существуют опции которые оставляют метаданные в изображении, 
-        такие как авторство, время создания изображения и локаль, но тесты показали 
+        Можно запускать без опций, но существуют опции которые оставляют метаданные в изображении,
+        такие как авторство, время создания изображения и локаль, но тесты показали
         что эта функция возможно не работает.
         */
         if(option.statistic){
             if(false != enginejpg.jpg.command){
               console.log(colors.red("Commands with [thinify] dont working with turn on statistic - 'statistic: true'! You can will turn off statistic 'statistic: false' and use commands for [tinify]. Or you can will set 'command: false' for [tinify]."));
-            }   
+            }
             //-------------------------------------------------
             fs.readFile(input, function(err, sourceData) {
               if (err){
                 throw err;
-              } 
+              }
               tinifyjpeg.fromBuffer(sourceData).toBuffer(function(err, resultData) {
                 if (err){
                   throw err;
@@ -779,19 +780,19 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                     //- - - - - - - - - - - - -  - - - - - - - - - - -
                     //Узнаем размер файла после сжатия
                     size_output = getFilesizeInBytes(output);
-                        
+
                     //Находим на сколько процентов удалось сжать файл
                     percent = size_output / size_in;
                     percent = percent * 100;
                     percent = 100 - percent;
                     percent = Math.round(percent * 100) / 100;
 
-                    return callback(size_in, size_output, percent); 
-                    //- - - - - - - - - - - - -  - - - - - - - - - - -  
-                }); 
+                    return callback(size_in, size_output, percent);
+                    //- - - - - - - - - - - - -  - - - - - - - - - - -
+                });
               });
-            }); 
-            //-------------------------------------------------                   
+            });
+            //-------------------------------------------------
         }else{
             var array;
             if(false != enginejpg.jpg.command){
@@ -799,22 +800,22 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
                 var source = tinifyjpeg.fromFile(input);
                 var copyrighted = source.preserve(enginejpg.jpg.command[0]);
-                copyrighted.toFile(output); 
+                copyrighted.toFile(output);
               }else if(enginejpg.jpg.command.length === 2){
 
                 var source = tinifyjpeg.fromFile(input);
                 var copyrighted = source.preserve(enginejpg.jpg.command[0], enginejpg.jpg.command[1]);
-                copyrighted.toFile(output); 
+                copyrighted.toFile(output);
               }else if(enginejpg.jpg.command.length === 3){
 
                 var source = tinifyjpeg.fromFile(input);
                 var copyrighted = source.preserve(enginejpg.jpg.command[0], enginejpg.jpg.command[1], enginejpg.jpg.command[2]);
-                copyrighted.toFile(output); 
-              }         
+                copyrighted.toFile(output);
+              }
             }else{
               tinifyjpeg.fromFile(input).toFile(output);
             }
-        }          
+        }
       }else{
         console.log(colors.red("Don't [jpg] find ["+enginejpg.jpg.engine+"] engine!"));
       }
@@ -829,14 +830,14 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
     //Сжатие PNG
     function CompressionFilePng(input, output, callback){
-      var size_in, size_output, percent; 
-      
+      var size_in, size_output, percent;
+
       if(option.statistic){
         //Block statistic
-        //- - - - - - - - - - - - -  - - - - - - - - - - -      
-        //Размер файла пред  сжатием       
+        //- - - - - - - - - - - - -  - - - - - - - - - - -
+        //Размер файла пред  сжатием
         size_in = getFilesizeInBytes(input);
-        //- - - - - - - - - - - - -  - - - - - - - - - - -   
+        //- - - - - - - - - - - - -  - - - - - - - - - - -
       }
 
       if(enginepng.png.engine == 'pngquant'){
@@ -846,13 +847,13 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         https://pngquant.org
         https://github.com/imagemin/pngquant-bin
 
-        Example: 
+        Example:
         base:
         ['-o', output, input]
         */
         var array;
         if(false != enginepng.png.command){
-          array = enginepng.png.command.concat(['-o', output, input]);  
+          array = enginepng.png.command.concat(['-o', output, input]);
         }else{
           array = ['-o', output, input];
         }
@@ -864,33 +865,33 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                 //- - - - - - - - - - - - -  - - - - - - - - - - -
                 //Узнаем размер файла после сжатия
                 size_output = getFilesizeInBytes(output);
-                
+
                 //Находим на сколько процентов удалось сжать файл
                 percent = size_output / size_in;
                 percent = percent * 100;
                 percent = 100 - percent;
                 percent = Math.round(percent * 100) / 100;
 
-                return callback(size_in, size_output, percent, null);  
+                return callback(size_in, size_output, percent, null);
                 //- - - - - - - - - - - - -  - - - - - - - - - - -
               }
             }else{
               return callback(null, null, null, err);
             }
-        }); 
+        });
       }else if(enginepng.png.engine == 'optipng'){
         /*
         Sites:
         http://optipng.sourceforge.net
         https://github.com/imagemin/optipng-bin
-        
-        Example: 
+
+        Example:
         base:
         ['-o', output, input]
         */
         var array;
         if(false != enginepng.png.command){
-          array = enginepng.png.command.concat(['-out', output, input]);  
+          array = enginepng.png.command.concat(['-out', output, input]);
         }else{
           array = ['-out', output, input];
         }
@@ -901,17 +902,17 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
               //- - - - - - - - - - - - -  - - - - - - - - - - -
               //Узнаем размер файла после сжатия
               size_output = getFilesizeInBytes(output);
-              
+
               //Находим на сколько процентов удалось сжать файл
               percent = size_output / size_in;
               percent = percent * 100;
               percent = 100 - percent;
               percent = Math.round(percent * 100) / 100;
 
-              return callback(size_in, size_output, percent, null);  
+              return callback(size_in, size_output, percent, null);
               //- - - - - - - - - - - - -  - - - - - - - - - - -
             }
-        }); 
+        });
       }else if(enginepng.png.engine == 'webp'){
         /*
         Основная команда:
@@ -938,95 +939,95 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           array = enginepng.png.command.concat(input, ['-o'], output);
         }else{
           array = [input, '-o', output];
-        }  
-        
+        }
+
         execFile(cwebp, array, function (err) {
             if(option.statistic){
               //Block statistic
               //- - - - - - - - - - - - -  - - - - - - - - - - -
               //Узнаем размер файла после сжатия
               size_output = getFilesizeInBytes(output);
-              
+
               //Находим на сколько процентов удалось сжать файл
               percent = size_output / size_in;
               percent = percent * 100;
               percent = 100 - percent;
               percent = Math.round(percent * 100) / 100;
 
-              return callback(size_in, size_output, percent, null); 
+              return callback(size_in, size_output, percent, null);
               //- - - - - - - - - - - - -  - - - - - - - - - - -
             }
-        }); 
+        });
       }else if(enginepng.png.engine == 'pngout'){
         /*
         Sites:
         http://advsys.net/ken/util/pngout.htm
         https://github.com/imagemin/pngout-bin
-        
-        Example: 
+
+        Example:
         base:
         ['input.png', 'output.png']
         ['input.png', 'output.png', '-s0', '-k0', '-f0']
         */
         var array;
         if(false != enginepng.png.command){
-          array = [input, output].concat(enginepng.png.command);  
+          array = [input, output].concat(enginepng.png.command);
         }else{
           array = [input, output];
         }
-        
+
         execFile(pngout, array, function (err) {
             if(option.statistic){
               //Block statistic
               //- - - - - - - - - - - - -  - - - - - - - - - - -
               //Узнаем размер файла после сжатия
               size_output = getFilesizeInBytes(output);
-              
+
               //Находим на сколько процентов удалось сжать файл
               percent = size_output / size_in;
               percent = percent * 100;
               percent = 100 - percent;
               percent = Math.round(percent * 100) / 100;
 
-              return callback(size_in, size_output, percent, null);  
+              return callback(size_in, size_output, percent, null);
               //- - - - - - - - - - - - -  - - - - - - - - - - -
             }
-        }); 
+        });
       }else if(enginepng.png.engine == 'pngcrush'){
         /*
         Sites:
         https://pmt.sourceforge.io/pngcrush
         https://github.com/imagemin/pngcrush-bin
 
-        Example: 
+        Example:
         base:
         ['input.png', 'output.png']
         ['-reduce', '-brute', 'input.png', 'output.png']
         */
         var array;
         if(false != enginepng.png.command){
-          array = enginepng.png.command.concat([input, output]);  
+          array = enginepng.png.command.concat([input, output]);
         }else{
           array = [input, output];
         }
-        
+
         execFile(pngcrush, array, function (err) {
             if(option.statistic){
               //Block statistic
               //- - - - - - - - - - - - -  - - - - - - - - - - -
               //Узнаем размер файла после сжатия
               size_output = getFilesizeInBytes(output);
-              
+
               //Находим на сколько процентов удалось сжать файл
               percent = size_output / size_in;
               percent = percent * 100;
               percent = 100 - percent;
               percent = Math.round(percent * 100) / 100;
 
-              return callback(size_in, size_output, percent, null);  
+              return callback(size_in, size_output, percent, null);
               //- - - - - - - - - - - - -  - - - - - - - - - - -
             }
-        }); 
+        });
       }else if(enginepng.png.engine == 'tinify'){
         /*
         https://tinypng.com/developers/reference/nodejs
@@ -1036,19 +1037,19 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         {png: {engine: 'tinify', key: "api_key", command: false}}
 
         {png: {engine: 'tinify', key: "api_key", command: ['copyright', 'creation', 'location']}}
-        Можно запускать без опций, но существуют опции которые оставляют метаданные в изображении, 
-        такие как авторство, время создания изображения и локаль, но тесты показали 
+        Можно запускать без опций, но существуют опции которые оставляют метаданные в изображении,
+        такие как авторство, время создания изображения и локаль, но тесты показали
         что эта функция возможно не работает.
         */
         if(option.statistic){
             if(false != enginepng.png.command){
               console.log(colors.red("Commands with [thinify] dont working with turn on statistic - 'statistic: true'! You can will turn off statistic 'statistic: false' and use commands for [tinify]. Or you can will set 'command: false' for [tinify]."));
-            }   
+            }
             //-------------------------------------------------
             fs.readFile(input, function(err, sourceData) {
               if (err){
                 throw err;
-              } 
+              }
               tinifypng.fromBuffer(sourceData).toBuffer(function(err, resultData) {
                 if (err){
                   throw err;
@@ -1062,19 +1063,19 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                     //- - - - - - - - - - - - -  - - - - - - - - - - -
                     //Узнаем размер файла после сжатия
                     size_output = getFilesizeInBytes(output);
-                        
+
                     //Находим на сколько процентов удалось сжать файл
                     percent = size_output / size_in;
                     percent = percent * 100;
                     percent = 100 - percent;
                     percent = Math.round(percent * 100) / 100;
 
-                    return callback(size_in, size_output, percent, null); 
-                    //- - - - - - - - - - - - -  - - - - - - - - - - -  
-                }); 
+                    return callback(size_in, size_output, percent, null);
+                    //- - - - - - - - - - - - -  - - - - - - - - - - -
+                });
               });
-            }); 
-            //-------------------------------------------------                   
+            });
+            //-------------------------------------------------
         }else{
             var array;
             if(false != enginepng.png.command){
@@ -1082,22 +1083,22 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
                 var source = tinifypng.fromFile(input);
                 var copyrighted = source.preserve(enginepng.png.command[0]);
-                copyrighted.toFile(output); 
+                copyrighted.toFile(output);
               }else if(enginepng.png.command.length === 2){
 
                 var source = tinifypng.fromFile(input);
                 var copyrighted = source.preserve(enginepng.png.command[0], enginepng.png.command[1]);
-                copyrighted.toFile(output); 
+                copyrighted.toFile(output);
               }else if(enginepng.png.command.length === 3){
 
                 var source = tinifypng.fromFile(input);
                 var copyrighted = source.preserve(enginepng.png.command[0], enginepng.png.command[1], enginepng.png.command[2]);
-                copyrighted.toFile(output); 
-              }         
+                copyrighted.toFile(output);
+              }
             }else{
               tinifypng.fromFile(input).toFile(output);
             }
-        }          
+        }
       }else{
         console.log(colors.red("Don't [png] find ["+enginepng.png.engine+"] engine!"));
       }
@@ -1113,14 +1114,14 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
     //Сжатие SVG
     function CompressionFileSvg(input, output, callback){
-      var size_in, size_output, percent; 
-      
+      var size_in, size_output, percent;
+
       if(option.statistic){
         //Block statistic
-        //- - - - - - - - - - - - -  - - - - - - - - - - -      
-        //Размер файла пред  сжатием       
+        //- - - - - - - - - - - - -  - - - - - - - - - - -
+        //Размер файла пред  сжатием
         size_in = getFilesizeInBytes(input);
-        //- - - - - - - - - - - - -  - - - - - - - - - - -   
+        //- - - - - - - - - - - - -  - - - - - - - - - - -
       }
 
       if(enginesvg.svg.engine == 'svgo'){
@@ -1129,14 +1130,14 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         https://www.npmjs.com/package/svgo
         https://github.com/svg/svgo/blob/master/README.ru.md
 
-        Example: 
+        Example:
         base:
         {svg: {engine: 'svgo', command: false}}
         {svg: {engine: 'svgo', command: '--multipass'}}
         */
         var com;
         if(false != enginesvg.svg.command){
-          com = "svgo "+enginesvg.svg.command+" -i "+input+" -o "+output;  
+          com = "svgo "+enginesvg.svg.command+" -i "+input+" -o "+output;
         }else{
           com = "svgo -i "+input+" -o "+output;
         }
@@ -1151,14 +1152,14 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
               //- - - - - - - - - - - - -  - - - - - - - - - - -
               //Узнаем размер файла после сжатия
               size_output = getFilesizeInBytes(output);
-              
+
               //Находим на сколько процентов удалось сжать файл
               percent = size_output / size_in;
               percent = percent * 100;
               percent = 100 - percent;
               percent = Math.round(percent * 100) / 100;
 
-              return callback(size_in, size_output, percent);  
+              return callback(size_in, size_output, percent);
               //- - - - - - - - - - - - -  - - - - - - - - - - -
             }
         });
@@ -1177,21 +1178,21 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
     //Сжатие GIF
     function CompressionFileGif(input, output, callback){
-      var size_in, size_output, percent; 
-      
+      var size_in, size_output, percent;
+
       if(option.statistic){
         //Block statistic
-        //- - - - - - - - - - - - -  - - - - - - - - - - -      
-        //Размер файла пред  сжатием       
+        //- - - - - - - - - - - - -  - - - - - - - - - - -
+        //Размер файла пред  сжатием
         size_in = getFilesizeInBytes(input);
-        //- - - - - - - - - - - - -  - - - - - - - - - - -   
+        //- - - - - - - - - - - - -  - - - - - - - - - - -
       }
 
       if(enginegif.gif.engine == 'gifsicle'){
         /*
-        [--colors 16] [--colors 64]- (значительно уменьшает размер изображения путём уменьшения цветов) 
-        [--use-col=web] - значительно уменьшает изображение 
-        [--optimize] - оптизизация без потерь  
+        [--colors 16] [--colors 64]- (значительно уменьшает размер изображения путём уменьшения цветов)
+        [--use-col=web] - значительно уменьшает изображение
+        [--optimize] - оптизизация без потерь
         [--scale 0.8] - уменьшение размера
 
         Sites:
@@ -1201,12 +1202,12 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         https://www.lcdf.org/gifsicle/man.html
 
 
-        Example: 
+        Example:
         base:
         */
         var array;
         if(false != enginegif.gif.command){
-          array = enginegif.gif.command.concat(['-o', output, input]);  
+          array = enginegif.gif.command.concat(['-o', output, input]);
         }else{
           array = ['-o', output, input];
         }
@@ -1218,17 +1219,17 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
               //- - - - - - - - - - - - -  - - - - - - - - - - -
               //Узнаем размер файла после сжатия
               size_output = getFilesizeInBytes(output);
-              
+
               //Находим на сколько процентов удалось сжать файл
               percent = size_output / size_in;
               percent = percent * 100;
               percent = 100 - percent;
               percent = Math.round(percent * 100) / 100;
 
-              return callback(size_in, size_output, percent);  
+              return callback(size_in, size_output, percent);
               //- - - - - - - - - - - - -  - - - - - - - - - - -
             }
-        }); 
+        });
       }else if(enginegif.gif.engine == 'giflossy'){
         /*
         [--lossy=80] - процент сжатия, если не ошибаюсь
@@ -1242,28 +1243,28 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         */
         var array;
         if(false != enginegif.gif.command){
-          array = enginegif.gif.command.concat(['-o', output, input]);  
+          array = enginegif.gif.command.concat(['-o', output, input]);
         }else{
           array = ['-o', output, input];
         }
-        
+
         execFile(giflossy, array, function (err) {
             if(option.statistic){
               //Block statistic
               //- - - - - - - - - - - - -  - - - - - - - - - - -
               //Узнаем размер файла после сжатия
               size_output = getFilesizeInBytes(output);
-              
+
               //Находим на сколько процентов удалось сжать файл
               percent = size_output / size_in;
               percent = percent * 100;
               percent = 100 - percent;
               percent = Math.round(percent * 100) / 100;
 
-              return callback(size_in, size_output, percent);  
+              return callback(size_in, size_output, percent);
               //- - - - - - - - - - - - -  - - - - - - - - - - -
             }
-        }); 
+        });
       }else if(enginegif.gif.engine == 'gif2webp'){
         /*
         Base:
@@ -1276,25 +1277,25 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         */
         var array;
         if(false != enginegif.gif.command){
-          array = enginegif.gif.command.concat([input, '-o', output]);  
+          array = enginegif.gif.command.concat([input, '-o', output]);
         }else{
           array = [input, '-o', output];
         }
-        
+
         execFile(path_gif2webp, array, {cwd: process.cwd()},  function (err) {
             if(option.statistic){
               //Block statistic
               //- - - - - - - - - - - - -  - - - - - - - - - - -
               //Узнаем размер файла после сжатия
               size_output = getFilesizeInBytes(output);
-              
+
               //Находим на сколько процентов удалось сжать файл
               percent = size_output / size_in;
               percent = percent * 100;
               percent = 100 - percent;
               percent = Math.round(percent * 100) / 100;
 
-              return callback(size_in, size_output, percent);  
+              return callback(size_in, size_output, percent);
               //- - - - - - - - - - - - -  - - - - - - - - - - -
             }
         });
@@ -1340,7 +1341,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
             return true;
         }else{
             return false;
-        } 
+        }
     }
 
 
@@ -1366,7 +1367,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
     function log_create_wasdir(output){
         console.log(colors.bgYellow(colors.yellow(' New directory was created: ')+colors.yellow(output)+'  '));
         console.log(colors.bgYellow(colors.white(' New directory was created: ')+colors.magenta(output)+'  '));
-        console.log(colors.bgYellow(colors.yellow(' New directory was created: ')+colors.yellow(output)+'  '));          
+        console.log(colors.bgYellow(colors.yellow(' New directory was created: ')+colors.yellow(output)+'  '));
     }
 
 
@@ -1378,7 +1379,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           return path[0];
         }else{
           return false;
-        }            
+        }
     }
 
 
@@ -1387,8 +1388,8 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           if('-d' == array[i]){
               return true;
           }
-      }   
-      return false; 
+      }
+      return false;
     }
 
 
@@ -1406,7 +1407,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
 
             callback(null);
-        }    
+        }
     }
 
 
@@ -1459,4 +1460,4 @@ module.exports = index;
 
 
 
-   
+

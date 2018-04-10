@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+
+process.title = 'compress-images'
+
+const fs = require('fs')
+const path = require('path')
+const rimraf = require('rimraf')
+const compress = require('../index.js')
+
+const input = path.join(process.cwd(), process.argv[2] || '')
+const output = `${input}${(!input.endsWith(path.sep) && path.sep)}`
+const options = {
+  compress_force: true,
+  statistic: true,
+  autoupdate: false
+}
+
+try {
+  fs.rename(input, `${input}-tmp`)
+
+  compress(`${input.replace(/\\/g, '/')}-tmp/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}`, output,
+    options, false,
+    { jpg: { engine: 'mozjpeg', command: ['-quality', '60'] } },
+    { png: { engine: 'pngquant', command: ['--quality=20-50'] } },
+    { svg: { engine: 'svgo', command: '--multipass' } },
+    { gif: { engine: 'gifsicle', command: ['--colors', '64', '--use-col=web'] } },
+    () => rimraf.sync(`${input}-tmp`)
+  )
+} catch (e) {
+  throw new Error(e)
+}
