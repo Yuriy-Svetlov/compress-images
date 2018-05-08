@@ -1,6 +1,6 @@
 ﻿You need do two steps:
 
-1. Open console and enter command
+1. Open console and to enter command
 npm install compress-images --save-dev
 
 
