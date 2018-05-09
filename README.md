@@ -46,6 +46,7 @@ npm install compress-images --save-dev
 
 #### Base example
 https://github.com/semiromid/compress-images/tree/master/example
+* Read to [Manual](https://github.com/semiromid/compress-images/blob/master/example/Manual.txt)
 
 #### Example 1
 ```javascript
