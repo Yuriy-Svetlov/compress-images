@@ -1,7 +1,13 @@
-﻿You need do two steps:
+﻿You need do few steps:
 
-1. Open console and to enter command
+1.Open console and to run command:
+git clone git@github.com:semiromid/compress-images.git
+
+2.Run the command in the console: 
+cd compress-images
+
+2. Open console and to enter command
 npm install compress-images --save-dev
 
 
-2.You can in console input command "node compress_images.js" OR doubleclick to "minify_Img.bat".
+3.You can in console input command "node compress_images.js" OR doubleclick to "minify_Img.bat".
