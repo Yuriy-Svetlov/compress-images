@@ -20,4 +20,4 @@ npm install compress-images --save-dev
 [6] 
 - [6.1] You can open console and to input command and press enter "node compress_images.js" 
   OR 
-- [6.2] doubleclick to "minify_Img.bat".
+- [6.2] double-click on the file "minify_Img.bat".
