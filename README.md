@@ -245,8 +245,8 @@ Sometime you could get errors, and then use alternative configuration "compress-
 
 + **option** (type:plainObject): Options module\`s «compress-images»; 
     + **compress_force** (type:boolean): Force compress images already compressed images *`true`* or *`false`*;
-    + **statistic** (type:string): Path to log file. Default is `./log/compress-images`;
-    + **pathLog** (type:boolean): show image compression statistics *`true`* or *`false`*;
+    + **statistic** (type:boolean): show image compression statistics *`true`* or *`false`*;
+    + **pathLog** (type:string): Path to log file. Default is `./log/compress-images`;
     + **autoupdate** (type:boolean): Auto-update module «compress_images» to the latest version *`true`* or *`false`*;  <br />
             Example:   <br />
             1. `{compress_force: false, statistic: true, autoupdate: true}`;  
