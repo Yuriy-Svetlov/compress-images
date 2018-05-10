@@ -182,6 +182,46 @@ gulp.task('compress_images', function() {
 ```
 
 
+
+#### Example 6
+Sometime you could get errors, and then use alternative configuration "compress-images". 
+
+```javascript
+    var compress_images = require('compress-images');
+
+    const INPUT_path_to_your_images = 'src/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}';
+    const OUTPUT_path = 'build/';
+    
+    compress_images(INPUT_path_to_your_images, OUTPUT_path, {compress_force: false, statistic: true, autoupdate: true}, false,
+                                                {jpg: {engine: 'jpegRecompress', command: ['--quality', 'high', '--min', '60']}},
+                                                {png: {engine: 'pngquant', command: ['--quality=20-50']}},
+                                                {svg: {engine: 'svgo', command: '--multipass'}},
+                                                {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(err){
+            if(err !== null){
+                //---------------------------------------
+                //if you get an ERROR from 'jpegRecompress' ---> Can to use alternative config of compression
+                //---------------------------------------
+                if(err.engine === 'jpegRecompress'){
+                    compress_images(err.input, err.output, {compress_force: false, statistic: true, autoupdate: true}, false,
+                                                                {jpg: {engine: 'mozjpeg', command: ['-quality', '60']}},
+                                                                {png: {engine: false, command: false}},
+                                                                {svg: {engine: false, command: false}},
+                                                                {gif: {engine: false, command: false}}, function(err){
+                            if(err !== null){
+                                //Alternative config of compression
+
+                            }                                       
+                    });
+                }
+                //---------------------------------------
+
+            }                                       
+
+    });
+```
+
+
+
 ```html
     <picture>
         <source type="image/webp" srcset="//hostname/build/img/art/1/chat.webp">
@@ -205,7 +245,8 @@ gulp.task('compress_images', function() {
 
 + **option** (type:plainObject): Options module\`s «compress-images»; 
     + **compress_force** (type:boolean): Force compress images already compressed images *`true`* or *`false`*;
-    + **statistic** (type:boolean): show image compression statistics *`true`* or *`false`*;
+    + **statistic** (type:string): Path to log file. Default is `./log/compress-images`;
+    + **pathLog** (type:boolean): show image compression statistics *`true`* or *`false`*;
     + **autoupdate** (type:boolean): Auto-update module «compress_images» to the latest version *`true`* or *`false`*;  <br />
             Example:   <br />
             1. `{compress_force: false, statistic: true, autoupdate: true}`;  
@@ -219,9 +260,9 @@ gulp.task('compress_images', function() {
         + For **jpegtran** - `['-trim', '-progressive', '-copy', 'none', '-optimize']` in details; [jpegtran](https://libjpeg-turbo.org/);
         + For **mozjpeg** - `['-quality', '10']` in details [mozjpeg](https://github.com/mozilla/mozjpeg/);
         + For **webp** - `['-q', '60']` in details [webp](https://developers.google.com/speed/webp/);
-        + For **guetzli** - `['--quality', '84']` in details [guetzli](https://github.com/google/guetzli/);
+        + For **guetzli** - `['--quality', '84']` (Very long compresses on Win 8.1 [https://github.com/google/guetzli/issues/238](https://github.com/google/guetzli/issues/238)) in details [guetzli](https://github.com/google/guetzli/);
         + For **jpegRecompress** - `['--quality', 'high', '--min', '60']` in details [jpegRecompress](https://github.com/danielgtaylor/jpeg-archive/);
-        + For **jpegoptim** - `['--all-progressive', '-d']` **Caution!** if do not specify `'-d'` all images will be compressed on source folder and  will be replace.  In details [jpegoptim](https://github.com/tjko/jpegoptim/);
+        + For **jpegoptim** - `['--all-progressive', '-d']` **Caution!** if do not specify `'-d'` all images will be compressed on source folder and  will be replace. (Maybe problem on Win 8.1: [https://github.com/tjko/jpegoptim/issues/54](https://github.com/tjko/jpegoptim/issues/54)))  In details [jpegoptim](https://github.com/tjko/jpegoptim/);
         + For **tinify** - `['copyright', 'creation', 'location']` In details [tinify](https://tinypng.com/developers/reference/nodejs/);
     + **key** (type:string): Key which using for engine **tinify**.  In details; [tinify](https://tinypng.com/developers/reference/nodejs/);  <br />
             Example:  <br /> 
@@ -268,7 +309,12 @@ gulp.task('compress_images', function() {
                 2. `{gif: {engine: 'giflossy', command: false}}`;  <br />
                 3. `{gif: {engine: 'gif2webp', command: ['-f', '80', '-mixed', '-q', '30', '-m', '2']}}`;
                 
-+ **callback** (type:boolean|null): returns `true` or `null` <br />
++ **callback** (type:object|null): 
+returns: 
+    + engine - The name of the algorithm engine 
+    + input - The path to the input image 
+    + output - The path to the output image
+<br />
 
 
 
