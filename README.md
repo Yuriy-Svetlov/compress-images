@@ -185,7 +185,7 @@ gulp.task('compress_images', function() {
 
 #### Example 6
 Sometime you could get errors, and then use alternative configuration "compress-images". 
-
+As example one of many:
 ```javascript
     var compress_images = require('compress-images');
 
