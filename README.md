@@ -186,13 +186,18 @@ gulp.task('compress_images', function() {
 #### Example 6
 Sometime you could get errors, and then use alternative configuration "compress-images". 
 As example one of many:
+
+1. If you get error from 'jpegRecompress', as example can be the error "Unsupported color conversion request" In this case will be use alternative image compression.
+
+2. Will be created log of error in path './log/lib/compress-images'.
+
 ```javascript
     var compress_images = require('compress-images');
 
     const INPUT_path_to_your_images = 'src/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}';
     const OUTPUT_path = 'build/';
     
-    compress_images(INPUT_path_to_your_images, OUTPUT_path, {compress_force: false, statistic: true, autoupdate: true}, false,
+    compress_images(INPUT_path_to_your_images, OUTPUT_path, {compress_force: false, statistic: true, autoupdate: true, pathLog: './log/lib/compress-images'}, false,
                                                 {jpg: {engine: 'jpegRecompress', command: ['--quality', 'high', '--min', '60']}},
                                                 {png: {engine: 'pngquant', command: ['--quality=20-50']}},
                                                 {svg: {engine: 'svgo', command: '--multipass'}},
