@@ -206,7 +206,7 @@ As example one of many:
                                                 {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(err){
             if(err !== null){
                 //---------------------------------------
-                //if you get an ERROR from 'jpegRecompress' ---> Can to use alternative config of compression
+                //if you get an ERROR from 'jpegRecompress' ---> We can use alternate config of compression
                 //---------------------------------------
                 if(err.engine === 'jpegRecompress'){
                     compress_images(err.input, err.output, {compress_force: false, statistic: true, autoupdate: true}, false,
