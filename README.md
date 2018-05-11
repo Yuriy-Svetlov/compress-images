@@ -191,6 +191,8 @@ As example one of many:
 
 2. Will be created log of error in path './log/lib/compress-images'.
 
+3. Will be try compress this image in 'mozjpeg'.
+
 ```javascript
     var compress_images = require('compress-images');
 
