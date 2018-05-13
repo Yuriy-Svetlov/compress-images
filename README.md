@@ -24,6 +24,16 @@ You can use different algorithms and methods for compress images with many optio
 > You even can minify images with use **combine algorithms compress** images. As example - `mozjpeg` + `jpegoptim` or `jpegtran` + `mozjpeg` + `imagemagick` or any other algorithm.
 
 
+##### Saving log of errors 
+
+> If you got error, will be save log of error. Default path `./log/compress-images`.   
+
+
+##### Alternative configuration/algorithm compressing images 
+
+> If you get error, can be used alternative algorithm compressing images. As example: you want to compress images in `jpegRecompress`, but got an error  **Unsupported color conversion request**, and then will be used alternative algorithm compress images in`mozjpeg`.
+
+
 ##### Detect path for save image
 You can specify the path to source images folder and all images in the folder will be compression and moved to output folder.
 
