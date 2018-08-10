@@ -3,6 +3,7 @@
 var  colors = require('colors'),
      fs = require('fs'),
      glob = require("glob"),
+     path = require("path"),
      execFile = require('child_process').execFile, 
      exec = require('child_process').exec,
      
@@ -1117,6 +1118,9 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         }else{
           com = "svgo -i "+input+" -o "+output;
         }
+        
+        // Fix for SVGO needing an absolute path to its binary when not globally installed
+        com = path.resolve(__dirname + "/../svgo/bin/") + "/" + com;
 
         exec(com, (error, stdout, stderr) => {
             if(error === null){
