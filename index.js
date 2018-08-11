@@ -1120,6 +1120,9 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           //com = "svgo -i "+input+" -o "+output;
           com = "-i "+input+" -o "+output;
         }
+        
+        // Fix for SVGO needing an absolute path to its binary when not globally installed
+        com = path.resolve(__dirname + "/../svgo/bin/") + "/" + com;
 
         com = 'node "' + path.resolve(__dirname + "/../svgo/bin/") + "/svgo" + '" ' + com;
 
