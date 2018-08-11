@@ -14,14 +14,14 @@
 
 You can use different algorithms and methods for compress images with many options.
 
-* For **JPG**: `jpegtran`, `mozjpeg`, `webp`, `guetzli`, `jpegRecompress`, `jpegoptim`, `tinify`, `imagemagick`;
-* For **PNG**: `pngquant`, `optipng`, `pngout`, `webp`, `pngcrush`, `tinify`, `imagemagick`;
-* For **SVG**: `svgo`, `imagemagick`;
-* For **GIF**: `gifsicle`, `giflossy`, `gif2webp`, `imagemagick`;
+* For **JPG**: `jpegtran`, `mozjpeg`, `webp`, `guetzli`, `jpegRecompress`, `jpegoptim`, `tinify`;
+* For **PNG**: `pngquant`, `optipng`, `pngout`, `webp`, `pngcrush`, `tinify`;
+* For **SVG**: `svgo`;
+* For **GIF**: `gifsicle`, `giflossy`, `gif2webp`;
 
 ##### Combine compression 
 
-> You even can minify images with use **combine algorithms compress** images. As example - `mozjpeg` + `jpegoptim` or `jpegtran` + `mozjpeg` + `imagemagick` or any other algorithm.
+> You even can minify images with use **combine algorithms compress** images. As example - `mozjpeg` + `jpegoptim` or `jpegtran` + `mozjpeg` or any other algorithm.
 
 
 ##### Saving log of errors 

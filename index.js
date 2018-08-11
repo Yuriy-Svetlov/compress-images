@@ -3,6 +3,7 @@
 var  colors = require('colors'),
      fs = require('fs'),
      glob = require("glob"),
+     path = require("path"),
      execFile = require('child_process').execFile, 
      exec = require('child_process').exec,
      
@@ -1111,18 +1112,19 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         {svg: {engine: 'svgo', command: false}}
         {svg: {engine: 'svgo', command: '--multipass'}}
         */
-        var com;
+        let com;
         if(false != enginesvg.svg.command){
-          com = "svgo "+enginesvg.svg.command+" -i "+input+" -o "+output;  
+          //com = "svgo "+enginesvg.svg.command+" -i "+input+" -o "+output;  
+          com = enginesvg.svg.command+" -i "+input+" -o "+output; 
         }else{
-          com = "svgo -i "+input+" -o "+output;
+          //com = "svgo -i "+input+" -o "+output;
+          com = "-i "+input+" -o "+output;
         }
+
+        com = 'node "' + path.resolve(__dirname + "/../svgo/bin/") + "/svgo" + '" ' + com;
 
         exec(com, (error, stdout, stderr) => {
             if(error === null){
-                //if(error !== null){
-                //   console.log(`exec error : ${error}`);
-                //}
                 if(option.statistic){
                   //Block statistic
                   //- - - - - - - - - - - - -  - - - - - - - - - - -
