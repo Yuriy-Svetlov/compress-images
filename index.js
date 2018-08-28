@@ -301,32 +301,32 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             //JPG Сжимаем файл
                             CompressionFileJpg(input, path_out_new, function(size_in, size_output, percent, err){
 
-                                outputResult(input, path_out_new, enginejpg.jpg.engine, size_in, size_output, percent, err, function(error){
-                                    return callback(error);
+                                outputResult(input, path_out_new, enginejpg.jpg.engine, size_in, size_output, percent, err, function(error, completed){
+                                    return callback(error, completed);
                                 });
                             });                   
                         }else if(extension_f == 'png' || extension_f == 'PNG'){
                             //PNG Сжимаем файл
                             CompressionFilePng(input, path_out_new, function(size_in, size_output, percent, err){
 
-                                outputResult(input, path_out_new, enginepng.png.engine, size_in, size_output, percent, err, function(error){
-                                    return callback(error);
+                                outputResult(input, path_out_new, enginepng.png.engine, size_in, size_output, percent, err, function(error, completed){
+                                    return callback(error, completed);
                                 });                                                                               
                             });                       
                         }else if(extension_f == 'svg'){
                             //SVG Сжимаем файл
                             CompressionFileSvg(input, path_out_new, function(size_in, size_output, percent){
                                 
-                                outputResult(input, path_out_new, enginesvg.svg.engine, size_in, size_output, percent, err, function(error){
-                                    return callback(error);
+                                outputResult(input, path_out_new, enginesvg.svg.engine, size_in, size_output, percent, err, function(error, completed){
+                                    return callback(error, completed);
                                 });                  
                             });                       
                         }else if(extension_f == 'gif'){
                             //GIF Сжимаем файл
                             CompressionFileGif(input, path_out_new, function(size_in, size_output, percent){
 
-                                outputResult(input, path_out_new, enginegif.gif.engine, size_in, size_output, percent, err, function(error){
-                                    return callback(error);
+                                outputResult(input, path_out_new, enginegif.gif.engine, size_in, size_output, percent, err, function(error, completed){
+                                    return callback(error, completed);
                                 });               
                             });                       
                         }                  
@@ -334,7 +334,12 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                 });
               }else{
                   //Провееряем обновление
-                  //checkUpdate();  
+                  checkUpdate(); 
+                  if(length_files === 0){
+                      return callback(null, true);
+                  }else{
+                    return callback(null, false);
+                  }   
               }
           }else{
               //Убираем у новой директории имя файла
@@ -356,32 +361,32 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             //JPG Сжимаем файл
                             CompressionFileJpg(input, path_out_new, function(size_in, size_output, percent, err){
                                 
-                                outputResult(input, path_out_new, enginejpg.jpg.engine, size_in, size_output, percent, err, function(error){
-                                    return callback(error);
+                                outputResult(input, path_out_new, enginejpg.jpg.engine, size_in, size_output, percent, err, function(error, completed){
+                                    return callback(error, completed);
                                 });                 
                             });                   
                     }else if(extension_f == 'png' || extension_f == 'PNG'){
                             //PNG Сжимаем файл
                             CompressionFilePng(input, path_out_new, function(size_in, size_output, percent, err){
                                 
-                                outputResult(input, path_out_new, enginepng.png.engine, size_in, size_output, percent, err, function(error){
-                                    return callback(error);
+                                outputResult(input, path_out_new, enginepng.png.engine, size_in, size_output, percent, err, function(error, completed){
+                                    return callback(error, completed);
                                 });               
                             });                       
                     }else if(extension_f == 'svg'){
                             //SVG Сжимаем файл
                             CompressionFileSvg(input, path_out_new, function(size_in, size_output, percent){
                                 
-                                outputResult(input, path_out_new, enginesvg.svg.engine, size_in, size_output, percent, err, function(error){
-                                    return callback(error);
+                                outputResult(input, path_out_new, enginesvg.svg.engine, size_in, size_output, percent, err, function(error, completed){
+                                    return callback(error, completed);
                                 });                  
                             });                       
                     }else if(extension_f == 'gif'){
                             //GIF Сжимаем файл
                             CompressionFileGif(input, path_out_new, function(size_in, size_output, percent){
                                 
-                                outputResult(input, path_out_new, enginegif.gif.engine, size_in, size_output, percent, err, function(error){
-                                    return callback(error);
+                                outputResult(input, path_out_new, enginegif.gif.engine, size_in, size_output, percent, err, function(error, completed){
+                                    return callback(error, completed);
                                 });               
                             });                       
                     } 
@@ -1427,11 +1432,9 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
     function checkUpdate(){
         length_files = length_files - 1;
 
-        if(length_files == 0){
+        if(length_files === 0){
             updater(fs, colors, option.autoupdate);
-
-
-            callback(null);
+            //callback(null);
         }    
     }
 
@@ -1470,14 +1473,24 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
       checkUpdate();
 
       if(err !== null){
-          let dataError = {};
+        if(length_files === 0){
           dataError.engine = engine;
           dataError.input = input;
           dataError.output = getPathOut(path_out_new);
-          return callback(dataError);
+          return callback(dataError, true);
+        }else{
+          dataError.engine = engine;
+          dataError.input = input;
+          dataError.output = getPathOut(path_out_new);
+          return callback(dataError, false);
+        }
       }
 
-      return callback(null);
+      if(length_files === 0){
+          return callback(null, true);
+      }
+
+      return callback(null, false);
     }
 
 

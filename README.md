@@ -84,7 +84,10 @@ https://github.com/semiromid/compress-images/tree/master/example
                                                     {jpg: {engine: 'mozjpeg', command: ['-quality', '60']}},
                                                     {png: {engine: 'pngquant', command: ['--quality=20-50']}},
                                                     {svg: {engine: 'svgo', command: '--multipass'}},
-                                                    {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(){
+                                                    {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(err, completed){
+                if(completed === true){
+                    // Doing something.
+                }                                    
         });
     }
 ```
@@ -104,7 +107,7 @@ gulp.task('compress_images', function() {
                                                 {png: {engine: false, command: false}},
                                                 {svg: {engine: false, command: false}},
                                                 {gif: {engine: false, command: false}}, function(err){ 
-            if(err == null){                                     
+            if(err === null){ 
                 //[jpg] ---to---> [jpg(jpegtran)] WARNING!!! autoupdate  - recommended turn off, he is not needed here - autoupdate: false
                 compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                                 {jpg: {engine: 'jpegtran', command: false}},
@@ -115,6 +118,8 @@ gulp.task('compress_images', function() {
             }else{
                 console.error(err);
             }
+
+
     });
 });
 ```
@@ -213,7 +218,7 @@ As example one of many:
                                                 {jpg: {engine: 'jpegRecompress', command: ['--quality', 'high', '--min', '60']}},
                                                 {png: {engine: 'pngquant', command: ['--quality=20-50']}},
                                                 {svg: {engine: 'svgo', command: '--multipass'}},
-                                                {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(err){
+                                                {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(err, completed){
             if(err !== null){
                 //---------------------------------------
                 //if you get an ERROR from 'jpegRecompress' ---> We can use alternate config of compression
@@ -326,11 +331,15 @@ As example one of many:
                 2. `{gif: {engine: 'giflossy', command: false}}`;  <br />
                 3. `{gif: {engine: 'gif2webp', command: ['-f', '80', '-mixed', '-q', '30', '-m', '2']}}`;
                 
-+ **callback** (type:object|null): 
++ **callback** (err, completed): 
 returns: 
-    + engine - The name of the algorithm engine 
-    + input - The path to the input image 
-    + output - The path to the output image
+    +  **err** (type:object|null)  
+        + engine - The name of the algorithm engine 
+        + input - The path to the input image 
+        + output - The path to the output image
+    + **completed** (type:boolean)
+        + `true` - result completed.
+        + `false` - result do not complete.
 <br />
 
 
