@@ -84,12 +84,12 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           return callback(true);
         }
     }else{
-        if(!/^.*(\.({|{[a-zA-Z,]*,)|\.)(jpg|jpeg)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
-          console.log(colors.red(" You do not turned on [enginejpg] and you set to path extension 'jpg', delete extension it 'jpg' from path, or turn on [enginejpg: ['jpegtran'] or ['mozjpeg'] or ['webp'] or other].  OR you set path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,png} or src/img/**/*.jpg or src/img/*.jpg ..."));
-          console.log(colors.red(' Your path: ')+colors.magenta(input));
+        //if(!/^.*(\.({|{[a-zA-Z,]*,)|\.)(jpg|jpeg)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
+        //  console.log(colors.red(" You do not turned on [enginejpg] and you set to path extension 'jpg', delete extension it 'jpg' from path, or turn on [enginejpg: ['jpegtran'] or ['mozjpeg'] or ['webp'] or other].  OR you set path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,png} or src/img/**/*.jpg or src/img/*.jpg ..."));
+        //  console.log(colors.red(' Your path: ')+colors.magenta(input));
 
-          return callback(true);
-        }      
+        //  return callback(true);
+        //}      
     }
 
     //PNG
@@ -100,11 +100,11 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           return callback(true);
         }
     }else{
-        if(!/^.*(\.({|{[a-zA-Z,]*,)|\.)(png)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
-          console.log(colors.red(" You do not turned on [enginepng] and you set to path extension 'png', delete extension it 'png' from path, or turn on [enginepng: ['pngquant'] or ['optipng'] or ['webp'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,png} or src/img/**/*.png or src/img/*.png ..."));
-          console.log(colors.red(' Your path: ')+colors.magenta(input));
-          return callback(true);
-        }      
+        //if(!/^.*(\.({|{[a-zA-Z,]*,)|\.)(png)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
+        //  console.log(colors.red(" You do not turned on [enginepng] and you set to path extension 'png', delete extension it 'png' from path, or turn on [enginepng: ['pngquant'] or ['optipng'] or ['webp'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,png} or src/img/**/*.png or src/img/*.png ..."));
+        //  console.log(colors.red(' Your path: ')+colors.magenta(input));
+        //  return callback(true);
+        //}      
     }
 
 
@@ -116,11 +116,11 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           return callback(true);
         }
     }else{
-        if(!/^.*(\.({|{[a-zA-Z,]*,)|\.)(svg)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
-          console.log(colors.red(" You do not turned on [enginesvg] and you set to path extension 'svg', delete extension it 'svg' from path, or turn on [enginesvg: ['svgo'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,svg} or src/img/**/*.svg or src/img/*.svg ..."));
-          console.log(colors.red(' Your path: ')+colors.magenta(input));
-          return callback(true);
-        }      
+        //if(!/^.*(\.({|{[a-zA-Z,]*,)|\.)(svg)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
+        //  console.log(colors.red(" You do not turned on [enginesvg] and you set to path extension 'svg', delete extension it 'svg' from path, or turn on [enginesvg: ['svgo'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,svg} or src/img/**/*.svg or src/img/*.svg ..."));
+        //  console.log(colors.red(' Your path: ')+colors.magenta(input));
+        //  return callback(true);
+        //}      
     }
     
 
@@ -132,11 +132,11 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           return callback(true);
         }
     }else{
-        if(!/^.*(\.({|{[a-zA-Z,]*,)|\.)(gif)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
-          console.log(colors.red(" You do not turned on [enginegif] and you set to path extension 'gif', delete extension it 'gif' from path, or turn on [enginegif: ['gifsicle'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,gif} or src/img/**/*.gif or src/img/*.gif ..."));
-          console.log(colors.red(' Your path: ')+colors.magenta(input));
-          return callback(true);
-        }      
+        //if(!/^.*(\.({|{[a-zA-Z,]*,)|\.)(gif)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
+        //  console.log(colors.red(" You do not turned on [enginegif] and you set to path extension 'gif', delete extension it 'gif' from path, or turn on [enginegif: ['gifsicle'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,gif} or src/img/**/*.gif or src/img/*.gif ..."));
+        //  console.log(colors.red(' Your path: ')+colors.magenta(input));
+        //  return callback(true);
+        //}      
     }
 
 
@@ -279,6 +279,21 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           if(!option.compress_force){
               //Узнаём, сжимали или мы ранее этот файл. Для этого проверяем есть ли он в output
               if(!checkFile(path_out_new)){
+
+                //Проверяем существования файла перед сжатием
+                if(!checkFile(input)){
+                    console.log(colors.red("   File is not exists!")); 
+                    writeLogError("File is not exists!", input, path_out_new, '-');
+
+                    //Провееряем обновление
+                    checkUpdate(); 
+                    if(length_files === 0){
+                        return callback(null, true);
+                    }
+
+                    return false;
+                }
+
                 //Убираем у новой директории имя файла
                 var output = getPath(path_out_new), extension_f;
 
@@ -342,6 +357,20 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                   }   
               }
           }else{
+                //Проверяем существования файла перед сжатием
+                if(!checkFile(input)){
+                    console.log(colors.red("   File is not exists!")); 
+                    writeLogError("File is not exists!", input, path_out_new, '-');
+
+                    //Провееряем обновление
+                    checkUpdate(); 
+                    if(length_files === 0){
+                        return callback(null, true);
+                    }
+
+                    return false;
+                }
+
               //Убираем у новой директории имя файла
               var output = getPath(path_out_new);
               //Проверяем есть ли необходимая директория
@@ -1338,9 +1367,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         str_error = str_error+'\r\n';
         str_error = str_error+'\r\nCompression algorithm: ['+engine+']';
         str_error = str_error+'\r\n';
-        str_error = str_error+'\r\n============== LOG ============== ';
-        str_error = str_error+"\r\n"+text_err;
-        str_error = str_error+'\r================================= ';
+        str_error = str_error+'\r\nDescription: '+text_err;
 
         checkDir(option.pathLog, function(err, made) {
             if(err){
