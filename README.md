@@ -12,7 +12,7 @@
 ### Features
 
 
-You can use different algorithms and methods for compress images with many options.
+You can use different algorithms and methods for compressing images with many options.
 
 * For **JPG**: `jpegtran`, `mozjpeg`, `webp`, `guetzli`, `jpegRecompress`, `jpegoptim`, `tinify`;
 * For **PNG**: `pngquant`, `optipng`, `pngout`, `webp`, `pngcrush`, `tinify`;
@@ -21,21 +21,21 @@ You can use different algorithms and methods for compress images with many optio
 
 ##### Combine compression 
 
-> You even can minify images with use **combine algorithms compress** images. As example - `mozjpeg` + `jpegoptim` or `jpegtran` + `mozjpeg` or any other algorithm.
+> You can even minify images by using a **combination of compression algorithms**. As an example - `mozjpeg` + `jpegoptim` or `jpegtran` + `mozjpeg` or any other algorithm.
 
 
-##### Saving log of errors 
+##### Saving error log
 
-> If you got error, will be save log of error. Default path `./log/compress-images`.   
-
-
-##### Alternative configuration/algorithm compressing images 
-
-> If you get error, can be used alternative algorithm compressing images. As example: you want to compress images in `jpegRecompress`, but got an error  **Unsupported color conversion request**, and then will be used alternative algorithm compress images in`mozjpeg`.
+> If you get an error, the error log will be saved. Default path `./log/compress-images`.
 
 
-##### Detect path for save image
-You can specify the path to source images folder and all images in the folder will be compression and moved to output folder.
+##### Alternative configuration/algorithm for compressing images
+
+> If you get an error, alternative algorithms for compressing images can be used. As an example: you want to compress images in `jpegRecompress`, but you get the error  **Unsupported color conversion request**, so an alternative algorithm to compress the images can be used, like `mozjpeg`.
+
+
+##### Detect path for saving images
+You can specify the path to source images folder and all images in the folder will be compressed and moved to output folder.
 
 **As an example, one of many**:
 
@@ -52,11 +52,11 @@ You can specify the path to source images folder and all images in the folder wi
 npm install compress-images --save-dev
 ```
 
-## Examples how use
+## Examples of how to use it
 
 #### Base example
 https://github.com/semiromid/compress-images/tree/master/example
-* Read to [Manual](https://github.com/semiromid/compress-images/blob/master/example/Manual.txt)
+* Read the [Manual](https://github.com/semiromid/compress-images/blob/master/example/Manual.txt)
 
 #### Example 1
 ```javascript
@@ -98,7 +98,7 @@ https://github.com/semiromid/compress-images/tree/master/example
 var gulp = require('gulp');
 var compress_images = require('compress-images');
 
-// We will be compress images [jpg] with two algorithms, [webp] and [jpg];
+// We will be compressing images [jpg] with two algorithms, [webp] and [jpg];
 // gulp compress_images
 gulp.task('compress_images', function() {
     //[jpg] ---to---> [webp]
@@ -108,7 +108,7 @@ gulp.task('compress_images', function() {
                                                 {svg: {engine: false, command: false}},
                                                 {gif: {engine: false, command: false}}, function(err){ 
             if(err === null){ 
-                //[jpg] ---to---> [jpg(jpegtran)] WARNING!!! autoupdate  - recommended turn off, he is not needed here - autoupdate: false
+                //[jpg] ---to---> [jpg(jpegtran)] WARNING!!! autoupdate  - recommended to turn this off, it's not needed here - autoupdate: false
                 compress_images('src/img/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                                 {jpg: {engine: 'jpegtran', command: false}},
                                                                 {png: {engine: false, command: false}},
@@ -141,7 +141,7 @@ gulp.task('compress_images', function() {
                                                 {png: {engine: false, command: false}},
                                                 {svg: {engine: false, command: false}},
                                                 {gif: {engine: false, command: false}}, function(){
-        //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)] WARNING!!! autoupdate  - recommended turn off, he is not needed here - autoupdate: false
+        //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)] WARNING!!! autoupdate  - recommended to turn this off, it's not needed here - autoupdate: false
         
         compress_images('src/img/combination/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                     {jpg: {engine: 'mozjpeg', command: ['-quality', '75']}},
@@ -170,19 +170,19 @@ gulp.task('compress_images', function() {
                                                 {svg: {engine: 'svgo', command: false}},
                                                 {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(){
           //-------------------------------------------------                                    
-          //[jpg] ---to---> [jpg(jpegtran)] WARNING!!! autoupdate  - recommended turn off, he is not needed here - autoupdate: false
+          //[jpg] ---to---> [jpg(jpegtran)] WARNING!!! autoupdate  - recommended to turn this off, it's not needed here - autoupdate: false
           compress_images('src/img/source/**/*.{jpg,JPG,jpeg,JPEG}', 'src/img/combine/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                           {jpg: {engine: 'jpegtran', command: ['-trim', '-progressive', '-copy', 'none', '-optimize']}},
                                                           {png: {engine: false, command: false}},
                                                           {svg: {engine: false, command: false}},
                                                           {gif: {engine: false, command: false}}, function(){
-                //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)] WARNING!!! autoupdate  - recommended turn off, he is not needed here - autoupdate: false
+                //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)] WARNING!!! autoupdate  - recommended to turn this off, it's not needed here - autoupdate: false
                 compress_images('src/img/combine/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                                 {jpg: {engine: 'mozjpeg', command: ['-quality', '75']}},
                                                                 {png: {engine: false, command: false}},
                                                                 {svg: {engine: false, command: false}},
                                                                 {gif: {engine: false, command: false}}, function(){
-                      //[png] ---to---> [png(pngquant)] WARNING!!! autoupdate  - recommended turn off, he is not needed here - autoupdate: false                                  
+                      //[png] ---to---> [png(pngquant)] WARNING!!! autoupdate  - recommended to turn this off, it's not needed here - autoupdate: false
                       compress_images('src/img/source/**/*.png', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                                       {jpg: {engine: false, command: false}},
                                                                       {png: {engine: 'pngquant', command: ['--quality=30-60']}},
@@ -199,14 +199,14 @@ gulp.task('compress_images', function() {
 
 
 #### Example 6
-Sometime you could get errors, and then use alternative configuration "compress-images". 
-As example one of many:
+Sometimes you could get errors, and then use alternative configuration "compress-images".
+As an example, one of many:
 
-1. If you get error from 'jpegRecompress', as example can be the error "Unsupported color conversion request" In this case will be use alternative image compression.
+1. If you get an error from 'jpegRecompress', for example, the error "Unsupported color conversion request". In this case, an alternative image compression algorithm will be used.
 
-2. Will be created log of error in path './log/lib/compress-images'.
+2. An error log will be created at path './log/lib/compress-images'.
 
-3. Will be try compress this image in 'mozjpeg'.
+3. The algorithm 'mozjpeg' will attempt to be used instead.
 
 ```javascript
     var compress_images = require('compress-images');
@@ -275,54 +275,54 @@ As example one of many:
 
 +  **globoption** (type:boolean|other): Options  module\`s [glob](https://www.npmjs.com/package/glob). Also you can set `false`;
 
-+  **enginejpg** (type:plainObject): Engine for compress **jpeg** and options compress. Key to be `jpg`;
-    + **engine** (type:string): Engine for compress jpeg. Possible values:
++  **enginejpg** (type:plainObject): Engine for compressing **jpeg** and options compress. Key to be `jpg`;
+    + **engine** (type:string): Engine for compressing jpeg. Possible values:
 *`jpegtran`*,*`mozjpeg`*, *`webp`*, *`guetzli`*, *`jpegRecompress`*, *`jpegoptim`*, *`tinify`*;
-    + **command** (type:boolean|array): Options compress. Can be `false` or commands array.
+    + **command** (type:boolean|array): Options for compression. Can be `false` or commands array.
         + For **jpegtran** - `['-trim', '-progressive', '-copy', 'none', '-optimize']` in details; [jpegtran](https://libjpeg-turbo.org/);
         + For **mozjpeg** - `['-quality', '10']` in details [mozjpeg](https://github.com/mozilla/mozjpeg/);
         + For **webp** - `['-q', '60']` in details [webp](https://developers.google.com/speed/webp/);
         + For **guetzli** - `['--quality', '84']` (Very long compresses on Win 8.1 [https://github.com/google/guetzli/issues/238](https://github.com/google/guetzli/issues/238)) in details [guetzli](https://github.com/google/guetzli/);
         + For **jpegRecompress** - `['--quality', 'high', '--min', '60']` in details [jpegRecompress](https://github.com/danielgtaylor/jpeg-archive/);
-        + For **jpegoptim** - `['--all-progressive', '-d']` **Caution!** if do not specify `'-d'` all images will be compressed on source folder and  will be replace. (Maybe problem on Win 8.1: [https://github.com/tjko/jpegoptim/issues/54](https://github.com/tjko/jpegoptim/issues/54)))  In details [jpegoptim](https://github.com/tjko/jpegoptim/);
+        + For **jpegoptim** - `['--all-progressive', '-d']` **Caution!** if do not specify `'-d'` all images will be compressed in the source folder and will be replaced. (May be a problem on Win 8.1: [https://github.com/tjko/jpegoptim/issues/54](https://github.com/tjko/jpegoptim/issues/54)))  In details [jpegoptim](https://github.com/tjko/jpegoptim/);
         + For **tinify** - `['copyright', 'creation', 'location']` In details [tinify](https://tinypng.com/developers/reference/nodejs/);
-    + **key** (type:string): Key which using for engine **tinify**.  In details; [tinify](https://tinypng.com/developers/reference/nodejs/);  <br />
+    + **key** (type:string): Key used for engine **tinify**.  In details; [tinify](https://tinypng.com/developers/reference/nodejs/);  <br />
             Example:  <br /> 
             1. `{jpg: {engine: 'mozjpeg', command: ['-quality', '60']}`;  <br />
             2. `{jpg: {engine: 'tinify', key: "sefdfdcv335fxgfe3qw", command: ['copyright', 'creation', 'location']}}`;  <br />
             3. `{jpg: {engine: 'tinify', key: "sefdfdcv335fxgfe3qw", command: false}}`;    
     
-+  **enginepng** (type:plainObject): Engine for compress **png** and options compress. Key to be `png`;
-    + **engine** (type:string): Engine for compress png. Possible values:
++  **enginepng** (type:plainObject): Engine for compressing **png** and options for compression. Key to be `png`;
+    + **engine** (type:string): Engine for compressing png. Possible values:
 *`pngquant`*,*`optipng`*, *`pngout`*, *`webp`*, *`pngcrush`*, *`tinify`*;
-    + **command** (type:boolean|array): Options compress. Can be `false` or commands array.
+    + **command** (type:boolean|array): Options for compression. Can be `false` or commands array.
         + For **pngquant** - `['--quality=20-50']` - Quality should be in format min-max where min and max are numbers in range 0-100. In details [pngquant](https://pngquant.org/);
         + For **optipng** - in details [optipng](https://pngquant.org/);
         + For **pngout** - in details [pngout](http://advsys.net/ken/util/pngout.htm);
         + For **webp** - `['-q', '60']` in details [webp](https://developers.google.com/speed/webp/);
         + For **pngcrush** - `['-reduce', '-brute']` in details [pngcrush](https://pmt.sourceforge.io/pngcrush/);
         + For **tinify** - `['copyright', 'creation', 'location']` in details [tinify](https://tinypng.com/developers/reference/nodejs/);
-    + **key** (type:string): Key which using for engine **tinify**.  In details; [tinify](https://tinypng.com/developers/reference/nodejs/);  <br />
+    + **key** (type:string): Key used for engine **tinify**.  In details; [tinify](https://tinypng.com/developers/reference/nodejs/);  <br />
             Example:  <br /> 
             1. `{png: {engine: 'webp', command: ['-q', '100']}`;  <br />
             2. `{png: {engine: 'tinify', key: "sefdfdcv335fxgfe3qw", command: ['copyright', 'creation', 'location']}}`;  <br />
             3. `{png: {engine: 'optipng', command: false}}`;
 
 
-+  **enginesvg** (type:plainObject): Engine for compress **svg** and options compress. Key to be `svg`;
-    + **engine** (type:string): Engine for compress svg. Possible values:
++  **enginesvg** (type:plainObject): Engine for compressing **svg** and options for compression. Key to be `svg`;
+    + **engine** (type:string): Engine for compressing svg. Possible values:
 *`svgo`*;    
-    + **command** (type:string): Options compress. Can be `false` or commands type string.
+    + **command** (type:string): Options for compression. Can be `false` or commands type string.
         + For **svgo** - `'--multipass'` in details [svgo](https://www.npmjs.com/package/svgo/);  <br />
                 Example:  <br />
                 1. `{svg: {engine: 'svgo', command: '--multipass'}`;  <br />
                 2. `{svg: {engine: 'svgo', command: false}}`;
 
 
-+  **enginegif** (type:plainObject): Engine for compress **gif** and options compress. Key to be `gif`;
-    + **engine** (type:string): Engine for compress gif. Possible values:
++  **enginegif** (type:plainObject): Engine for compressing **gif** and options for compression. Key to be `gif`;
+    + **engine** (type:string): Engine for compressing gif. Possible values:
 *`gifsicle`*, *`giflossy`*, *`gif2webp`*;  
-    + **command** (type:boolean|array): Options compress. Can be `false` or commands type array.
+    + **command** (type:boolean|array): Options for compression. Can be `false` or commands type array.
         + For **gifsicle** - `['--colors', '64', '--use-col=web']` or `['--optimize']` In details [gifsicle](http://www.lcdf.org/gifsicle/);
         + For **giflossy** - (For Linux x64 and Mac OS X) `['--lossy=80']` In details [giflossy](http://www.lcdf.org/gifsicle/);
         + For **gif2webp** - `['-f', '80', '-mixed', '-q', '30', '-m', '2']` in details [gif2webp](https://developers.google.com/speed/webp/docs/gif2webp);    <br />
@@ -339,7 +339,7 @@ returns:
         + output - The path to the output image
     + **completed** (type:boolean)
         + `true` - result completed.
-        + `false` - result do not complete.
+        + `false` - result not completed.
 <br />
 
 
@@ -348,7 +348,7 @@ _______________________
 
 ### Donate
 ![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/health-care.png)
-If for you is useful thing, support the project.
+If this is a useful thing for you, support the project.
 
  **PayPal** | [https://www.paypal.com/myaccount/transfer/send](https://www.paypal.com/myaccount/transfer/send) **`startpascal1@mail.ru`**
  
