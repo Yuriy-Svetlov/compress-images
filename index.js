@@ -1501,6 +1501,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
       checkUpdate();
 
       if(err !== null){
+        var dataError = {}
         if(length_files === 0){
           dataError.engine = engine;
           dataError.input = input;
