@@ -336,7 +336,7 @@ As an example, one of many:
                 2. `{gif: {engine: 'giflossy', command: false}}`;  <br />
                 3. `{gif: {engine: 'gif2webp', command: ['-f', '80', '-mixed', '-q', '30', '-m', '2']}}`;
                 
-+ **callback** (err, completed): 
++ **callback** (err, completed, statistic): 
 returns: 
     +  **err** (type:json object|null)  
         + engine - The name of the algorithm engine 
