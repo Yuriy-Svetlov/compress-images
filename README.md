@@ -70,7 +70,12 @@ https://github.com/semiromid/compress-images/tree/master/example
                                                 {jpg: {engine: 'mozjpeg', command: ['-quality', '60']}},
                                                 {png: {engine: 'pngquant', command: ['--quality=20-50']}},
                                                 {svg: {engine: 'svgo', command: '--multipass'}},
-                                                {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(){
+                                                {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(error, completed, statistic){
+                console.log('-------------');
+                console.log(error);
+                console.log(completed);
+                console.log(statistic);
+                console.log('-------------');                                   
     });
 ```
 
@@ -296,7 +301,7 @@ As an example, one of many:
     + **engine** (type:string): Engine for compressing png. Possible values:
 *`pngquant`*,*`optipng`*, *`pngout`*, *`webp`*, *`pngcrush`*, *`tinify`*;
     + **command** (type:boolean|array): Options for compression. Can be `false` or commands array.
-        + For **pngquant** - `['--quality=20-50']` - Quality should be in format min-max where min and max are numbers in range 0-100. In details [pngquant](https://pngquant.org/);
+        + For **pngquant** - `['--quality=20-50']` - Quality should be in format min-max where min and max are numbers in range 0-100. Can be problems with cyrillic filename. In details [pngquant](https://pngquant.org/);
         + For **optipng** - in details [optipng](https://pngquant.org/);
         + For **pngout** - in details [pngout](http://advsys.net/ken/util/pngout.htm);
         + For **webp** - `['-q', '60']` in details [webp](https://developers.google.com/speed/webp/);
@@ -333,13 +338,21 @@ As an example, one of many:
                 
 + **callback** (err, completed): 
 returns: 
-    +  **err** (type:object|null)  
+    +  **err** (type:json object|null)  
         + engine - The name of the algorithm engine 
         + input - The path to the input image 
         + output - The path to the output image
     + **completed** (type:boolean)
         + `true` - result completed.
         + `false` - result not completed.
+    + **statistic** (type:json object)
+        + `input`
+        + `path_out_new`
+        + `algorithm`
+        + `size_in`
+        + `size_output`
+        + `percent`
+        + `err`        
 <br />
 
 

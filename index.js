@@ -318,7 +318,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             CompressionFileJpg(input, path_out_new, function(size_in, size_output, percent, err){
 
                                 outputResult(input, path_out_new, enginejpg.jpg.engine, size_in, size_output, percent, err, function(error, completed){
-                                    return callback(error, completed);
+                                    outputResultcallback(error, completed, input, path_out_new, enginejpg.jpg, size_in, size_output, percent, err);
                                 });
                             });                   
                         }else if(extension_f == 'png' || extension_f == 'PNG'){
@@ -326,7 +326,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             CompressionFilePng(input, path_out_new, function(size_in, size_output, percent, err){
 
                                 outputResult(input, path_out_new, enginepng.png.engine, size_in, size_output, percent, err, function(error, completed){
-                                    return callback(error, completed);
+                                    outputResultcallback(error, completed, input, path_out_new, enginepng.png.engine, size_in, size_output, percent, err);
                                 });                                                                               
                             });                       
                         }else if(extension_f == 'svg'){
@@ -334,7 +334,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             CompressionFileSvg(input, path_out_new, function(size_in, size_output, percent){
                                 
                                 outputResult(input, path_out_new, enginesvg.svg.engine, size_in, size_output, percent, err, function(error, completed){
-                                    return callback(error, completed);
+                                    outputResultcallback(error, completed, input, path_out_new, enginesvg.svg.engine, size_in, size_output, percent, err);
                                 });                  
                             });                       
                         }else if(extension_f == 'gif'){
@@ -342,7 +342,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             CompressionFileGif(input, path_out_new, function(size_in, size_output, percent){
 
                                 outputResult(input, path_out_new, enginegif.gif.engine, size_in, size_output, percent, err, function(error, completed){
-                                    return callback(error, completed);
+                                    outputResultcallback(error, completed, input, path_out_new, enginegif.gif.engine, size_in, size_output, percent, err);
                                 });               
                             });                       
                         }                  
@@ -353,9 +353,9 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                   checkUpdate(); 
                   if(length_files === 0){
                       return callback(null, true);
-                  }else{
-                    return callback(null, false);
-                  }   
+                  }//else{
+                    //return callback(null, false);
+                  //}   
               }
           }else{
                 //Проверяем существования файла перед сжатием
@@ -392,7 +392,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             CompressionFileJpg(input, path_out_new, function(size_in, size_output, percent, err){
                                 
                                 outputResult(input, path_out_new, enginejpg.jpg.engine, size_in, size_output, percent, err, function(error, completed){
-                                    return callback(error, completed);
+                                    outputResultcallback(error, completed, input, path_out_new, enginejpg.jpg.engine, size_in, size_output, percent, err);
                                 });                 
                             });                   
                     }else if(extension_f == 'png' || extension_f == 'PNG'){
@@ -400,7 +400,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             CompressionFilePng(input, path_out_new, function(size_in, size_output, percent, err){
                                 
                                 outputResult(input, path_out_new, enginepng.png.engine, size_in, size_output, percent, err, function(error, completed){
-                                    return callback(error, completed);
+                                    outputResultcallback(error, completed, input, path_out_new, enginepng.png.engine, size_in, size_output, percent, err);
                                 });               
                             });                       
                     }else if(extension_f == 'svg'){
@@ -408,7 +408,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             CompressionFileSvg(input, path_out_new, function(size_in, size_output, percent){
                                 
                                 outputResult(input, path_out_new, enginesvg.svg.engine, size_in, size_output, percent, err, function(error, completed){
-                                    return callback(error, completed);
+                                    outputResultcallback(error, completed, input, path_out_new, enginesvg.svg.engine, size_in, size_output, percent, err);
                                 });                  
                             });                       
                     }else if(extension_f == 'gif'){
@@ -416,7 +416,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             CompressionFileGif(input, path_out_new, function(size_in, size_output, percent){
                                 
                                 outputResult(input, path_out_new, enginegif.gif.engine, size_in, size_output, percent, err, function(error, completed){
-                                    return callback(error, completed);
+                                    outputResultcallback(error, completed, input, path_out_new, enginegif.gif.engine, size_in, size_output, percent, err);
                                 });               
                             });                       
                     } 
@@ -429,7 +429,17 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
 
 
-
+      function outputResultcallback(error, completed, input, path_out_new, engine, size_in, size_output, percent, err){
+          let statistic = {};
+          statistic.input = input;
+          statistic.path_out_new = path_out_new;
+          statistic.algorithm = engine;
+          statistic.size_in = size_in;
+          statistic.size_output = size_output;
+          statistic.percent = percent;
+          statistic.err = err;
+          return callback(error, completed, statistic);        
+      }
 
 
 
