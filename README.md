@@ -59,15 +59,6 @@ https://github.com/semiromid/compress-images/tree/master/example
 * Read the [Manual](https://github.com/semiromid/compress-images/blob/master/example/Manual.txt)
 
 
-#### Notice for user with OS Win 10
-
-Maybe you need replace '/' to '\\' in your path to images.
-
-```javascript
-INPUT_path_to_your_images = 'src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}'.replace(/\\/g, '/');
-```
-
-
 
 #### Example 1
 ```javascript
