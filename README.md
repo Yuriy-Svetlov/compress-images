@@ -42,8 +42,11 @@ You can specify the path to source images folder and all images in the folder wi
         INPUT ['src/img/source/**/*.{jpg,JPG,jpeg,JPEG,gif,png,svg}']
         OUTPUT ['build/img/']
 
-![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/img_structure_forder.png)
+##### Note
+You should have in your path slash: `/`.
+If you have slash `\` it may be to replaced: `input.replace(/\\/g, '/')`;
 
+![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/img_structure_forder.png)
 
 # Get started
 
@@ -466,19 +469,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
