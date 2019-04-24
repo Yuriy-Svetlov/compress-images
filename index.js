@@ -1481,9 +1481,8 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
 
     function outputResult(input, path_out_new, engine, size_in, size_output, percent, err, callback){
-
-      console.log('-----------------------------------');
       if(err === null && option.statistic === true){
+          console.log('-----------------------------------');
           console.log(' File from: '+colors.magenta(input)+'');
           console.log(' File to: '+colors.magenta(path_out_new)+'');
           console.log(' Compression algorithm: '+colors.green('['+engine+']'));              
@@ -1494,7 +1493,9 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
             console.log(colors.red(' [Alert] Your file has become more size!!!'));
             console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('[')+colors.yellow('+')+colors.green(percent+'%]'));
           }
+          console.log('-----------------------------------'); 
       }else if(err !== null){
+          console.log('-----------------------------------'); 
           console.log(' File from: '+colors.magenta(input)+'');
           console.log(' File to: '+colors.magenta(path_out_new)+'');
           console.log(' Compression algorithm: '+colors.green('['+engine+']'));
@@ -1503,9 +1504,9 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           writeLogError(err, input, path_out_new, engine);
 
           console.log(colors.red(' [Error] Your file was not compressed!!!'));  
-          console.log(colors.green(' [Error] You can see log to:' + option.pathLog));             
+          console.log(colors.green(' [Error] You can see log to:' + option.pathLog)); 
+          console.log('-----------------------------------');             
       }
-      console.log('-----------------------------------'); 
 
       //Провееряем обновление
       checkUpdate();
