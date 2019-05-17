@@ -1486,11 +1486,11 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           console.log(' File from: '+colors.magenta(input)+'');
           console.log(' File to: '+colors.magenta(path_out_new)+'');
           console.log(' Compression algorithm: '+colors.green('['+engine+']'));              
-          if(percent > 0){
+          if(percent >= 0){
             console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
           }else{
             percent = Math.abs(percent);
-            console.log(colors.red(' [Alert] Your file has become more size!!!'));
+            console.log(colors.red(' [Alert] File size has increased!!!'));
             console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('[')+colors.yellow('+')+colors.green(percent+'%]'));
           }
           console.log('-----------------------------------'); 
