@@ -79,14 +79,14 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
     //JPG
     if(false == enginejpg.jpg.engine){
         if(/^.*(\.({|{[a-zA-Z,]*,)|\.)(jpg|jpeg)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
-          console.log(colors.red(" You had not turned on [enginejpg] and you set to path extension 'jpg', delete extension it 'jpg' from path, or turn on [enginejpg: ['jpegtran'] or ['mozjpeg'] or ['webp'] or other].  OR you had set path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,png} or src/img/**/*.jpg or src/img/*.jpg ..."));
-          console.log(colors.red(' Your path: ')+colors.magenta(input));
+          console.log(colors.red(" You didn't turn on [enginejpg], but your input path includes the 'jpg' extension; either delete the extension 'jpg' from the input path, or turn on [enginejpg: ['jpegtran'] or ['mozjpeg'] or ['webp'] or other]. Alternatively, your input path may be malformed!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,png} or src/img/**/*.jpg or src/img/*.jpg ..."));
+          console.log(colors.red(' Input path: ')+colors.magenta(input));
           return callback(true);
         }
     }else{
         //if(!/^.*(\.({|{[a-zA-Z,]*,)|\.)(jpg|jpeg)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
-        //  console.log(colors.red(" You do not turned on [enginejpg] and you set to path extension 'jpg', delete extension it 'jpg' from path, or turn on [enginejpg: ['jpegtran'] or ['mozjpeg'] or ['webp'] or other].  OR you set path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,png} or src/img/**/*.jpg or src/img/*.jpg ..."));
-        //  console.log(colors.red(' Your path: ')+colors.magenta(input));
+        //  console.log(colors.red(" You didn't turn on [enginejpg], but your input path includes the 'jpg' extension;  either delete the extension 'jpg' from path, or turn on [enginejpg: ['jpegtran'] or ['mozjpeg'] or ['webp'] or other]. Alternatively, your input path may be malformed!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,png} or src/img/**/*.jpg or src/img/*.jpg ..."));
+        //  console.log(colors.red(' Input path: ')+colors.magenta(input));
 
         //  return callback(true);
         //}      
@@ -95,14 +95,14 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
     //PNG
     if(false == enginepng.png.engine){
         if(/^.*(\.({|{[a-zA-Z,]*,)|\.)(png)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
-          console.log(colors.red(" You had not turned on [enginepng] and you set to path extension 'png', delete extension it 'png' from path, or turn on [enginepng: ['pngquant'] or ['optipng'] or ['webp'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,png} or src/img/**/*.png or src/img/*.png ..."));
-          console.log(colors.red(' Your path: ')+colors.magenta(input));
+          console.log(colors.red(" You didn't turn on [enginepng], but your input path includes the 'png' extension; either delete the extension 'png' from the input path, or turn on [enginepng: ['pngquant'] or ['optipng'] or ['webp'] or other]. Alternatively, your input path may be malformed!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,png} or src/img/**/*.png or src/img/*.png ..."));
+          console.log(colors.red(' Input path: ')+colors.magenta(input));
           return callback(true);
         }
     }else{
         //if(!/^.*(\.({|{[a-zA-Z,]*,)|\.)(png)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
-        //  console.log(colors.red(" You do not turned on [enginepng] and you set to path extension 'png', delete extension it 'png' from path, or turn on [enginepng: ['pngquant'] or ['optipng'] or ['webp'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,png} or src/img/**/*.png or src/img/*.png ..."));
-        //  console.log(colors.red(' Your path: ')+colors.magenta(input));
+        //  console.log(colors.red(" You didn't turn on [enginepng], but your input path includes the 'png' extension;  either delete the extension 'png' from path, or turn on [enginepng: ['pngquant'] or ['optipng'] or ['webp'] or other]. Alternatively, your input path may be malformed!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,png} or src/img/**/*.png or src/img/*.png ..."));
+        //  console.log(colors.red(' Input path: ')+colors.magenta(input));
         //  return callback(true);
         //}      
     }
@@ -111,14 +111,14 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
     //SVG
     if(false == enginesvg.svg.engine){
         if(/^.*(\.({|{[a-zA-Z,]*,)|\.)(svg)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
-          console.log(colors.red(" You had not turned on [enginesvg] and you set to path extension 'svg', delete extension it 'svg' from path, or turn on [enginesvg: ['svgo'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,svg} or src/img/**/*.svg or src/img/*.svg ..."));
-          console.log(colors.red(' Your path: ')+colors.magenta(input));
+          console.log(colors.red(" You didn't turn on [enginesvg], but your input path includes the 'svg' extension; either delete the extension 'svg' from the input path, or turn on [enginesvg: ['svgo'] or other]. Alternatively, your input path may be malformed!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,svg} or src/img/**/*.svg or src/img/*.svg ..."));
+          console.log(colors.red(' Input path: ')+colors.magenta(input));
           return callback(true);
         }
     }else{
         //if(!/^.*(\.({|{[a-zA-Z,]*,)|\.)(svg)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
-        //  console.log(colors.red(" You do not turned on [enginesvg] and you set to path extension 'svg', delete extension it 'svg' from path, or turn on [enginesvg: ['svgo'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,svg} or src/img/**/*.svg or src/img/*.svg ..."));
-        //  console.log(colors.red(' Your path: ')+colors.magenta(input));
+        //  console.log(colors.red(" You didn't turn on [enginesvg], but your input path includes the 'svg' extension;  either delete the extension 'svg' from path, or turn on [enginesvg: ['svgo'] or other]. Alternatively, your input path may be malformed!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,svg} or src/img/**/*.svg or src/img/*.svg ..."));
+        //  console.log(colors.red(' Input path: ')+colors.magenta(input));
         //  return callback(true);
         //}      
     }
@@ -127,14 +127,14 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
     //GIF
     if(false == enginegif.gif.engine){
         if(/^.*(\.({|{[a-zA-Z,]*,)|\.)(gif)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
-          console.log(colors.red(" You had not turned on [enginegif] and you set to path extension 'gif', delete extension it 'gif' from path, or turn on [enginegif: ['gifsicle'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,gif} or src/img/**/*.gif or src/img/*.gif ..."));
-          console.log(colors.red(' Your path: ')+colors.magenta(input));
+          console.log(colors.red(" You didn't turn on [enginegif], but your input path includes the 'gif' extension; either delete the extension 'gif' from the input path, or turn on [enginegif: ['gifsicle'] or other]. Alternatively, your input path may be malformed!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,gif} or src/img/**/*.gif or src/img/*.gif ..."));
+          console.log(colors.red(' Input path: ')+colors.magenta(input));
           return callback(true);
         }
     }else{
         //if(!/^.*(\.({|{[a-zA-Z,]*,)|\.)(gif)(,[,a-zA-Z]*}|}|)$/gi.test(input)){
-        //  console.log(colors.red(" You do not turned on [enginegif] and you set to path extension 'gif', delete extension it 'gif' from path, or turn on [enginegif: ['gifsicle'] or other].  OR you set had path don't right!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,gif} or src/img/**/*.gif or src/img/*.gif ..."));
-        //  console.log(colors.red(' Your path: ')+colors.magenta(input));
+        //  console.log(colors.red(" You didn't turn on [enginegif], but your input path includes the 'gif' extension;  either delete the extension 'gif' from path, or turn on [enginegif: ['gifsicle'] or other]. Alternatively, your input path may be malformed!: Examples: src/img/**/*.{jpg,JPG,jpeg,JPEG,gif} or src/img/**/*.gif or src/img/*.gif ..."));
+        //  console.log(colors.red(' Input path: ')+colors.magenta(input));
         //  return callback(true);
         //}      
     }
@@ -150,14 +150,14 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
       if(undefined != enginejpg.jpg.key){
         tinifyjpeg.key = enginejpg.jpg.key;
       }else{
-        console.log(colors.red(" You had not set API KEY for [tinify] API. Example: {jpg: {engine: 'tinify', key: 'K_lYTUGjgbHJBGRFpXnhJBkbvLHKblhBhM', command: false}}"));
+        console.log(colors.red(" You have not set an API KEY for the [tinify] API. Example: {jpg: {engine: 'tinify', key: 'K_lYTUGjgbHJBGRFpXnhJBkbvLHKblhBhM', command: false}}"));
         return callback(true);
       }
     }else if(enginepng.png.engine == 'tinify'){
       if(undefined != enginepng.png.key){
         tinifypng.key = enginepng.png.key;
       }else{
-        console.log(colors.red(" You had not set API KEY for [tinify] API. Example: {jpg: {engine: 'tinify', key: 'K_lYTUGjgbHJBGRFpXnhJBkbvLHKblhBhM', command: false}}"));
+        console.log(colors.red(" You have not set an API KEY for the [tinify] API. Example: {jpg: {engine: 'tinify', key: 'K_lYTUGjgbHJBGRFpXnhJBkbvLHKblhBhM', command: false}}"));
         return callback(true);
       }
     }
@@ -236,8 +236,8 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                 }
 
               }else{
-                console.log(colors.red(" Directory don't not have files!: ")+colors.magenta(input));
-                writeLogError(" Directory don't not have files!: ", input, '-', '-');
+                console.log(colors.red(" Directory is empty!: ")+colors.magenta(input));
+                writeLogError(" Directory is empty!: ", input, '-', '-');
               }
             }else{
               console.error(er);
@@ -283,8 +283,8 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
                 //Проверяем существования файла перед сжатием
                 if(!checkFile(input)){
-                    console.log(colors.red("   File is not exists!")); 
-                    writeLogError("File is not exists!", input, path_out_new, '-');
+                    console.log(colors.red("   File does not exist!")); 
+                    writeLogError("File does not exist!", input, path_out_new, '-');
 
                     //Провееряем обновление
                     checkUpdate(); 
@@ -302,7 +302,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                 checkDir(output, function(err, made) {
                     if(err){
                         console.log(colors.red('-----------------------------------'));
-                        console.log(colors.red('Was error!'));
+                        console.log(colors.red('An error occurred!'));
                         console.error(err)
                         console.log(colors.red('-----------------------------------'));
                         return callback(err);
@@ -360,8 +360,8 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           }else{
                 //Проверяем существования файла перед сжатием
                 if(!checkFile(input)){
-                    console.log(colors.red("   File is not exists!")); 
-                    writeLogError("File is not exists!", input, path_out_new, '-');
+                    console.log(colors.red("   File does not exist!")); 
+                    writeLogError("File does not exist!", input, path_out_new, '-');
 
                     //Провееряем обновление
                     checkUpdate(); 
@@ -378,7 +378,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
               checkDir(output, function(err, made){
                 if(err){
                   console.log(colors.red('-----------------------------------'));
-                  console.log(colors.red('Was error!'));
+                  console.log(colors.red('An error occurred!'));
                   console.error(err)
                   console.log(colors.red('-----------------------------------'));
                 }else{
@@ -1383,7 +1383,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         checkDir(option.pathLog, function(err, made) {
             if(err){
                 console.log(colors.red('-----------------------------------'));
-                console.log(colors.red('Was error!'));
+                console.log(colors.red('An error occurred!'));
                 console.error(err)
                 console.log(colors.red('-----------------------------------'));
                 return callback(true);
@@ -1486,6 +1486,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           console.log(' File from: '+colors.magenta(input)+'');
           console.log(' File to: '+colors.magenta(path_out_new)+'');
           console.log(' Compression algorithm: '+colors.green('['+engine+']'));              
+
           if(percent >= 0){
             console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
           }else{
