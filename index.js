@@ -36,7 +36,9 @@ var  colors = require('colors'),
      mkdirp = require('mkdirp'),
      bytes = require('bytes'),
 
-     path_gif2webp, length_files = 0;
+     path_gif2webp, 
+     length_files = 0,
+     lock__length_files = false;
 
 
 
@@ -249,7 +251,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         //Не проводим поиск всех файлов
         ///////////////////////////////////////////////////////////////////////
         var path_out_new = output+filename; //полный путь вывода файла
-        length_files = 'onefile';
+        lock__length_files = true;
         
         if(enginejpg.jpg.engine == 'webp' || enginegif.gif.engine == 'gif2webp'){
           //Заменяем расширение на - webp
@@ -1470,7 +1472,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
 
     function checkUpdate(){
-        if(length_files !== 'onefile'){
+        if(lock__length_files !== true){
           length_files = length_files - 1;
         }
 
