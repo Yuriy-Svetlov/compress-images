@@ -249,6 +249,8 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         //Не проводим поиск всех файлов
         ///////////////////////////////////////////////////////////////////////
         var path_out_new = output+filename; //полный путь вывода файла
+        length_files = 'onefile';
+        
         if(enginejpg.jpg.engine == 'webp' || enginegif.gif.engine == 'gif2webp'){
           //Заменяем расширение на - webp
           path_out_new = path_out_new.replace(/\.[a-zA-Z]+$/g, '.webp');
@@ -1468,7 +1470,9 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
 
     function checkUpdate(){
-        length_files = length_files - 1;
+        if(length_files !== 'onefile'){
+          length_files = length_files - 1;
+        }
 
         if(length_files === 0){
             updater(fs, colors, option.autoupdate);
