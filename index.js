@@ -1494,11 +1494,11 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           console.log(' Compression algorithm: '+colors.green('['+engine+']'));              
 
           if(percent >= 0){
-            console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('['+percent+'%]'));
+            console.log(' Original size: '+colors.green('['+bytes(size_in)+']')+' | Compressed size: '+colors.green('['+bytes(size_output)+']')+' | Compression rate: '+colors.green('['+percent+'%]'));
           }else{
             percent = Math.abs(percent);
             console.log(colors.red(' [Alert] File size has increased!!!'));
-            console.log(' File was size: '+colors.green('['+bytes(size_in)+']')+' | File have size: '+colors.green('['+bytes(size_output)+']')+' | Compression: '+colors.green('[')+colors.yellow('+')+colors.green(percent+'%]'));
+            console.log(' Original size: '+colors.green('['+bytes(size_in)+']')+' | Compressed size: '+colors.green('['+bytes(size_output)+']')+' | Compression rate: '+colors.green('[')+colors.yellow('+')+colors.green(percent+'%]'));
           }
           console.log('-----------------------------------'); 
       }else if(err !== null){
