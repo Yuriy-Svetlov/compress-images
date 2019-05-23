@@ -1476,7 +1476,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           length_files = length_files - 1;
         }
 
-        if(length_files === 0){
+        if(length_files === 0 && lock__length_files !== true){
             updater(fs, colors, option.autoupdate);
             //callback(null);
         }    
