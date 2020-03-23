@@ -441,11 +441,15 @@ mkdirp [https://www.npmjs.com/package/mkdirp](https://www.npmjs.com/package/mkdi
 bytes [https://www.npmjs.com/package/bytes](https://www.npmjs.com/package/bytes) author is Dougwilson;
 
 
+Веб-студия Харьков [https://web-studio.kh.ua](https://web-studio.kh.ua)
+
+
 ## Bugs
   * github - [https://github.com/semiromid/compress-images/issues](https://github.com/semiromid/compress-images/issues) 
 
 ## Author
 SEMINA TAMARA
+
 
 ## License
 MIT License
