@@ -7,10 +7,10 @@ git clone git@github.com:semiromid/compress-images.git
 [2] Go to in folder "compress-images" and delete all folders and files except "example"
 
 
-[3] Go to in folder "example": 
+[3] Go to in folder "example".
 
 
-[4] Open console and run the command in the console: 
+[4] Open console in folder "example" and run the command in the console: 
 npm install compress-images --save-dev
 
 
