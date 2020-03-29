@@ -441,7 +441,7 @@ mkdirp [https://www.npmjs.com/package/mkdirp](https://www.npmjs.com/package/mkdi
 bytes [https://www.npmjs.com/package/bytes](https://www.npmjs.com/package/bytes) author is Dougwilson;
 
 
-Веб-студия Харьков [https://web-studio.kh.ua](https://web-studio.kh.ua)
+Разработка сайтов [Веб-студия Харьков](https://web-studio.kh.ua)
 
 
 ## Bugs
