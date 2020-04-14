@@ -4,6 +4,7 @@
 [1] Open console and to run command:
 git clone git@github.com:semiromid/compress-images.git
 
+
 [2] Go to in folder "compress-images" and delete all folders and files except "example"
 
 
@@ -11,10 +12,13 @@ git clone git@github.com:semiromid/compress-images.git
 
 
 [4] Open console in folder "example" and run the command in the console: 
-npm install compress-images --save-dev
+npm install compress-images --save
 
 
-[5] 
-- [5.1] You can open console and to input command and press enter "node compress_images.js" 
+[5] npm install pngquant-bin --save
+
+
+[6] 
+- [6.1] You can open console and to input command and press enter "node compress_images.js" 
   OR 
-- [5.2] double-click on the file "minify_Img.bat".
+- [6.2] double-click on the file "minify_Img.bat".
