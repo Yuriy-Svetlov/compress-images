@@ -294,7 +294,14 @@ As an example, one of many:
         + For **webp** - `['-q', '60']` in details [webp](https://developers.google.com/speed/webp/);
         + For **guetzli** - `['--quality', '84']` (Very long compresses on Win 8.1 [https://github.com/google/guetzli/issues/238](https://github.com/google/guetzli/issues/238)) in details [guetzli](https://github.com/google/guetzli/);
         + For **jpegRecompress** - `['--quality', 'high', '--min', '60']` in details [jpegRecompress](https://github.com/danielgtaylor/jpeg-archive/);
-        + For **jpegoptim** - `['--all-progressive', '-d']` **Caution!** if do not specify `'-d'` all images will be compressed in the source folder and will be replaced. (May be a problem on Win 8.1: [https://github.com/tjko/jpegoptim/issues/54](https://github.com/tjko/jpegoptim/issues/54)))  In details [jpegoptim](https://github.com/tjko/jpegoptim/);
+        + For **jpegoptim** - `['--all-progressive', '-d']` 
+        To use jpegoptim you must `npm install jpegoptim-bin --save`, this library does not work properly on all OS and platforms.
+        from https://github.com/imagemin/jpegoptim-bin
+        **Issues!**
+        May be a problems with installation and use on Win 8.1 x64 Win 7 x32 and other OS: [jpegoptim - issues/54](https://github.com/tjko/jpegoptim/issues/54)
+        [compress-images - issues/21](https://github.com/semiromid/compress-images/issues/21)
+        **Caution!** if do not specify `'-d'` all images will be compressed in the source folder and will be replaced. 
+          
         + For **tinify** - `['copyright', 'creation', 'location']` In details [tinify](https://tinypng.com/developers/reference/nodejs/);
     + **key** (type:string): Key used for engine **tinify**.  In details; [tinify](https://tinypng.com/developers/reference/nodejs/);  <br />
             Example:  <br /> 
