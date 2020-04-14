@@ -13,7 +13,7 @@ var  colors = require('colors'),
      cwebp = require('cwebp-bin'),
      mozjpeg = require('mozjpeg'),
      guetzli = require('guetzli'),
-     jpegoptim = require('jpegoptim-bin'),
+     jpegoptim,
      tinifyjpeg = require("tinify"),
 
      //PNG
@@ -52,6 +52,10 @@ var  colors = require('colors'),
 
 var index = function (input, output, option, findfileop, enginejpg, enginepng, enginesvg, enginegif, callback) {
     
+
+    if(enginejpg.jpg.engine === "jpegoptim" && jpegoptim === undefined){
+      jpegoptim = require('jpegoptim-bin');
+    }
 
     //Updater
     //debug_updater('[to]');
