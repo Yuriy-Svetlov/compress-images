@@ -18,7 +18,7 @@ var  colors = require('colors'),
 
      //PNG
      pngquant = require('pngquant-bin'),
-     optipng = require('optipng-bin'),
+     optipng,
      pngout = require('pngout-bin'),
      pngcrush = require('pngcrush-bin'),
      tinifypng = require("tinify"),
@@ -52,10 +52,16 @@ var  colors = require('colors'),
 
 var index = function (input, output, option, findfileop, enginejpg, enginepng, enginesvg, enginegif, callback) {
     
-
+    // JPG
     if(enginejpg.jpg.engine === "jpegoptim" && jpegoptim === undefined){
       jpegoptim = require('jpegoptim-bin');
     }
+
+    // PNG
+    if(enginepng.png.engine === "optipng" && optipng === undefined){
+      optipng = require('optipng-bin');
+    }
+
 
     //Updater
     //debug_updater('[to]');

@@ -295,7 +295,7 @@ As an example, one of many:
         + For **guetzli** - `['--quality', '84']` (Very long compresses on Win 8.1 [https://github.com/google/guetzli/issues/238](https://github.com/google/guetzli/issues/238)) in details [guetzli](https://github.com/google/guetzli/);
         + For **jpegRecompress** - `['--quality', 'high', '--min', '60']` in details [jpegRecompress](https://github.com/danielgtaylor/jpeg-archive/);
         + For **jpegoptim** - `['--all-progressive', '-d']` 
-        To use jpegoptim you must `npm install jpegoptim-bin --save`, this library does not work properly on all OS and platforms.
+        To use jpegoptim you must `npm install jpegoptim-bin --save`, this library does not work properly on some OS and platforms.
         from https://github.com/imagemin/jpegoptim-bin
         **Issues!**
         May be a problems with installation and use on Win 8.1 x64 Win 7 x32 and other OS: [jpegoptim - issues/54](https://github.com/tjko/jpegoptim/issues/54)
@@ -314,7 +314,8 @@ As an example, one of many:
 *`pngquant`*,*`optipng`*, *`pngout`*, *`webp`*, *`pngcrush`*, *`tinify`*;
     + **command** (type:boolean|array): Options for compression. Can be `false` or commands array.
         + For **pngquant** - `['--quality=20-50']` - Quality should be in format min-max where min and max are numbers in range 0-100. Can be problems with cyrillic filename. In details [pngquant](https://pngquant.org/);
-        + For **optipng** - in details [optipng](https://pngquant.org/);
+        + For **optipng** - To use this library you need to install it manually. It does not work properly on some OS (Win 7 x32 and maybe other). `npm install --save optipng-bin` in details [optipng-bin - wrapper](https://github.com/imagemin/optipng-bin)
+        and [optipng](http://optipng.sourceforge.net/);
         + For **pngout** - in details [pngout](http://advsys.net/ken/util/pngout.htm);
         + For **webp** - `['-q', '60']` in details [webp](https://developers.google.com/speed/webp/);
         + For **pngcrush** - `['-reduce', '-brute']` in details [pngcrush](https://pmt.sourceforge.io/pngcrush/);
