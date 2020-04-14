@@ -313,8 +313,12 @@ As an example, one of many:
     + **engine** (type:string): Engine for compressing png. Possible values:
 *`pngquant`*,*`optipng`*, *`pngout`*, *`webp`*, *`pngcrush`*, *`tinify`*;
     + **command** (type:boolean|array): Options for compression. Can be `false` or commands array.
-        + For **pngquant** - `['--quality=20-50']` - Quality should be in format min-max where min and max are numbers in range 0-100. Can be problems with cyrillic filename. In details [pngquant](https://pngquant.org/);
-        + For **optipng** - To use this library you need to install it manually. It does not work properly on some OS (Win 7 x32 and maybe other). `npm install --save optipng-bin` in details [optipng-bin - wrapper](https://github.com/imagemin/optipng-bin)
+        + For **pngquant** - `['--quality=20-50']` - To use this library you need to install it manually. It does not work properly on some OS (Win 7 x32 and maybe other). `npm install pngquant-bin --save` 
+        Quality should be in format min-max where min and max are numbers in range 0-100. Can be problems with cyrillic filename. In details 
+        [pngquant](https://pngquant.org/)
+        [pngquant-bin - wrapper](https://github.com/imagemin/pngquant-bin)
+        + For **optipng** - To use this library you need to install it manually. 
+        It does not work properly on some OS (Win 7 x32 and maybe other). `npm install --save optipng-bin` in details [optipng-bin - wrapper](https://github.com/imagemin/optipng-bin)
         and [optipng](http://optipng.sourceforge.net/);
         + For **pngout** - in details [pngout](http://advsys.net/ken/util/pngout.htm);
         + For **webp** - `['-q', '60']` in details [webp](https://developers.google.com/speed/webp/);
