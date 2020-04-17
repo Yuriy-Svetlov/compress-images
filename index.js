@@ -67,7 +67,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
     // GIF
     if(enginegif.gif.engine === "gifsicle" && gifsicle === undefined){
-      gifsicle = require('gifsicle'),
+      gifsicle = require('gifsicle');
     }    
 
     //Updater
