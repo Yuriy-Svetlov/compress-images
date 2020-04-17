@@ -347,7 +347,8 @@ As an example, one of many:
 *`gifsicle`*, *`giflossy`*, *`gif2webp`*;  
     + **command** (type:boolean|array): Options for compression. Can be `false` or commands type array.
         + For **gifsicle** - To use this library you need to install it manually.
-It does not work properly on some OS. `npm install gifsicle --save`
+It does not work properly on some OS. `npm install gifsicle --save`. 
+        Example options:  
         `['--colors', '64', '--use-col=web']` or `['--optimize']` In details [gifsicle](http://www.lcdf.org/gifsicle/);
         + For **giflossy** - (For Linux x64 and Mac OS X) `['--lossy=80']` In details [giflossy](http://www.lcdf.org/gifsicle/);
         + For **gif2webp** - `['-f', '80', '-mixed', '-q', '30', '-m', '2']` in details [gif2webp](https://developers.google.com/speed/webp/docs/gif2webp);    <br />
