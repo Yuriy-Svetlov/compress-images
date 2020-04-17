@@ -27,7 +27,7 @@ var  colors = require('colors'),
      //https://www.npmjs.com/package/svgo
 
      //GIF
-     gifsicle = require('gifsicle'),
+     gifsicle,
      giflossy = require('giflossy'),
      gif2webp = require('./lib/webp'),
      updater = require('./lib/updater'),
@@ -65,7 +65,10 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
       pngquant = require('pngquant-bin');
     }    
 
-    
+    // GIF
+    if(enginegif.gif.engine === "gifsicle" && gifsicle === undefined){
+      gifsicle = require('gifsicle'),
+    }    
 
     //Updater
     //debug_updater('[to]');

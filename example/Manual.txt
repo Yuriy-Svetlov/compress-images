@@ -15,10 +15,13 @@ git clone git@github.com:semiromid/compress-images.git
 npm install compress-images --save
 
 
-[5] npm install pngquant-bin --save
+[5] "npm install pngquant-bin --save" (It does not work properly on some OS). If you get error, you need edit './compress_images.js' and replace 'pngquant' on other PNG engine, as example on "pngout".
 
 
-[6] 
-- [6.1] You can open console and to input command and press enter "node compress_images.js" 
-  OR 
-- [6.2] double-click on the file "minify_Img.bat".
+[6] "npm install gifsicle --save" (It does not work properly on some OS). If you get error, you need edit './compress_images.js' and replace 'gifsicle' on other GIF engine, as example "gif2webp"
+
+
+[7] 
+	a) You can open console and to input command and press enter "node compress_images.js" 
+  	or 
+	b) double-click on the file "minify_Img.bat".
