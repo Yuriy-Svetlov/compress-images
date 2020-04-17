@@ -323,7 +323,7 @@ As an example, one of many:
         and [optipng](http://optipng.sourceforge.net/);
         + For **pngout** - in details [pngout](http://advsys.net/ken/util/pngout.htm);
         + For **webp** - `['-q', '60']` in details [webp](https://developers.google.com/speed/webp/);
-        + For **pngcrush** - `['-reduce', '-brute']` in details [pngcrush](https://pmt.sourceforge.io/pngcrush/);
+        + For **pngcrush** (It does not work properly on some OS) - `['-reduce', '-brute']` in details [pngcrush](https://pmt.sourceforge.io/pngcrush/);
         + For **tinify** - `['copyright', 'creation', 'location']` in details [tinify](https://tinypng.com/developers/reference/nodejs/);
     + **key** (type:string): Key used for engine **tinify**.  In details; [tinify](https://tinypng.com/developers/reference/nodejs/);  <br />
             Example:  <br /> 

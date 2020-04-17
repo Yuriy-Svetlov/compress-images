@@ -1,6 +1,6 @@
 {
   "name": "compress-images",
-  "version": "1.7.4",
+  "version": "1.7.6",
   "description": "Minify size your images. Image compression with extension: jpg/jpeg, svg, png, gif.",
   "keywords": [
     "image-compress",
@@ -91,6 +91,9 @@
     "type": "git",
     "url": "https://github.com/semiromid/compress-images.git"
   },
+  "devDependencies": {
+    "mocha": "4.0.1"
+  },
   "dependencies": {
     "colors": ">=1.1.2",
     "glob": ">=7.1.2",
@@ -105,8 +108,7 @@
     "giflossy": ">=3.0.41",
     "mkdirp": "0.5.1",
     "bytes": ">=3.0.0",
-    "svgo": ">=1.0.2",    
-    "mocha": "4.0.1"
+    "svgo": ">=1.0.2"    
   },
   "scripts": {
     "test": "node_modules/.bin/mocha"
