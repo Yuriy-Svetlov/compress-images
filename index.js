@@ -481,7 +481,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
       if(option.statistic){
         //Block statistic
         //- - - - - - - - - - - - -  - - - - - - - - - - -      
-        //Размер файла пред  сжатием       
+        //Размер файла пред сжатием       
         size_in = getFilesizeInBytes(input);
         //- - - - - - - - - - - - -  - - - - - - - - - - -   
       }
@@ -704,6 +704,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         //Примечание:
         //https://github.com/tjko/jpegoptim/issues/54
         //Наблюдается проблема, на Windows 8.1 x64 выводит файл изображение с изменённым именем и расширением .tmp
+        Это происходит из-за неправильного слэша. Вот правильный формат: "J:\111\jpegoptim-64.exe" --all-progressive -d b\1 a\olQ9Dqr.jpg
         
 
         https://github.com/tjko/jpegoptim
@@ -715,21 +716,24 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         var array;
         if(false != enginejpg.jpg.command){
           //Если установлена опция вывода файлов в отдельную дерикторию, то добавляем в массив папку для вывода
+          const input_2 = input.replace(/\//g, '\\');
+
           if(cheopJpegoptim(enginejpg.jpg.command)){
             //обрезаем имя файла
-            output = getPath(output).replace(/\/$/g, '')
-            array = enginejpg.jpg.command.concat(output, input);            
+            let output_2 = getPath(output).replace(/\/$/g, '');
+            output_2 = output_2.replace(/\//g, '\\');
+            array = enginejpg.jpg.command.concat(output_2, input_2);            
           }else{
-            array = enginejpg.jpg.command.concat(input);    
+            array = enginejpg.jpg.command.concat(input_2);    
           }
         }else{
-          array = [input];
+          array = [input_2];
         }
 
         execFile(jpegoptim, array, err => {
             if(err === null){           
                 if(option.statistic){
-                  /*
+                  
                   //Block statistic
                   //- - - - - - - - - - - - -  - - - - - - - - - - -
                   //Узнаем размер файла после сжатия
@@ -740,10 +744,8 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                   percent = percent * 100;
                   percent = 100 - percent;
                   percent = Math.round(percent * 100) / 100;
-                  return callback(size_in, size_output, percent); 
-                  return callback(0, 0, 0); 
-                  */
-                  console.log(colors.red("With [jpegoptim] statistic don't working!"));
+
+                  return callback(size_in, size_output, percent, null); 
                   //- - - - - - - - - - - - -  - - - - - - - - - - -
                 } 
             }else{

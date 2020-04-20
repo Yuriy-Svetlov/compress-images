@@ -298,9 +298,10 @@ As an example, one of many:
         To use jpegoptim you must `npm install jpegoptim-bin --save`, this library does not work properly on some OS and platforms.
         from https://github.com/imagemin/jpegoptim-bin
         **Issues!**
-        May be a problems with installation and use on Win 8.1 x64 Win 7 x32 and other OS: [jpegoptim - issues/54](https://github.com/tjko/jpegoptim/issues/54)
+        May be a problems with installation and use on Win 7 x32 and maybe other OS: 
         [compress-images - issues/21](https://github.com/semiromid/compress-images/issues/21)
         **Caution!** if do not specify `'-d'` all images will be compressed in the source folder and will be replaced. 
+        For Windows x32 and x63 also, you can use [https://github.com/vikas5914/jpegoptim-win](https://github.com/vikas5914/jpegoptim-win). Copy jpegoptim-32.exe and replace and rename in "node_modules\jpegoptim-bin\vendor\jpegoptim.exe"
           
         + For **tinify** - `['copyright', 'creation', 'location']` In details [tinify](https://tinypng.com/developers/reference/nodejs/);
     + **key** (type:string): Key used for engine **tinify**.  In details; [tinify](https://tinypng.com/developers/reference/nodejs/);  <br />
