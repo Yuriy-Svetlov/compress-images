@@ -54,19 +54,35 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
     
     // JPG
     if(enginejpg.jpg.engine === "jpegoptim" && jpegoptim === undefined){
+      if(checkExistsModule('jpegoptim-bin', 'npm install jpegoptim-bin --save') != true){
+        return false;
+      }
+
       jpegoptim = require('jpegoptim-bin');
     }
 
     // PNG
     if(enginepng.png.engine === "optipng" && optipng === undefined){
+      if(checkExistsModule('optipng-bin', 'npm install optipng-bin --save') != true){
+        return false;
+      }      
       optipng = require('optipng-bin');
+
     }else
     if(enginepng.png.engine === "pngquant" && pngquant === undefined){
+      if(checkExistsModule('pngquant-bin', 'npm install pngquant-bin --save') != true){
+        return false;
+      }
+
       pngquant = require('pngquant-bin');
     }    
 
     // GIF
     if(enginegif.gif.engine === "gifsicle" && gifsicle === undefined){
+      if(checkExistsModule('gifsicle', 'npm install gifsicle --save') != true){
+        return false;
+      }
+
       gifsicle = require('gifsicle');
     }    
 
@@ -1568,6 +1584,20 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         }else{
           return false;
         }            
+    }
+
+
+    function checkExistsModule(name, install_package){
+        try {
+            require.resolve(name);
+            return true;
+        } catch(e) {
+            console.log("--------------------");
+            console.log(colors.red("You must install additional module ["+install_package+"]!"));
+            console.log("It does not work properly on some OS! If you will get an error try use other module.");
+            console.log("--------------------");
+            process.exit(e.code);
+        }           
     }
 
 
