@@ -462,18 +462,18 @@ returns:
         + `err`        
 <br />
 
-## Prmosied API
+## Promised API
 
 **`promise/compress`**(*`params`*)
 
 + **params** (type:plainObject): Module options;
     + **source** (type:string): **input**, see above;
     + **destination** (type:string): **output**, see above;
-    + **enginesSetup** (type:plainObject):  Engines setup mapping, for example: `{ jpg: **enginejpg**, png: **enginepng** }`, see above;
-    + **failOnFirstError** (type:boolean): (optional) Fail promise immediately after first error;
-    + **params** (type:plainObject): (optional) Options module\`s «compress-images», see **option** above;
-    + **globOptions** (type:boolean|other): (optional) see **globoption** above;
-    + **onProgress** (err, statistic): (optional) see **callback** above
+    + **enginesSetup** (type:plainObject):  Engines setup mapping, only needed ones, for example: `{ jpg: <enginejpg>, png: <enginepng> }`, see details above;
+    + (optional) **failOnFirstError** (type:boolean): Fail promise immediately after first error;
+    + (optional) **params** (type:plainObject): Options module\`s «compress-images», see **option** above;
+    + (optional) **globOptions** (type:boolean|other): see **globoption** above;
+    + (optional) **onProgress** (err, statistic): see **callback** above
 
 + returns **Promise** with object:
     + **statistics** (type:**statistic[]**), see above;
