@@ -66,7 +66,7 @@ Promise API example
 
 ```javascript
     const { compress } = require('compress-images/promise');
-    const INPUT_path_to_your_images = 'src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}';
+    const INPUT_path_to_your_images = 'src/img/**/*.{jpg,JPG,jpeg,JPEG,png}';
     const OUTPUT_path = 'build/img/';
 
     const processImages = async () => {
