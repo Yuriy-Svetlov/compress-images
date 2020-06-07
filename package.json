@@ -84,6 +84,7 @@
     "LICENSE",
     "Readme.md",
     "index.js",
+    "promise.js",
     "lib/"
   ],
   "main": "index.js",
