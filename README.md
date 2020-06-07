@@ -88,6 +88,43 @@ Promise API example
 ```
 
 #### Example 2
+Promise API example - using `onProgress`
+
+```javascript
+    const { compress } = require('compress-images/promise');
+    const INPUT_path_to_your_images = 'src/img/**/*.{jpg,JPG,jpeg,JPEG,png}';
+    const OUTPUT_path = 'build/img/';
+
+    const processImages = async (onProgress) => {
+        const result = await compress({
+            source: INPUT_path_to_your_images,
+            destination: OUTPUT_path,
+            onProgress,
+            enginesSetup: {
+                jpg: { engine: 'mozjpeg', command: ['-quality', '60']},
+                png: { engine: 'pngquant', command: ['--quality=20-50']},
+            }
+        });
+
+        const { statistics, errors } = result;
+        // statistics - all processed images list
+        // errors - all errros happened list
+    };
+
+    processImages((error, statistic) => {
+        if (error) {
+            console.log('Error happen while processing file');
+            console.log(error);
+            return;
+        }
+
+        console.log('Sucefully processed file');
+
+        console.log(statistic)
+    });
+```
+
+#### Example 3
 ```javascript
     const compress_images = require('compress-images');
     const INPUT_path_to_your_images = 'src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}';
@@ -112,7 +149,7 @@ Promise API example
     );
 ```
 
-#### Example 3
+#### Example 4
 ```javascript
     const compress_images = require('compress-images');
     
@@ -136,7 +173,7 @@ Promise API example
 ```
 
 
-#### Example 4
+#### Example 5
 ```javascript
 const gulp = require('gulp');
 const compress_images = require('compress-images');
@@ -178,7 +215,7 @@ gulp.task('compress_images', function() {
 
 
 
-#### Example 5
+#### Example 6
 ```javascript
 const gulp = require('gulp');
 const compress_images = require('compress-images');
@@ -216,7 +253,7 @@ gulp.task('compress_images', function() {
 
 
 
-#### Example 6
+#### Example 7
 ```javascript
 const gulp = require('gulp');
 const compress_images = require('compress-images');
@@ -280,7 +317,7 @@ gulp.task('compress_images', function() {
 
 
 
-#### Example 7
+#### Example 8
 Sometimes you could get errors, and then use alternative configuration "compress-images".
 As an example, one of many:
 
@@ -470,7 +507,6 @@ returns:
     + **source** (type:string): **input**, see above;
     + **destination** (type:string): **output**, see above;
     + **enginesSetup** (type:plainObject):  Engines setup mapping, only needed ones, for example: `{ jpg: <enginejpg>, png: <enginepng> }`, see details above;
-    + (optional) **failOnFirstError** (type:boolean): Fail promise immediately after first error;
     + (optional) **params** (type:plainObject): Options module\`s «compress-images», see **option** above;
     + (optional) **globOptions** (type:boolean|other): see **globoption** above;
     + (optional) **onProgress** (err, statistic): see **callback** above

@@ -41,17 +41,14 @@ const constructParams = (options) => {
 };
 
 const compress = (options) => {
-  const failOnFirstError = options.failOnFirstError || false;
   const [params, callback] = constructParams(options);
   const errors = [];
   const statistics = [];
 
-  return new Promise((res, rej) => {
+  return new Promise((res) => {
     compressImages(...params, (error, completed, statistic) => {
       if (error) {
         errors.push(error);
-
-        if (failOnFirstError) return rej(error);
       }
 
       statistics.push(statistic);
