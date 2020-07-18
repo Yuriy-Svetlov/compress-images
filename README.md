@@ -61,263 +61,178 @@ npm install compress-images --save-dev
 https://github.com/semiromid/compress-images/tree/master/example
 * Read the [Manual](https://github.com/semiromid/compress-images/blob/master/example/Manual.txt)
 
+
+
 #### Example 1
-Promise API example
-
 ```javascript
-    const { compress } = require('compress-images/promise');
-    const INPUT_path_to_your_images = 'src/img/**/*.{jpg,JPG,jpeg,JPEG,png}';
-    const OUTPUT_path = 'build/img/';
 
-    const processImages = async () => {
-        const result = await compress({
-            source: INPUT_path_to_your_images,
-            destination: OUTPUT_path,
-            enginesSetup: {
-                jpg: { engine: 'mozjpeg', command: ['-quality', '60']},
-                png: { engine: 'pngquant', command: ['--quality=20-50']},
-            }
-        });
+const compress_images = require("compress-images"),
+  INPUT_path_to_your_images,
+  OUTPUT_path;
 
-        const { statistics, errors } = result;
-        // statistics - all processed images list
-        // errors - all errros happened list
-    };
+INPUT_path_to_your_images = "src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}";
+OUTPUT_path = "build/img/";
 
-    processImages();
+compress_images(INPUT_path_to_your_images, OUTPUT_path, { compress_force: false, statistic: true, autoupdate: true }, false,
+                { jpg: { engine: "mozjpeg", command: ["-quality", "60"] } },
+                { png: { engine: "pngquant", command: ["--quality=20-50"] } },
+                { svg: { engine: "svgo", command: "--multipass" } },
+                { gif: { engine: "gifsicle", command: ["--colors", "64", "--use-col=web"] } },
+  function (error, completed, statistic) {
+    console.log("-------------");
+    console.log(error);
+    console.log(completed);
+    console.log(statistic);
+    console.log("-------------");
+  }
+);
 ```
 
 #### Example 2
-Promise API example - using `onProgress`
-
 ```javascript
-    const { compress } = require('compress-images/promise');
-    const INPUT_path_to_your_images = 'src/img/**/*.{jpg,JPG,jpeg,JPEG,png}';
-    const OUTPUT_path = 'build/img/';
+const compress_images = require("compress-images");
 
-    const processImages = async (onProgress) => {
-        const result = await compress({
-            source: INPUT_path_to_your_images,
-            destination: OUTPUT_path,
-            onProgress,
-            enginesSetup: {
-                jpg: { engine: 'mozjpeg', command: ['-quality', '60']},
-                png: { engine: 'pngquant', command: ['--quality=20-50']},
-            }
-        });
-
-        const { statistics, errors } = result;
-        // statistics - all processed images list
-        // errors - all errros happened list
-    };
-
-    processImages((error, statistic) => {
-        if (error) {
-            console.log('Error happen while processing file');
-            console.log(error);
-            return;
-        }
-
-        console.log('Sucefully processed file');
-
-        console.log(statistic)
-    });
+function MyFun() {
+  compress_images(
+    "src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}",
+    "build/img/",
+    { compress_force: false, statistic: true, autoupdate: true },
+    false,
+    { jpg: { engine: "mozjpeg", command: ["-quality", "60"] } },
+    { png: { engine: "pngquant", command: ["--quality=20-50"] } },
+    { svg: { engine: "svgo", command: "--multipass" } },
+    {
+      gif: { engine: "gifsicle", command: ["--colors", "64", "--use-col=web"] },
+    },
+    function (err, completed) {
+      if (completed === true) {
+        // Doing something.
+      }
+    }
+  );
+}
 ```
+
 
 #### Example 3
 ```javascript
-    const compress_images = require('compress-images');
-    const INPUT_path_to_your_images = 'src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}';
-    const OUTPUT_path = 'build/img/';
+const compress_images = require('compress-images');
 
-    compress_images(
-        INPUT_path_to_your_images,
-        OUTPUT_path,
-        { compress_force: false, statistic: true, autoupdate: true },
+// We will be compressing images [jpg] with two algorithms, [webp] and [jpg];
+
+//[jpg] ---to---> [webp]
+compress_images(
+  "src/img/**/*.{jpg,JPG,jpeg,JPEG}",
+  "build/img/",
+  { compress_force: false, statistic: true, autoupdate: true },
+  false,
+  { jpg: { engine: "webp", command: false } },
+  { png: { engine: false, command: false } },
+  { svg: { engine: false, command: false } },
+  { gif: { engine: false, command: false } },
+  function (err) {
+    if (err === null) {
+      //[jpg] ---to---> [jpg(jpegtran)] WARNING!!! autoupdate  - recommended to turn this off, it's not needed here - autoupdate: false
+      compress_images(
+        "src/img/**/*.{jpg,JPG,jpeg,JPEG}",
+        "build/img/",
+        { compress_force: false, statistic: true, autoupdate: false },
         false,
-        { jpg: { engine: 'mozjpeg', command: ['-quality', '60']}},
-        { png: { engine: 'pngquant', command: ['--quality=20-50']}},
-        { svg: { engine: 'svgo', command: '--multipass'}},
-        { gif: { engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}},
-        function(error, completed, statistic) {
-            console.log('-------------');
-            console.log(error);
-            console.log(completed);
-            console.log(statistic);
-            console.log('-------------');
-        }
-    );
+        { jpg: { engine: "jpegtran", command: false } },
+        { png: { engine: false, command: false } },
+        { svg: { engine: false, command: false } },
+        { gif: { engine: false, command: false } },
+        function () {}
+      );
+    } else {
+      console.error(err);
+    }
+  }
+);
 ```
+
+
 
 #### Example 4
 ```javascript
-    const compress_images = require('compress-images');
-    
-    function MyFun() {
-        compress_images(
-            'src/img/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}',
-            'build/img/',
-            { compress_force: false, statistic: true, autoupdate: true },
-            false,
-            { jpg: { engine: 'mozjpeg', command: ['-quality', '60']}},
-            { png: { engine: 'pngquant', command: ['--quality=20-50']}},
-            { svg: { engine: 'svgo', command: '--multipass'}},
-            { gif: { engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}},
-            function(err, completed) {
-                if (completed === true) {
-                    // Doing something.
-                }
-            }
-        );
-    }
+const compress_images = require('compress-images');
+
+// Combine compressing images [jpg] with two different algorithms, [jpegtran] and [mozjpeg];
+//[jpg] ---to---> [jpg(jpegtran)]
+compress_images(
+  "src/img/source/**/*.{jpg,JPG,jpeg,JPEG}",
+  "src/img/combination/",
+  { compress_force: false, statistic: true, autoupdate: true },
+  false,
+  {
+    jpg: {
+      engine: "jpegtran",
+      command: ["-trim", "-progressive", "-copy", "none", "-optimize"],
+    },
+  },
+  { png: { engine: false, command: false } },
+  { svg: { engine: false, command: false } },
+  { gif: { engine: false, command: false } },
+  function () {
+    //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)] WARNING!!! autoupdate  - recommended to turn this off, it's not needed here - autoupdate: false
+    //----------------
+    compress_images(
+      "src/img/combination/**/*.{jpg,JPG,jpeg,JPEG}",
+      "build/img/",
+      { compress_force: false, statistic: true, autoupdate: false },
+      false,
+      { jpg: { engine: "mozjpeg", command: ["-quality", "75"] } },
+      { png: { engine: false, command: false } },
+      { svg: { engine: false, command: false } },
+      { gif: { engine: false, command: false } },
+      function () {}
+    );
+    //----------------
+  }
+);
 ```
+
 
 
 #### Example 5
 ```javascript
-const gulp = require('gulp');
 const compress_images = require('compress-images');
 
-// We will be compressing images [jpg] with two algorithms, [webp] and [jpg];
-// gulp compress_images
-gulp.task('compress_images', function() {
-    //[jpg] ---to---> [webp]
-    compress_images(
-        'src/img/**/*.{jpg,JPG,jpeg,JPEG}',
-        'build/img/',
-        {compress_force: false, statistic: true, autoupdate: true},
-        false,
-        { jpg: { engine: 'webp', command: false }},
-        { png: { engine: false, command: false }},
-        { svg: { engine: false, command: false }},
-        { gif: { engine: false, command: false }},
-        function(err) {
-            if (err === null) {
-                //[jpg] ---to---> [jpg(jpegtran)] WARNING!!! autoupdate  - recommended to turn this off, it's not needed here - autoupdate: false
-                compress_images(
-                    'src/img/**/*.{jpg,JPG,jpeg,JPEG}',
-                    'build/img/',
-                    { compress_force: false, statistic: true, autoupdate: false },
-                    false,
-                    { jpg: {engine: 'jpegtran', command: false }},
-                    { png: {engine: false, command: false }},
-                    { svg: {engine: false, command: false }},
-                    { gif: {engine: false, command: false }},
-                    function() {}
-                );
-            } else {
-                console.error(err);
-            }
-        }
-    );
+//[jpg+gif+png+svg] ---to---> [jpg(webp)+gif(gifsicle)+png(webp)+svg(svgo)]
+compress_images('src/img/source/**/*.{jpg,JPG,jpeg,JPEG,gif,png,svg}', 'build/img/', {compress_force: false, statistic: true, autoupdate: true}, false,
+                                            {jpg: {engine: 'webp', command: false}},
+                                            {png: {engine: 'webp', command: false}},
+                                            {svg: {engine: 'svgo', command: false}},
+                                            {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(){
+      //-------------------------------------------------                                    
+      //[jpg] ---to---> [jpg(jpegtran)] WARNING!!! autoupdate  - recommended to turn this off, it's not needed here - autoupdate: false
+      compress_images('src/img/source/**/*.{jpg,JPG,jpeg,JPEG}', 'src/img/combine/', {compress_force: false, statistic: true, autoupdate: false}, false,
+                                                      {jpg: {engine: 'jpegtran', command: ['-trim', '-progressive', '-copy', 'none', '-optimize']}},
+                                                      {png: {engine: false, command: false}},
+                                                      {svg: {engine: false, command: false}},
+                                                      {gif: {engine: false, command: false}}, function(){
+            //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)] WARNING!!! autoupdate  - recommended to turn this off, it's not needed here - autoupdate: false
+            compress_images('src/img/combine/**/*.{jpg,JPG,jpeg,JPEG}', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
+                                                            {jpg: {engine: 'mozjpeg', command: ['-quality', '75']}},
+                                                            {png: {engine: false, command: false}},
+                                                            {svg: {engine: false, command: false}},
+                                                            {gif: {engine: false, command: false}}, function(){
+                  //[png] ---to---> [png(pngquant)] WARNING!!! autoupdate  - recommended to turn this off, it's not needed here - autoupdate: false
+                  compress_images('src/img/source/**/*.png', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
+                                                                  {jpg: {engine: false, command: false}},
+                                                                  {png: {engine: 'pngquant', command: ['--quality=30-60']}},
+                                                                  {svg: {engine: false, command: false}},
+                                                                  {gif: {engine: false, command: false}}, function(){                                                      
+                  }); 
+            });                                      
+      });
+      //-------------------------------------------------
 });
 ```
 
 
 
 #### Example 6
-```javascript
-const gulp = require('gulp');
-const compress_images = require('compress-images');
-
-// Combine compressing images [jpg] with two different algorithms, [jpegtran] and [mozjpeg];
-// gulp compress_images
-gulp.task('compress_images', function() {
-    //[jpg] ---to---> [jpg(jpegtran)]
-    compress_images(
-        'src/img/source/**/*.{jpg,JPG,jpeg,JPEG}',
-        'src/img/combination/',
-        {compress_force: false, statistic: true, autoupdate: true},
-        false,
-        { jpg: { engine: 'jpegtran', command: ['-trim', '-progressive', '-copy', 'none', '-optimize']} },
-        { png: { engine: false, command: false }},
-        { svg: { engine: false, command: false }},
-        { gif: { engine: false, command: false }},
-        function() {
-            //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)] WARNING!!! autoupdate  - recommended to turn this off, it's not needed here - autoupdate: false
-            compress_images(
-                'src/img/combination/**/*.{jpg,JPG,jpeg,JPEG}',
-                'build/img/',
-                {compress_force: false, statistic: true, autoupdate: false},
-                false,
-                { jpg: { engine: 'mozjpeg', command: ['-quality', '75']}},
-                { png: { engine: false, command: false }},
-                { svg: { engine: false, command: false }},
-                { gif: { engine: false, command: false }},
-                function() {}
-            );
-        }
-    );
-});
-```
-
-
-
-#### Example 7
-```javascript
-const gulp = require('gulp');
-const compress_images = require('compress-images');
-
-//gulp compress_images
-gulp.task('compress_images', function() {
-    //[jpg+gif+png+svg] ---to---> [jpg(webp)+gif(gifsicle)+png(webp)+svg(svgo)]
-    compress_images(
-        'src/img/source/**/*.{jpg,JPG,jpeg,JPEG,gif,png,svg}',
-        'build/img/',
-        { compress_force: false, statistic: true, autoupdate: true },
-        false,
-        { jpg: { engine: 'webp', command: false}},
-        { png: { engine: 'webp', command: false}},
-        { svg: { engine: 'svgo', command: false}},
-        { gif: { engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}},
-        function() {
-            //-------------------------------------------------                                    
-            //[jpg] ---to---> [jpg(jpegtran)] WARNING!!! autoupdate  - recommended to turn this off, it's not needed here - autoupdate: false
-            compress_images(
-                'src/img/source/**/*.{jpg,JPG,jpeg,JPEG}',
-                'src/img/combine/',
-                { compress_force: false, statistic: true, autoupdate: false },
-                false,
-                { jpg: { engine: 'jpegtran', command: ['-trim', '-progressive', '-copy', 'none', '-optimize']}},
-                { png: { engine: false, command: false }},
-                { svg: { engine: false, command: false }},
-                { gif: { engine: false, command: false }},
-                function() {
-                    //[jpg(jpegtran)] ---to---> [jpg(mozjpeg)] WARNING!!! autoupdate  - recommended to turn this off, it's not needed here - autoupdate: false
-                    compress_images(
-                        'src/img/combine/**/*.{jpg,JPG,jpeg,JPEG}',
-                        'build/img/',
-                        { compress_force: false, statistic: true, autoupdate: false },
-                        false,
-                        { jpg: { engine: 'mozjpeg', command: ['-quality', '75']}},
-                        { png: { engine: false, command: false}},
-                        { svg: { engine: false, command: false}},
-                        { gif: { engine: false, command: false}},
-                        function() {
-                            //[png] ---to---> [png(pngquant)] WARNING!!! autoupdate  - recommended to turn this off, it's not needed here - autoupdate: false
-                            compress_images(
-                                'src/img/source/**/*.png',
-                                'build/img/',
-                                { compress_force: false, statistic: true, autoupdate: false },
-                                false,
-                                { jpg: { engine: false, command: false}},
-                                { png: { engine: 'pngquant', command: ['--quality=30-60']}},
-                                { svg: { engine: false, command: false}},
-                                { gif: { engine: false, command: false}},
-                                function() {}
-                            ); 
-                        }
-                    );
-                }
-            );
-            //-------------------------------------------------
-    });
-});
-```
-
-
-
-#### Example 8
 Sometimes you could get errors, and then use alternative configuration "compress-images".
 As an example, one of many:
 
@@ -328,50 +243,37 @@ As an example, one of many:
 3. The algorithm 'mozjpeg' will attempt to be used instead.
 
 ```javascript
-    const compress_images = require('compress-images');
-    const INPUT_path_to_your_images = 'src/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}';
-    const OUTPUT_path = 'build/';
+    const 
+    compress_images = require('compress-images'),
+    INPUT_path_to_your_images = 'src/**/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}',
+    OUTPUT_path = 'build/';
     
-    compress_images(
-        INPUT_path_to_your_images,
-        OUTPUT_path,
-        {
-            compress_force: false,
-            statistic: true,
-            autoupdate: true,
-            pathLog: './log/lib/compress-images'
-        },
-        false,
-        { jpg: { engine: 'jpegRecompress', command: ['--quality', 'high', '--min', '60']}},
-        { png: { engine: 'pngquant', command: ['--quality=20-50']}},
-        { svg: { engine: 'svgo', command: '--multipass'}},
-        { gif: { engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}},
-        function(err, completed) {
-            if (err !== null) {
+    compress_images(INPUT_path_to_your_images, OUTPUT_path, {compress_force: false, statistic: true, autoupdate: true, pathLog: './log/lib/compress-images'}, false,
+                                                {jpg: {engine: 'jpegRecompress', command: ['--quality', 'high', '--min', '60']}},
+                                                {png: {engine: 'pngquant', command: ['--quality=20-50']}},
+                                                {svg: {engine: 'svgo', command: '--multipass'}},
+                                                {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(err, completed){
+            if(err !== null){
                 //---------------------------------------
                 //if you get an ERROR from 'jpegRecompress' ---> We can use alternate config of compression
                 //---------------------------------------
-                if (err.engine === 'jpegRecompress') {
-                    compress_images(
-                        err.input,
-                        err.output,
-                        { compress_force: false, statistic: true, autoupdate: true },
-                        false,
-                        { jpg: { engine: 'mozjpeg', command: ['-quality', '60']}},
-                        { png: { engine: false, command: false}},
-                        { svg: { engine: false, command: false}},
-                        { gif: { engine: false, command: false}},
-                        function(err) {
-                            if (err !== null) {
+                if(err.engine === 'jpegRecompress'){
+                    compress_images(err.input, err.output, {compress_force: false, statistic: true, autoupdate: true}, false,
+                                                                {jpg: {engine: 'mozjpeg', command: ['-quality', '60']}},
+                                                                {png: {engine: false, command: false}},
+                                                                {svg: {engine: false, command: false}},
+                                                                {gif: {engine: false, command: false}}, function(err){
+                            if(err !== null){
                                 //Alternative config of compression
-                            }
-                        }
-                    );
+
+                            }                                       
+                    });
                 }
                 //---------------------------------------
-            }
-        }
-    );
+
+            }                                       
+
+    });
 ```
 
 
@@ -499,6 +401,73 @@ returns:
         + `err`        
 <br />
 
+
+## How to use promise API 
+
+
+#### Example 1
+
+
+```javascript
+    const { compress } = require('compress-images/promise');
+    const INPUT_path_to_your_images = 'src/img/**/*.{jpg,JPG,jpeg,JPEG,png}';
+    const OUTPUT_path = 'build/img/';
+
+    const processImages = async () => {
+        const result = await compress({
+            source: INPUT_path_to_your_images,
+            destination: OUTPUT_path,
+            enginesSetup: {
+                jpg: { engine: 'mozjpeg', command: ['-quality', '60']},
+                png: { engine: 'pngquant', command: ['--quality=20-50']},
+            }
+        });
+
+        const { statistics, errors } = result;
+        // statistics - all processed images list
+        // errors - all errros happened list
+    };
+
+    processImages();
+```
+
+#### Example 2
+Using `onProgress`
+
+```javascript
+    const { compress } = require('compress-images/promise');
+    const INPUT_path_to_your_images = 'src/img/**/*.{jpg,JPG,jpeg,JPEG,png}';
+    const OUTPUT_path = 'build/img/';
+
+    const processImages = async (onProgress) => {
+        const result = await compress({
+            source: INPUT_path_to_your_images,
+            destination: OUTPUT_path,
+            onProgress,
+            enginesSetup: {
+                jpg: { engine: 'mozjpeg', command: ['-quality', '60']},
+                png: { engine: 'pngquant', command: ['--quality=20-50']},
+            }
+        });
+
+        const { statistics, errors } = result;
+        // statistics - all processed images list
+        // errors - all errros happened list
+    };
+
+    processImages((error, statistic, completed) => {
+        if (error) {
+            console.log('Error happen while processing file');
+            console.log(error);
+            return;
+        }
+
+        console.log('Sucefully processed file');
+
+        console.log(statistic)
+    });
+```
+
 ## Promised API
 
 **`promise/compress`**(*`params`*)
@@ -509,7 +478,7 @@ returns:
     + **enginesSetup** (type:plainObject):  Engines setup mapping, only needed ones, for example: `{ jpg: <enginejpg>, png: <enginepng> }`, see details above;
     + (optional) **params** (type:plainObject): Options module\`s «compress-images», see **option** above;
     + (optional) **globOptions** (type:boolean|other): see **globoption** above;
-    + (optional) **onProgress** (err, statistic): see **callback** above
+    + (optional) **onProgress** (err, statistic, completed): see **callback** above
 
 + returns **Promise** with object:
     + **statistics** (type:**statistic[]**), see above;

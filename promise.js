@@ -53,7 +53,7 @@ const compress = (options) => {
 
       statistics.push(statistic);
 
-      if (callback) callback(error, statistic);
+      if (callback) callback(error, statistic, completed);
 
       if (completed) res({ statistics, errors });
     });
