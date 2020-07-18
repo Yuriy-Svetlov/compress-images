@@ -28,7 +28,7 @@ var  colors = require('colors'),
 
      //GIF
      gifsicle,
-     giflossy = require('giflossy'),
+     giflossy,
      gif2webp = require('./lib/webp'),
      updater = require('./lib/updater'),
 
@@ -84,7 +84,14 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
       }
 
       gifsicle = require('gifsicle');
-    }    
+    }else    
+    if(enginegif.gif.engine === "giflossy" && giflossy === undefined){
+      if(checkExistsModule('giflossy', 'npm install giflossy --save') != true){
+        return false;
+      }
+
+      giflossy = require('giflossy');
+    }
 
     //Updater
     //debug_updater('[to]');
