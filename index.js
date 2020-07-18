@@ -355,7 +355,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
                             CompressionFileJpg(input, path_out_new, function(size_in, size_output, percent, err){
 
                                 outputResult(input, path_out_new, enginejpg.jpg.engine, size_in, size_output, percent, err, function(error, completed){
-                                    outputResultcallback(error, completed, input, path_out_new, enginejpg.jpg, size_in, size_output, percent, err);
+                                    outputResultcallback(error, completed, input, path_out_new, enginejpg.jpg.engine, size_in, size_output, percent, err);
                                 });
                             });                   
                         }else if(extension_f == 'png' || extension_f == 'PNG'){
