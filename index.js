@@ -42,12 +42,10 @@ var  colors = require('colors'),
 
 
 
-
 //set DEBUG=*,-not_this
 //var  debug = require('debug')("glob");
 //debug('[File] ');
 //var  debug_updater = require('debug')("./lib/updater");
-
 
 
 var index = function (input, output, option, findfileop, enginejpg, enginepng, enginesvg, enginegif, callback) {
