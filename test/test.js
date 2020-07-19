@@ -33,10 +33,10 @@ describe('Test [JPG]    engine [jpegtran]    [options=false]', function () {
     it('should will be done!', function (done) {
                 mkdirp('test/img/output/jpg/', function(err, made) {
                     if(err){
-                        console.log(colors.red('-----------------------------------'));
-                        console.log(colors.red('Was error!'));
+                        console.log('-----------------------------------');
+                        console.log('Was error!');
                         console.error(err)
-                        console.log(colors.red('-----------------------------------'));
+                        console.log('-----------------------------------');
                     }else{
                         if(null != made){
                             //Выводим лог о том что была создана новая директория
