@@ -30,7 +30,7 @@ var  colors = require('colors'),
      gifsicle,
      giflossy,
      gif2webp = require('./lib/webp'),
-     updater = require('./lib/updater'),
+     //updater = require('./lib/updater'),
 
 
      mkdirp = require('mkdirp'),
@@ -1516,10 +1516,10 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
           length_files = length_files - 1;
         }
 
-        if(length_files === 0 && lock__length_files !== true){
-            updater(fs, colors, option.autoupdate);
+        //if(length_files === 0 && lock__length_files !== true){
+            //updater(fs, colors, option.autoupdate);
             //callback(null);
-        }    
+        //}    
     }
 
 
