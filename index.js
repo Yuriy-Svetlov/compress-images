@@ -890,7 +890,11 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         */
         var array;
         if(false != enginepng.png.command){
-          array = enginepng.png.command.concat(['-o', output, input]);  
+          if(enginepng.png.command.includes('-o')){
+            array = enginepng.png.command.concat([output, input]);
+          }else{
+            array = enginepng.png.command.concat([input]);
+          }            
         }else{
           array = ['-o', output, input];
         }

@@ -75,7 +75,7 @@ OUTPUT_path = "build/img/";
 
 compress_images(INPUT_path_to_your_images, OUTPUT_path, { compress_force: false, statistic: true, autoupdate: true }, false,
                 { jpg: { engine: "mozjpeg", command: ["-quality", "60"] } },
-                { png: { engine: "pngquant", command: ["--quality=20-50"] } },
+                { png: { engine: "pngquant", command: ["--quality=20-50", "-o"] } },
                 { svg: { engine: "svgo", command: "--multipass" } },
                 { gif: { engine: "gifsicle", command: ["--colors", "64", "--use-col=web"] } },
   function (error, completed, statistic) {
@@ -99,7 +99,7 @@ function MyFun() {
     { compress_force: false, statistic: true, autoupdate: true },
     false,
     { jpg: { engine: "mozjpeg", command: ["-quality", "60"] } },
-    { png: { engine: "pngquant", command: ["--quality=20-50"] } },
+    { png: { engine: "pngquant", command: ["--quality=20-50", "-o"] } },
     { svg: { engine: "svgo", command: "--multipass" } },
     {
       gif: { engine: "gifsicle", command: ["--colors", "64", "--use-col=web"] },
@@ -220,7 +220,7 @@ compress_images('src/img/source/**/*.{jpg,JPG,jpeg,JPEG,gif,png,svg}', 'build/im
                   //[png] ---to---> [png(pngquant)] WARNING!!! autoupdate  - recommended to turn this off, it's not needed here - autoupdate: false
                   compress_images('src/img/source/**/*.png', 'build/img/', {compress_force: false, statistic: true, autoupdate: false}, false,
                                                                   {jpg: {engine: false, command: false}},
-                                                                  {png: {engine: 'pngquant', command: ['--quality=30-60']}},
+                                                                  {png: {engine: 'pngquant', command: ['--quality=30-60', '-o']}},
                                                                   {svg: {engine: false, command: false}},
                                                                   {gif: {engine: false, command: false}}, function(){                                                      
                   }); 
@@ -250,7 +250,7 @@ As an example, one of many:
     
     compress_images(INPUT_path_to_your_images, OUTPUT_path, {compress_force: false, statistic: true, autoupdate: true, pathLog: './log/lib/compress-images'}, false,
                                                 {jpg: {engine: 'jpegRecompress', command: ['--quality', 'high', '--min', '60']}},
-                                                {png: {engine: 'pngquant', command: ['--quality=20-50']}},
+                                                {png: {engine: 'pngquant', command: ['--quality=20-50', '-o']}},
                                                 {svg: {engine: 'svgo', command: '--multipass'}},
                                                 {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(err, completed){
             if(err !== null){
@@ -276,7 +276,30 @@ As an example, one of many:
     });
 ```
 
+#### Example 7
 
+Compressing an image in the same folder
+
+```javascript
+    const 
+    compress_images = require('compress-images'),
+    fs = require('fs'),
+    INPUT_path_to_your_images = 'src/img/**/!(*-min).png',
+    OUTPUT_path = 'src/img/';
+    
+    compress_images(INPUT_path_to_your_images, OUTPUT_path, {compress_force: true, statistic: false, autoupdate: true}, false,
+                                                {jpg: {engine: false, command: false}},
+                                                {png: {engine: 'pngquant', command: ['--quality=20-50', '--ext=-min.png', '--force']}},
+                                                {svg: {engine: false, command: false}},
+                                                {gif: {engine: false, command: false}}, function(err, completed, statistic){
+        if(err === null){
+      fs.unlink(statistic.input, (err) => {
+          if (err) throw err;
+          console.log('successfully compressed and deleted '+statistic.input);
+      });
+        }
+    });
+```
 
 ```html
     <picture>
@@ -338,7 +361,7 @@ As an example, one of many:
     + **engine** (type:string): Engine for compressing png. Possible values:
 *`pngquant`*,*`optipng`*, *`pngout`*, *`webp`*, *`pngcrush`*, *`tinify`*;
     + **command** (type:boolean|array): Options for compression. Can be `false` or commands array.
-        + For **pngquant** - `['--quality=20-50']` - To use this library you need to install it manually. It does not work properly on some OS (Win 7 x32 and maybe other). `npm install pngquant-bin --save` 
+        + For **pngquant** - `['--quality=20-50', '-o']` If you want to compress in the same folder, as example: ['--quality=20-50', '--ext=.png', '--force']. To use this library you need to install it manually. It does not work properly on some OS (Win 7 x32 and maybe other). `npm install pngquant-bin --save` 
         Quality should be in format min-max where min and max are numbers in range 0-100. Can be problems with cyrillic filename [issues/317](https://github.com/kornelski/pngquant/issues/317) 
         In details: 
         [pngquant](https://pngquant.org/) and 
@@ -419,7 +442,7 @@ returns:
             destination: OUTPUT_path,
             enginesSetup: {
                 jpg: { engine: 'mozjpeg', command: ['-quality', '60']},
-                png: { engine: 'pngquant', command: ['--quality=20-50']},
+                png: { engine: 'pngquant', command: ['--quality=20-50', '-o']},
             }
         });
 
@@ -446,7 +469,7 @@ Using `onProgress`
             onProgress,
             enginesSetup: {
                 jpg: { engine: 'mozjpeg', command: ['-quality', '60']},
-                png: { engine: 'pngquant', command: ['--quality=20-50']},
+                png: { engine: 'pngquant', command: ['--quality=20-50', '-o']},
             }
         });
 
