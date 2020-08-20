@@ -293,10 +293,10 @@ Compressing an image in the same folder
                                                 {svg: {engine: false, command: false}},
                                                 {gif: {engine: false, command: false}}, function(err, completed, statistic){
         if(err === null){
-      fs.unlink(statistic.input, (err) => {
-          if (err) throw err;
-          console.log('successfully compressed and deleted '+statistic.input);
-      });
+            fs.unlink(statistic.input, (err) => {
+                if (err) throw err;
+                console.log('successfully compressed and deleted '+statistic.input);
+            });
         }
     });
 ```
