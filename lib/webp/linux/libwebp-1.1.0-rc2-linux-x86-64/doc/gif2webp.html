@@ -1,0 +1,327 @@
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Thu Dec 26 17:01:13 2019 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>GIF2WEBP</title>
+
+</head>
+<body>
+
+<h1 align="center">GIF2WEBP</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#BUGS">BUGS</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#AUTHORS">AUTHORS</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">gif2webp -
+Convert a GIF image to WebP</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>gif2webp</b>
+[<i>options</i>] <i>input_file.gif -o
+output_file.webp</i></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">This manual
+page documents the <b>gif2webp</b> command.</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>gif2webp</b>
+converts a GIF image to a WebP image.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The basic
+options are: <b><br>
+-o</b> <i>string</i></p>
+
+<p style="margin-left:22%;">Specify the name of the output
+WebP file. If omitted, <b>gif2webp</b> will perform
+conversion but only report statistics. Using &quot;-&quot;
+as output name will direct output to
+&rsquo;stdout&rsquo;.</p>
+
+<p style="margin-left:11%;"><b>--</b> <i>string</i></p>
+
+<p style="margin-left:22%;">Explicitly specify the input
+file. This option is useful if the input file starts with an
+&rsquo;-&rsquo; for instance. This option must appear
+<b>last</b>. Any other options afterward will be ignored. If
+the input file is &quot;-&quot;, the data will be read from
+<i>stdin</i> instead of a file.</p>
+
+<p style="margin-left:11%;"><b>-h, -help</b></p>
+
+<p style="margin-left:22%;">Usage information.</p>
+
+<p style="margin-left:11%;"><b>-version</b></p>
+
+<p style="margin-left:22%;">Print the version number (as
+major.minor.revision) and exit.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+
+<p><b>-lossy</b></p></td>
+<td width="2%"></td>
+<td width="78%">
+
+
+<p>Encode the image using lossy compression.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+
+<p><b>-mixed</b></p></td>
+<td width="2%"></td>
+<td width="78%">
+
+
+<p>Mixed compression mode: optimize compression of the
+image by picking either lossy or lossless compression for
+each frame heuristically.</p></td></tr>
+</table>
+
+<p style="margin-left:11%;"><b>-q</b> <i>float</i></p>
+
+<p style="margin-left:22%;">Specify the compression factor
+for RGB channels between 0 and 100. The default is 75. <br>
+In case of lossless compression (default), a small factor
+enables faster compression speed, but produces a larger
+file. Maximum compression is achieved by using a value of
+100. <br>
+In case of lossy compression (specified by the -lossy
+option), a small factor produces a smaller file with lower
+quality. Best quality is achieved by using a value of
+100.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+
+<p><b>-m</b> <i>int</i></p></td>
+<td width="2%"></td>
+<td width="78%">
+
+
+<p>Specify the compression method to use. This parameter
+controls the trade off between encoding speed and the
+compressed file size and quality. Possible values range from
+0 to 6. Default value is 4. When higher values are used, the
+encoder will spend more time inspecting additional encoding
+possibilities and decide on the quality gain. Lower value
+can result is faster processing time at the expense of
+larger file size and lower compression quality.</p></td></tr>
+</table>
+
+<p style="margin-left:11%;"><b>-min_size</b></p>
+
+<p style="margin-left:22%;">Encode image to achieve
+smallest size. This disables key frame insertion and picks
+the dispose method resulting in smallest output for each
+frame. It uses lossless compression by default, but can be
+combined with -q, -m, -lossy or -mixed options.</p>
+
+<p style="margin-left:11%;"><b>-kmin</b> <i>int</i> <b><br>
+-kmax</b> <i>int</i></p>
+
+<p style="margin-left:22%;">Specify the minimum and maximum
+distance between consecutive key frames (independently
+decodable frames) in the output animation. The tool will
+insert some key frames into the output animation as needed
+so that this criteria is satisfied. <br>
+A &rsquo;kmax&rsquo; value of 0 will turn off insertion of
+key frames. A &rsquo;kmax&rsquo; value of 1 will result in
+all frames being key frames. &rsquo;kmin&rsquo; value is not
+taken into account in both these special cases. Typical
+values are in the range 3 to 30. Default values are kmin =
+9, kmax = 17 for lossless compression and kmin = 3, kmax = 5
+for lossy compression. <br>
+These two options are relevant only for animated images with
+large number of frames (&gt;50). <br>
+When lower values are used, more frames will be converted to
+key frames. This may lead to smaller number of frames
+required to decode a frame on average, thereby improving the
+decoding performance. But this may lead to slightly bigger
+file sizes. Higher values may lead to worse decoding
+performance, but smaller file sizes. <br>
+Some restrictions: <br>
+(i) kmin &lt; kmax, <br>
+(ii) kmin &gt;= kmax / 2 + 1 and <br>
+(iii) kmax - kmin &lt;= 30. <br>
+If any of these restrictions are not met, they will be
+enforced automatically.</p>
+
+<p style="margin-left:11%;"><b>-metadata</b>
+<i>string</i></p>
+
+<p style="margin-left:22%;">A comma separated list of
+metadata to copy from the input to the output if present.
+Valid values: <b>all</b>, <b>none</b>, <b>icc</b>,
+<b>xmp</b>. The default is <b>xmp</b>.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+
+<p><b>-f</b> <i>int</i></p></td>
+<td width="2%"></td>
+<td width="78%">
+
+
+<p>For lossy encoding only (specified by the -lossy
+option). Specify the strength of the deblocking filter,
+between 0 (no filtering) and 100 (maximum filtering). A
+value of 0 will turn off any filtering. Higher value will
+increase the strength of the filtering process applied after
+decoding the picture. The higher the value the smoother the
+picture will appear. Typical values are usually in the range
+of 20 to 50.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+
+<p><b>-mt</b></p></td>
+<td width="2%"></td>
+<td width="78%">
+
+
+<p>Use multi-threading for encoding, if possible.</p></td></tr>
+</table>
+
+<p style="margin-left:11%;"><b>-loop_compatibility</b></p>
+
+<p style="margin-left:22%;">If enabled, handle the loop
+information in a compatible fashion for Chrome version prior
+to M62 (inclusive) and Firefox.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+
+<p><b>-v</b></p></td>
+<td width="2%"></td>
+<td width="36%">
+
+
+<p>Print extra information.</p></td>
+<td width="42%">
+</td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+
+<p><b>-quiet</b></p></td>
+<td width="2%"></td>
+<td width="36%">
+
+
+<p>Do not print anything.</p></td>
+<td width="42%">
+</td></tr>
+</table>
+
+<h2>BUGS
+<a name="BUGS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Please report
+all bugs to the issue tracker:
+https://bugs.chromium.org/p/webp <br>
+Patches welcome! See this page to get started:
+http://www.webmproject.org/code/contribute/submitting-patches/</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">gif2webp
+picture.gif -o picture.webp <br>
+gif2webp -q 70 picture.gif -o picture.webp <br>
+gif2webp -lossy -m 3 picture.gif -o picture_lossy.webp <br>
+gif2webp -lossy -f 50 picture.gif -o picture.webp <br>
+gif2webp -q 70 -o picture.webp -- ---picture.gif <br>
+cat picture.gif | gif2webp -o - -- - &gt; output.webp</p>
+
+<h2>AUTHORS
+<a name="AUTHORS"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>gif2webp</b>
+is a part of libwebp and was written by the WebP team. <br>
+The latest source tree is available at
+https://chromium.googlesource.com/webm/libwebp</p>
+
+<p style="margin-left:11%; margin-top: 1em">This manual
+page was written by Urvang Joshi &lt;urvang@google.com&gt;,
+for the Debian project (and may be used by others).</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>cwebp</b>(1),
+<b>dwebp</b>(1), <b>webpmux</b>(1) <br>
+Please refer to http://developers.google.com/speed/webp/ for
+additional information.</p>
+<hr>
+</body>
+</html>

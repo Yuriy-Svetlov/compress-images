@@ -1,0 +1,141 @@
+DWEBP(1)                    General Commands Manual                   DWEBP(1)
+
+
+
+NAME
+       dwebp - decompress a WebP file to an image file
+
+SYNOPSIS
+       dwebp [options] input_file.webp
+
+DESCRIPTION
+       This manual page documents the dwebp command.
+
+       dwebp decompresses WebP files into PNG, PAM, PPM or PGM images.
+
+OPTIONS
+       The basic options are:
+
+       -h     Print usage summary.
+
+       -version
+              Print the version number (as major.minor.revision) and exit.
+
+       -o string
+              Specify  the name of the output file (as PNG format by default).
+              Using "-" as output name will direct output to 'stdout'.
+
+       -- string
+              Explicitly specify the input file. This option is useful if  the
+              input file starts with an '-' for instance. This option must ap-
+              pear last.  Any other options afterward will be ignored. If  the
+              input file is "-", the data will be read from stdin instead of a
+              file.
+
+       -bmp   Change the output format to uncompressed BMP.
+
+       -tiff  Change the output format to uncompressed TIFF.
+
+       -pam   Change the output format to PAM (retains alpha).
+
+       -ppm   Change the output format to PPM (discards alpha).
+
+       -pgm   Change  the  output  format  to  PGM.  The  output  consists  of
+              luma/chroma  samples instead of RGB, using the IMC4 layout. This
+              option is mainly for verification and debugging purposes.
+
+       -yuv   Change the output format to raw  YUV.  The  output  consists  of
+              luma/chroma-U/chroma-V  samples  instead  of  RGB, saved sequen-
+              tially as individual planes. This option is mainly for verifica-
+              tion and debugging purposes.
+
+       -nofancy
+              Don't  use the fancy upscaler for YUV420. This may lead to jaggy
+              edges (especially the red ones), but should be faster.
+
+       -nofilter
+              Don't use the in-loop filtering process even if it  is  required
+              by  the  bitstream.  This may produce visible blocks on the non-
+              compliant output, but it will make the decoding faster.
+
+       -dither strength
+              Specify a dithering strength between 0 and 100. Dithering  is  a
+              post-processing  effect  applied  to  chroma components in lossy
+              compression.  It helps by smoothing gradients and avoiding band-
+              ing artifacts.
+
+       -alpha_dither
+              If  the  compressed  file contains a transparency plane that was
+              quantized during compression, this flag will allow dithering the
+              reconstructed  plane  in order to generate smoother transparency
+              gradients.
+
+       -nodither
+              Disable all dithering (default).
+
+       -mt    Use multi-threading for decoding, if possible.
+
+       -crop x_position y_position width height
+              Crop the decoded picture to a rectangle with top-left corner  at
+              coordinates  (x_position,  y_position)  and size width x height.
+              This cropping area must be fully  contained  within  the  source
+              rectangle.   The top-left corner will be snapped to even coordi-
+              nates if needed.  This option is  meant  to  reduce  the  memory
+              needed for cropping large images.  Note: the cropping is applied
+              before any scaling.
+
+       -flip  Flip decoded image vertically (can be useful for OpenGL textures
+              for instance).
+
+       -resize, -scale width height
+              Rescale  the  decoded  picture to dimension width x height. This
+              option is mostly intended to reducing the memory needed  to  de-
+              code  large  images, when only a small version is needed (thumb-
+              nail, preview, etc.). Note: scaling is applied  after  cropping.
+              If either (but not both) of the width or height parameters is 0,
+              the value will be calculated preserving the aspect-ratio.
+
+       -quiet Do not print anything.
+
+       -v     Print extra information (decoding time in particular).
+
+       -noasm Disable all assembly optimizations.
+
+
+BUGS
+       Please    report     all     bugs     to     the     issue     tracker:
+       https://bugs.chromium.org/p/webp
+       Patches  welcome!  See  this  page  to get started: http://www.webmpro-
+       ject.org/code/contribute/submitting-patches/
+
+
+EXAMPLES
+       dwebp picture.webp -o output.png
+       dwebp picture.webp -ppm -o output.ppm
+       dwebp -o output.ppm -- ---picture.webp
+       cat picture.webp | dwebp -o - -- - > output.ppm
+
+
+AUTHORS
+       dwebp is a part of libwebp and was written by the WebP team.
+       The  latest  source  tree  is  available  at   https://chromium.google-
+       source.com/webm/libwebp
+
+       This   manual   page  was  written  by  Pascal  Massimino  <pascal.mas-
+       simino@gmail.com>, for the Debian project (and may be used by others).
+
+
+SEE ALSO
+       cwebp(1), gif2webp(1), webpmux(1)
+       Please refer to http://developers.google.com/speed/webp/ for additional
+       information.
+
+   Output file format details
+       PAM: http://netpbm.sourceforge.net/doc/pam.html
+       PGM: http://netpbm.sourceforge.net/doc/pgm.html
+       PPM: http://netpbm.sourceforge.net/doc/ppm.html
+       PNG: http://www.libpng.org/pub/png/png-sitemap.html#info
+
+
+
+                                 June 23, 2016                        DWEBP(1)
