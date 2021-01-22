@@ -1,0 +1,245 @@
+<!-- Creator     : groff version 1.19.2 -->
+<!-- CreationDate: Thu Dec 26 09:17:31 2019 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p     { margin-top: 0; margin-bottom: 0; }
+       pre   { margin-top: 0; margin-bottom: 0; }
+       table { margin-top: 0; margin-bottom: 0; }
+</style>
+<title>IMG2WEBP</title>
+
+</head>
+<body>
+
+<h1 align=center>IMG2WEBP</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#FILE-LEVEL OPTIONS">FILE-LEVEL OPTIONS</a><br>
+<a href="#PER-FRAME OPTIONS">PER-FRAME OPTIONS</a><br>
+<a href="#EXAMPLE">EXAMPLE</a><br>
+<a href="#BUGS">BUGS</a><br>
+<a href="#AUTHORS">AUTHORS</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<a name="NAME"></a>
+<h2>NAME</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">img2webp
+&minus; create animated WebP file from a sequence of input
+images.</p>
+
+<a name="SYNOPSIS"></a>
+<h2>SYNOPSIS</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>img2webp</b>
+[file_level_options] [files] [per_frame_options...] <b><br>
+img2webp argument_file_name</b></p>
+
+<a name="DESCRIPTION"></a>
+<h2>DESCRIPTION</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">This manual
+page documents the <b>img2webp</b> command.</p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>img2webp</b>
+compresses a sequence of images using the animated WebP
+format. Input images can either be PNG, JPEG, TIFF or WebP.
+If a single file name (not starting with the character
+&rsquo;&minus;&rsquo;) is supplied as the argument, the
+command line argument are actually tokenized from this file.
+This allows for easy scripting or using large number of
+arguments.</p>
+
+<a name="FILE-LEVEL OPTIONS"></a>
+<h2>FILE-LEVEL OPTIONS</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The file-level
+options are applied at the beginning of the compression
+process, before the input frames are read. <b><br>
+&minus;o</b> <i>string</i></p>
+
+<p style="margin-left:22%;">Specify the name of the output
+WebP file.</p>
+
+<p style="margin-left:11%;"><b>&minus;min_size</b></p>
+
+<p style="margin-left:22%;">Encode images to achieve
+smallest size. This disables key frame insertion and picks
+the parameters resulting in smallest output for each frame.
+It uses lossless compression by default, but can be combined
+with &minus;q, &minus;m, &minus;lossy or &minus;mixed
+options.</p>
+
+<p style="margin-left:11%;"><b>&minus;kmin</b> <i>int</i>
+<b><br>
+&minus;kmax</b> <i>int</i></p>
+
+<p style="margin-left:22%;">Specify the minimum and maximum
+distance between consecutive key frames (independently
+decodable frames) in the output animation. The tool will
+insert some key frames into the output animation as needed
+so that this criteria is satisfied. <b><br>
+&minus;mixed</b> Mixed compression mode: optimize
+compression of the image by picking either lossy or lossless
+compression for each frame heuristically. This global option
+disables the local option <b>-lossy</b> and <b>-lossless</b>
+.</p>
+
+<p style="margin-left:11%;"><b>&minus;loop</b>
+<i>int</i></p>
+
+<p style="margin-left:22%;">Specifies the number of times
+the animation should loop. Using &rsquo;0&rsquo; means
+&rsquo;loop indefinitely&rsquo;.</p>
+
+<table width="100%" border=0 rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;v</b></p> </td>
+<td width="8%"></td>
+<td width="24%">
+
+
+<p style="margin-top: 1em" valign="top">Be more
+verbose.</p> </td>
+<td width="54%">
+</td>
+</table>
+
+<p style="margin-left:11%;"><b>&minus;h,
+&minus;help</b></p>
+
+<p style="margin-left:22%;">A short usage summary.</p>
+
+<p style="margin-left:11%;"><b>&minus;version</b></p>
+
+<p style="margin-left:22%;">Print the version numbers of
+the relevant libraries used.</p>
+
+<a name="PER-FRAME OPTIONS"></a>
+<h2>PER-FRAME OPTIONS</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The per-frame
+options are applied for the images following as arguments in
+the command line. They can be modified any number of times
+preceding each particular input image.</p>
+
+<table width="100%" border=0 rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;d</b>
+<i>int</i></p> </td>
+<td width="2%"></td>
+<td width="66%">
+
+
+<p style="margin-top: 1em" valign="top">Specify the image
+duration in milliseconds.</p></td>
+<td width="12%">
+</td>
+</table>
+
+<p style="margin-left:11%;"><b>&minus;lossless,
+&minus;lossy</b></p>
+
+<p style="margin-left:22%;">Compress the next image(s)
+using lossless or lossy compression mode. The default mode
+is lossless.</p>
+
+<p style="margin-left:11%;"><b>&minus;q</b>
+<i>float</i></p>
+
+<p style="margin-left:22%;">Specify the compression factor
+between 0 and 100. The default is 75.</p>
+
+<table width="100%" border=0 rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;m</b>
+<i>int</i></p> </td>
+<td width="2%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em" valign="top">Specify the
+compression method to use. This parameter controls the trade
+off between encoding speed and the compressed file size and
+quality. Possible values range from 0 to 6. Default value is
+4.</p> </td>
+</table>
+
+<a name="EXAMPLE"></a>
+<h2>EXAMPLE</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">img2webp -loop
+2 in0.png -lossy in1.jpg -d 80 in2.tiff -o out.webp</p>
+
+<a name="BUGS"></a>
+<h2>BUGS</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Please report
+all bugs to the issue tracker:
+https://bugs.chromium.org/p/webp <br>
+Patches welcome! See this page to get started:
+http://www.webmproject.org/code/contribute/submitting&minus;patches/</p>
+
+<a name="AUTHORS"></a>
+<h2>AUTHORS</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>img2webp</b>
+is a part of libwebp and was written by the WebP team. <br>
+The latest source tree is available at
+https://chromium.googlesource.com/webm/libwebp</p>
+
+<p style="margin-left:11%; margin-top: 1em">This manual
+page was written by Pascal Massimino
+&lt;pascal.massimino@gmail.com&gt;, for the Debian project
+(and may be used by others).</p>
+
+<a name="SEE ALSO"></a>
+<h2>SEE ALSO</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>webpmux</b>(1),
+<b>gif2webp</b>(1) <br>
+Please refer to http://developers.google.com/speed/webp/ for
+additional information.</p>
+<hr>
+</body>
+</html>
