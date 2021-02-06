@@ -1,6 +1,6 @@
 {
   "name": "compress-images",
-  "version": "1.9.5",
+  "version": "1.9.8",
   "description": "Minify size your images. Image compression with extension: jpg/jpeg, svg, png, gif.",
   "keywords": [
     "image-compress",
@@ -102,7 +102,6 @@
     "colors": "^1.4.0",
     "cwebp-bin": "^6.1.1",
     "glob": "^7.1.6",
-    "guetzli": "^3.0.1",
     "jpeg-recompress-bin": "^5.1.1",
     "jpegtran-bin": "^5.0.2",
     "mkdirp": "^0.5.1",

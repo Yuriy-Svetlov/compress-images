@@ -12,7 +12,7 @@ var  colors = require('colors'),
      jpegRecompress = require('jpeg-recompress-bin'),
      cwebp = require('cwebp-bin'),
      mozjpeg = require('mozjpeg'),
-     guetzli = require('guetzli'),
+     guetzli,
      jpegoptim,
      tinifyjpeg = require("tinify"),
 
@@ -55,9 +55,18 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
       if(checkExistsModule('jpegoptim-bin', 'npm install jpegoptim-bin --save') != true){
         return false;
       }
-
       jpegoptim = require('jpegoptim-bin');
+    }else
+
+    if(enginejpg.jpg.engine === "guetzli" && guetzli === undefined){
+      if(checkExistsModule('guetzli', 'npm install guetzli --save') != true){
+        return false;
+      }
+      guetzli = require('guetzli');      
     }
+
+
+    
 
     // PNG
     if(enginepng.png.engine === "optipng" && optipng === undefined){

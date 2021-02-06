@@ -340,6 +340,7 @@ Compressing an image in the same folder
         + For **mozjpeg** - `['-quality', '10']` in details [mozjpeg](https://github.com/mozilla/mozjpeg/);
         + For **webp** - `['-q', '60']` in details [webp](https://developers.google.com/speed/webp/);
         + For **guetzli** - `['--quality', '84']` (Very long compresses on Win 8.1 [https://github.com/google/guetzli/issues/238](https://github.com/google/guetzli/issues/238)) in details [guetzli](https://github.com/google/guetzli/);
+        To use guetzli you must `npm install guetzli --save`, this library does not work properly on some OS and platforms.
         + For **jpegRecompress** - `['--quality', 'high', '--min', '60']` in details [jpegRecompress](https://github.com/danielgtaylor/jpeg-archive/);
         + For **jpegoptim** - `['--all-progressive', '-d']` 
         To use jpegoptim you must `npm install jpegoptim-bin --save`, this library does not work properly on some OS and platforms.
