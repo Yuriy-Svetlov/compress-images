@@ -278,7 +278,7 @@ As an example, one of many:
 
 #### Example 7
 
-Compressing an image in the same folder
+Compressing an image in the same folder (currently this only works with 'pngquant')
 
 ```javascript
     const 
