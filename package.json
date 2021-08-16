@@ -93,8 +93,8 @@
     "url": "https://github.com/semiromid/compress-images.git"
   },
   "devDependencies": {
-    "mocha": "^4.0.1",
-    "rimraf": "^3.0.2" 
+    "mocha": "^9.0.1",
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
     "bytes": "^3.1.0",
@@ -106,7 +106,7 @@
     "jpegtran-bin": "^5.0.2",
     "mkdirp": "^0.5.1",
     "mozjpeg": "^7.0.0",
-    "npm": "^6.14.6",
+    "npm": "^7.20.3",
     "pngcrush-bin": "^5.0.1",
     "pngout-bin": "^5.0.0",
     "svgo": ">=1.0.2",
