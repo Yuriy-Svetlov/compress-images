@@ -1,6 +1,6 @@
 {
   "name": "compress-images",
-  "version": "1.2.0",
+  "version": "2.0.1",
   "description": "Minify size your images. Image compression with extension: jpg/jpeg, svg, png, gif.",
   "keywords": [
     "image-compress",
@@ -72,13 +72,13 @@
     "gif2webp",
     "image min"
   ],
-  "homepage": "https://github.com/semiromid/compress-images/",
-  "bugs": "https://github.com/semiromid/compress-images/issues",
+  "homepage": "https://github.com/Yuriy-Svetlov/compress-images/",
+  "bugs": "https://github.com/Yuriy-Svetlov/compress-images/issues",
   "license": "MIT",
   "author": {
     "name": "TAMARA SEMINA",
     "email": "startpascal1@mail.ru",
-    "url": "https://github.com/semiromid/compress-images/"
+    "url": "https://github.com/Yuriy-Svetlov/compress-images/"
   },
   "files": [
     "LICENSE",
@@ -90,7 +90,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/semiromid/compress-images.git"
+    "url": "https://github.com/Yuriy-Svetlov/compress-images.git"
   },
   "devDependencies": {
     "mocha": "^9.0.1",
