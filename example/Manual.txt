@@ -15,7 +15,7 @@ git clone git@github.com:semiromid/compress-images.git
 npm install compress-images --save
 
 
-[5] "npm install pngquant-bin --save" (It does not work properly on some OS). If you get error, you need edit './compress_images.js' and replace 'pngquant' on other PNG engine, as example on "pngcrush".
+[5] "npm install pngquant-bin@6.0.1 --save" (It does not work properly on some OS). If you get error, you need edit './compress_images.js' and replace 'pngquant' on other PNG engine, as example on "pngcrush".
 {png: {engine: 'pngcrush', command: false}},
 
 

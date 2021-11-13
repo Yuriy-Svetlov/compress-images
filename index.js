@@ -77,7 +77,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
     }else
     if(enginepng.png.engine === "pngquant" && pngquant === undefined){
-      if(checkExistsModule('pngquant-bin', 'npm install pngquant-bin --save') != true){
+      if(checkExistsModule('pngquant-bin', 'npm install pngquant-bin@6.0.1 --save') != true){
         return false;
       }
 
