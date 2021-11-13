@@ -86,7 +86,7 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
     // GIF
     if(enginegif.gif.engine === "gifsicle" && gifsicle === undefined){
-      if(checkExistsModule('gifsicle', 'npm install gifsicle --save') != true){
+      if(checkExistsModule('gifsicle', 'npm install gifsicle@5.2.1 --save') != true){
         return false;
       }
 

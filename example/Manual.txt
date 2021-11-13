@@ -19,7 +19,7 @@ npm install compress-images --save
 {png: {engine: 'pngcrush', command: false}},
 
 
-[6] "npm install gifsicle --save" (It does not work properly on some OS). If you get error, you need edit './compress_images.js' and replace 'gifsicle' on other GIF engine, as example "gif2webp"
+[6] "npm install gifsicle@5.2.1 --save" (It does not work properly on some OS). If you get error, you need edit './compress_images.js' and replace 'gifsicle' on other GIF engine, as example "gif2webp"
 {gif: {engine: 'gif2webp', command: false}}
 
 
