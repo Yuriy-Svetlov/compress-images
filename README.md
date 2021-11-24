@@ -48,6 +48,13 @@ If you have slash `\` it may be to replaced: `input.replace(/\\/g, '/')`;
 
 ![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/img_structure_forder.png)
 
+
+Other useful plugins: 
+* [Live Reload Browser Page](https://live-reload-browser-page.com/)
+* [Live Alert Browser Page](https://live-alert-browser-page.com/)
+* [Live HTML Validator](https://live-html-validator.com/)
+
+
 # Get started
 
 ## Install
