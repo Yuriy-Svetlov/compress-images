@@ -9,6 +9,11 @@
 
 ![Image](https://raw.githubusercontent.com/semiromid/compress-images/master/screenshots/1.png)
 
+
+You can also use:
+* [imagemin](https://www.npmjs.com/package/imagemin)
+
+
 ### Features
 
 
