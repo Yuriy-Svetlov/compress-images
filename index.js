@@ -1483,8 +1483,12 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
 
 
     function getFilesizeInBytes(filename) {
-        filename = fs.statSync(filename)
-        return filename["size"];
+        try {
+          filename = fs.statSync(filename)
+          return filename["size"];
+        } catch {
+          return 0  
+        }
     }
 
 
