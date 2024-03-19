@@ -1,5 +1,5 @@
 {
-  "name": "compress-images",
+  "name": "@bagel42/compress-images",
   "version": "2.0.5",
   "description": "Minify size your images. Image compression with extension: jpg/jpeg, svg, png, gif.",
   "keywords": [
@@ -58,7 +58,6 @@
     "mozjpeg",
     "webp",
     "guetzli",
-    "jpegRecompress",
     "jpegoptim",
     "tinify",
     "pngquant",
@@ -73,13 +72,11 @@
     "image min"
   ],
   "homepage": "https://github.com/Yuriy-Svetlov/compress-images/",
-  "bugs": "https://github.com/Yuriy-Svetlov/compress-images/issues",
-  "license": "MIT",
-  "author": {
-    "name": "TAMARA SEMINA",
-    "email": "startpascal1@mail.ru",
-    "url": "https://github.com/Yuriy-Svetlov/compress-images/"
+  "bugs": {
+    "url": "https://github.com/Yuriy-Svetlov/compress-images/issues"
   },
+  "license": "MIT",
+  "author": "TAMARA SEMINA <startpascal1@mail.ru> (https://github.com/Yuriy-Svetlov/compress-images/)",
   "files": [
     "LICENSE",
     "Readme.md",
@@ -90,7 +87,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Yuriy-Svetlov/compress-images.git"
+    "url": "git+https://github.com/Yuriy-Svetlov/compress-images.git"
   },
   "devDependencies": {
     "mocha": "^9.0.1",
@@ -102,7 +99,6 @@
     "colors": "^1.4.0",
     "cwebp-bin": "^6.1.1",
     "glob": "^7.1.6",
-    "jpeg-recompress-bin": "^5.1.1",
     "jpegtran-bin": "^5.0.2",
     "mkdirp": "^0.5.1",
     "mozjpeg": "^7.0.0",
@@ -114,6 +110,11 @@
     "tinify": "^1.5.0"
   },
   "scripts": {
-    "test": "node_modules/.bin/mocha"
+    "test": "mocha"
+  },
+  "directories": {
+    "example": "example",
+    "lib": "lib",
+    "test": "test"
   }
 }
