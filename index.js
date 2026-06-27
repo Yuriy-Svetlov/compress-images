@@ -1214,18 +1214,20 @@ var index = function (input, output, option, findfileop, enginejpg, enginepng, e
         {svg: {engine: 'svgo', command: false}}
         {svg: {engine: 'svgo', command: '--multipass'}}
         */
-        let com;
+        // Build an argv array and run svgo with execFile (no shell) so that a filename
+        // (`input`/`output`) or `svg.command` value containing shell metacharacters cannot
+        // inject commands. This matches every other engine in this file, which already use
+        // execFile(binary, argsArray). Previously the values were concatenated into a single
+        // string and run through `exec` (a shell), allowing OS command injection.
+        let svgoArgs = [];
         if(false != enginesvg.svg.command){
-          //com = "svgo "+enginesvg.svg.command+" -i "+input+" -o "+output;  
-          com = enginesvg.svg.command+" -i "+input+" -o "+output; 
-        }else{
-          //com = "svgo -i "+input+" -o "+output;
-          com = "-i "+input+" -o "+output;
+          svgoArgs = String(enginesvg.svg.command).split(/\s+/).filter(Boolean);
         }
+        svgoArgs = svgoArgs.concat(['-i', input, '-o', output]);
 
-        com = 'node "' + path.resolve(__dirname + "/../svgo/bin/") + "/svgo" + '" ' + com;
+        const svgoBin = path.resolve(__dirname + "/../svgo/bin/") + "/svgo";
 
-        exec(com, (error, stdout, stderr) => {
+        execFile('node', [svgoBin].concat(svgoArgs), (error, stdout, stderr) => {
             if(error === null){
                 if(option.statistic){
                   //Block statistic
